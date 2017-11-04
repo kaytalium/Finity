@@ -43,7 +43,7 @@ Use the concepts of Sessions and Cookies to make the system more functional and 
 Use the rubric below to organize and develop your project
 
 Functionality/Database Design                                  
--------------------------------------------------------- |
+---
 - [ ] Admin login works properly                                
 - [ ] Admin can create user accounts properly                   
 - [ ] Admin can delete user accounts properly                   
@@ -57,7 +57,9 @@ Functionality/Database Design
 - [ ] Functional user interface for adhoc queries               
 - [ ] Evidence of emerging trend implemented                    
 - [ ] Sessions and Cookies used appropriately
-Marks attained                                                  
+
+Marks attained
+
 Max marks for Project                                           
 
 Mark Scheme
