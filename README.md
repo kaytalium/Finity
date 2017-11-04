@@ -60,7 +60,7 @@ Functionality/Database Design
 - [ ] Evidence of emerging trend implemented                    
 - [ ] Sessions and Cookies used appropriately
 
-Max marks for Project                                           
+Max marks for Project is 39                                     
 
 Mark Scheme
 * 0 – no evidence
