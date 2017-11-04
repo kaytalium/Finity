@@ -44,7 +44,7 @@ Use the rubric below to organize and develop your project:
 
 process | Functionality/Database Design                                   | Marks
 --------| --------------------------------------------------------| ------
-- [ ]   | Admin login works properly                                | -
+<ul><li>- [ ]</li></ul>   | Admin login works properly                                | -
 - [ ] Admin can create user accounts properly                   | -
 - [ ] Admin can delete user accounts properly                   | -
 - [ ] Admin can suspend user accounts properly                  | -
