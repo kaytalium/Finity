@@ -41,6 +41,29 @@ Use the concepts of Sessions and Cookies to make the system more functional and 
 ## Rubric
 
 Use the rubric below to organize and develop your project:
+<table>
+ <tr><th>
+  <td>progress</td>
+  <td>Functionality/Database Design</td>
+  <td>Marks</td>
+ </th></tr>
+ <tr>
+  <td>
+   - [ ]
+  </td>
+ </tr>
+ <tr>
+  <td>
+   Admin login works properly
+  </td>
+ </tr>
+ <tr>
+  <td>
+   - 
+  </td>
+ </tr>
+</table>
+
 
 process | Functionality/Database Design                                   | Marks
 --------| --------------------------------------------------------| ------
