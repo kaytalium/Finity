@@ -40,39 +40,25 @@ Use the concepts of Sessions and Cookies to make the system more functional and 
  
 ## Rubric
 
-Use the rubric below to organize and develop your project:
-<table>
- <tr>
-  <th>progress</th>
-  <th>Functionality/Database Design</th>
-  <th>Marks</th>
- </tr>
- <tr>
-  <td> <input type="checkbox"> </td>
-  <td> Admin login works properly </td>
-  <td> - </td>
- </tr>
- 
-</table>
+Use the rubric below to organize and develop your project
 
-
-process | Functionality/Database Design                                   | Marks
---------| --------------------------------------------------------| ------
-<input type="checkbox" checked>   | Admin login works properly                                | -
-- [ ] Admin can create user accounts properly                   | -
-- [ ] Admin can delete user accounts properly                   | -
-- [ ] Admin can suspend user accounts properly                  | -
-- [ ] Client login works properly                               | -
-- [ ] Client can properly update account details                | -
-- [ ] Client can add inventory                                  | - 
-- [ ] Client can update inventory                               | - 
-- [ ] 3NF Database design with relationships properly  modelled | -
-- [ ] Appropriate management report                             | -
-- [ ] Functional user interface for adhoc queries               | -
-- [ ] Evidence of emerging trend implemented                    | -
-- [ ] Sessions and Cookies used appropriately                   | -
-Marks attained                                                  | -
-Max marks for Project                                           | 39
+Functionality/Database Design                                  
+-------------------------------------------------------- |
+- [ ] Admin login works properly                                
+- [ ] Admin can create user accounts properly                   
+- [ ] Admin can delete user accounts properly                   
+- [ ] Admin can suspend user accounts properly                  
+- [ ] Client login works properly                              
+- [ ] Client can properly update account details               
+- [ ] Client can add inventory                                  
+- [ ] Client can update inventory                               
+- [ ] 3NF Database design with relationships properly  modelled 
+- [ ] Appropriate management report                             
+- [ ] Functional user interface for adhoc queries               
+- [ ] Evidence of emerging trend implemented                    
+- [ ] Sessions and Cookies used appropriately
+Marks attained                                                  
+Max marks for Project                                           
 
 Mark Scheme
 * 0 – no evidence
