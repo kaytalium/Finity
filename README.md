@@ -47,7 +47,8 @@ Functionality/Database Design
 - [ ] Admin login works properly                                
 - [ ] Admin can create user accounts properly                   
 - [ ] Admin can delete user accounts properly                   
-- [ ] Admin can suspend user accounts properly   
+- [ ] Admin can suspend user accounts properly 
+
 
 - [ ] Client login works properly                              
 - [ ] Client can properly update account details               
