@@ -48,7 +48,8 @@ Use the rubric below to organize and develop your project:
   <th>Marks</th>
  </tr>
  <tr>
-  <td> - [ ] </td>
+  <td> 
+- [ ] </td>
   <td> Admin login works properly </td>
   <td> - </td>
  </tr>
