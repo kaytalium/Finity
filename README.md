@@ -39,12 +39,12 @@ Perform research on any emerging trends with respect to creating PHP interfaces(
 Use the concepts of Sessions and Cookies to make the system more functional and robust
  
 ## Rubric
-- - - 
+
 Use the rubric below to organize and develop your project:
 
 Functionality/Database Design                                   | Marks
 ----------------------------------------------------------------| ------
-- [ ] Admin login works properly                                | -
+Admin login works properly                                | -
 - [ ] Admin can create user accounts properly                   | -
 - [ ] Admin can delete user accounts properly                   | -
 - [ ] Admin can suspend user accounts properly                  | -
