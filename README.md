@@ -48,13 +48,12 @@ Functionality/Database Design
 - [ ] Admin can create user accounts properly                   
 - [ ] Admin can delete user accounts properly                   
 - [ ] Admin can suspend user accounts properly 
-
-
+\s\s
 - [ ] Client login works properly                              
 - [ ] Client can properly update account details               
 - [ ] Client can add inventory                                  
 - [ ] Client can update inventory   
-
+\s\s
 - [ ] 3NF Database design with relationships properly  modelled 
 - [ ] Appropriate management report                             
 - [ ] Functional user interface for adhoc queries               
