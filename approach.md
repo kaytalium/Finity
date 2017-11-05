@@ -1,7 +1,8 @@
 # Development Approach
 
-`code()`
-```
+
+```php
+<?php
     include "class/loadbalancer.php";
     echo "Hello world";
 ```    
