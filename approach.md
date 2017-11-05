@@ -1,10 +1,9 @@
 # Development Approach
 
 
+<!-- language: php -->
 ```
-<?php
     include "class/loadbalancer.php";
     echo "Hello world";
-?>
 ```
 
