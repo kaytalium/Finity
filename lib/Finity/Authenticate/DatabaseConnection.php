@@ -2,7 +2,7 @@
 
 namespace Finity\Authenticate;
 
-class DatabaseConnection implements \Finity\Authenticate\SQL{
+class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
 
 
 

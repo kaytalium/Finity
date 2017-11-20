@@ -7,7 +7,7 @@ namespace Finity\Product;
  * This class handle all the transaction that occur on a item 
  * between database and interface
  */
-class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \Finity\Product\UserRequest{
+class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \Finity\Product\UserRequestInterface{
 
     public function __construct(){
         

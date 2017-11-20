@@ -1,6 +1,6 @@
 <?php
 
-namespace Finity\Product;
+namespace Finity\Profile;
 
 interface UserRequest{
 

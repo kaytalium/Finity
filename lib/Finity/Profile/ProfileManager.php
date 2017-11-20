@@ -2,7 +2,7 @@
 
 namespace Finity\Profile;
 
-class ProfileManager extends Finity\Authenticate\DatabaseConnection implements UserRequest{
+class ProfileManager extends Finity\Authenticate\DatabaseConnection implements UserRequestInterface{
 
     public function __construct(){
 
