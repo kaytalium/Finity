@@ -17,7 +17,7 @@ The user interface is divided into four(4) modules, below are the modules and th
     - [ ] setuping up of account 
     - [ ] request password change
     - [ ] login page
-<br/>
+    
 ### Admin front page - Ruel
     - [ ] create a user
     - [ ] delete a user
