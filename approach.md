@@ -13,25 +13,25 @@ To in the library use the syntax below.
 ```
 The user interface is divided into four(4) modules, below are the modules and there features. 
 
-### login - Kimberly
+### Kimberly: Login UI
 
-- [X] setuping up of account 
+- [ ] setuping up of account 
 - [ ] request password change
 - [ ] login page
     
-### Admin front page - Ruel
-    - [ ] create a user
-    - [ ] delete a user
-    - [ ] suspend a user
-    - [ ] reset password
+### Ruel: Admin Homepage UI
+- [ ] create a user
+- [ ] delete a user
+- [ ] suspend a user
+- [ ] reset password
 
-### General User front page - Tajhna
-    - [ ] update user profile
-    - [ ] add new item to inventory
-    - [ ] update the inventory
+### Tajhna: General User Homepage UI
+- [ ] update user profile
+- [ ] add new item to inventory
+- [ ] update the inventory
 
-### Report page - Ovel
-    - [ ] generate default report
-    - [ ] perform adhoc queries
+### Ovel: Report Homepage UI 
+- [ ] generate default report
+- [ ] perform adhoc queries
 
 
