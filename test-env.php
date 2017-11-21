@@ -4,7 +4,12 @@
 $user = new \Finity\Profile\User(array("username"=>"heslopok",'password'=>"admin"));
 $Oauth = new \Finity\Authenticate\Oauth($user);
 echo $Oauth->test();
-
+if($Oauth->login()){
+    $_SESSION['user'] = $Oauth->authUser();
+    Location();
+}else{
+    $mesg = "";
+}
 $im = new \Finity\Product\ItemManager();
 $newItem = $im->createNewItem(new \Finity\Product\Item(array('description'=>"Washing Machine")));
 echo '<br>New Item: '.$newItem->get_description();
