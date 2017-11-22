@@ -2,6 +2,8 @@
 
 The purpose of this application is to demonstrate our knowledge of PHP to create an inventory management system. 
 
+The development approach can be seen [Here](docs/approach.md)
+
 The system should support an interface to allow user interaction, see objectives A through G.  
 
 ## Project Objective

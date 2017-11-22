@@ -11,7 +11,7 @@ To use the library in your project you would include the file Autoloader.php fro
     include "Finity/Autoloader.php";
 ?>
 ```
-See Documentation of library. 
+See [Documentation](finity.md) of library. 
 
 ## Task Assignment 
 
