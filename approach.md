@@ -2,15 +2,20 @@
 
 The application will be built using a custom php library that is call Finity. 
 
-The library will be included in all the modules for database and general function support. 
+The library is required in all the modules for database request and general function support. 
 
-To in the library use the syntax below.
+To use the library in your project you would include the file Autoloader.php from the Finity folder. see syntax below.
 <!-- language: php -->
 ```php
 <?php
     include "Finity/Autoloader.php";
 ?>
 ```
+See Documentation of library. 
+
+## Task Assignment 
+
+---
 The user interface is divided into four(4) modules, below are the modules and there features. 
 
 ### Kimberly: Login UI

@@ -1,4 +1,4 @@
-# Inventory Management System (IMS)
+# Finity Inventory (FI)
 
 The purpose of this application is to demonstrate our knowledge of PHP to create an inventory management system. 
 
