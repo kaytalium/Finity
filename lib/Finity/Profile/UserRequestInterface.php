@@ -2,7 +2,7 @@
 
 namespace Finity\Profile;
 
-interface UserRequest{
+interface UserRequestInterface{
 
     /**
      * Create a new record in the item table

@@ -23,6 +23,10 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
         return true;
     }
 
+    public function getLoggedInUser(){
+        //return USER class with all the information from database
+    }
+
     public function test(){
         return 'Username: '.$this->username.'<br>Password: '.$this->password;
     }

@@ -2,7 +2,7 @@
 
 namespace Finity\Product;
 
-interface UserRequest{
+interface UserRequestinterface{
 
     /**
      * Create a new record in the item table
@@ -18,6 +18,6 @@ interface UserRequest{
      * @param accept the item ID as a string therefore all non-string datatype will need to be converted
      * @return boolean this will tell if process was successful or failed
      */
-    public function updateItem(String $ItemId) : bool;
+    public function updateItem(Item $Item, $paramArray = array()) : bool;
 
 }

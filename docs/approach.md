@@ -38,5 +38,6 @@ The user interface is divided into four(4) modules, below are the modules and th
 ### Ovel: Report Homepage UI 
 - [ ] generate default report
 - [ ] perform adhoc queries
+- [ ] create project library
 
 
