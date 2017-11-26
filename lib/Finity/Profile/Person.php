@@ -24,4 +24,11 @@ class Person{
     }
 
     //Setters
+
+
+    //other public functions
+    public function personQueryString($personID){
+        //get all the information from the user
+    }
+
 }

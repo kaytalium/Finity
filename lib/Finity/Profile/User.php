@@ -5,13 +5,17 @@ namespace Finity\Profile;
 class User extends Person{
     //private vars
     private $username;
-    private $password;
+    private $password;//is the user typed password
 
+    private $db_password; //password for the database
+    private $personId;
+    private $harsh;
+
+    /**
+     * when a user class is created it has an optional load info of that user
+     */
     public function __construct($arg = array()){
-        $this->username = (isset($arg['username'])?$arg['username']:"");
-        $this->password = (isset($arg['password'])?$arg['password']:"");
-
-        //parent::_construct($arg);
+        $this->loadUser($arg);
     }
 
     //Getters
@@ -23,16 +27,43 @@ class User extends Person{
         return $this->password;
     }
 
+    public function get_db_password(){
+        return $this->db_password;
+    }
+
+    public function get_harsh(){
+        return $this->harsh;
+    }
+
+    public function get_personId(){
+        return $this->personId;
+    }
+
     public function get_profile(){
         return array(
             'user'          =>$this->username,
-            'pswd'          =>'yes',
             'firstname'     =>$this->get_firstname(),
-            'lastname'      =>$this->get_lastname()
+            'lastname'      =>$this->get_lastname(),
+            'personId'      =>$this->personId,
         );
     }
 
+
+    
+
     //Setters
+    public function loadUser($arg=array()){
+        
+        //These var is for the user input
+        $this->username     = (isset($arg['username'])?$arg['username']:"");
+        $this->password     = (isset($arg['password'])?$arg['password']:"");
+
+        $this->personId     = (isset($arg['personid'])?$arg['personid']:"");
+        $this->harsh        = (isset($arg['harsh'])?$arg['harsh']:"");
+        $this->db_password  = (isset($arg['secret'])?$arg['secret']:"");
+        parent::__construct($arg);
+    }
+
     public function set_password($password){
         $this->password = $password;
     }
@@ -43,7 +74,7 @@ class User extends Person{
 
     //Other public functions
     public function loginQueryString(){
-        return "SELECT `password` FROM user WHERE `username`=$this->username";
+        return "SELECT `secret`,`harsh`,`personid` FROM user WHERE `username`=$this->username";
     }
 
 }
