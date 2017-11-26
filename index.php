@@ -14,7 +14,7 @@
 <h1>Finity Inventory</h1>
 <?php 
     include 'tests/login-env.php';
-    include 'tests/item-evn.php';
+    //include 'tests/item-evn.php';
 ?>
 </body>
 </html>

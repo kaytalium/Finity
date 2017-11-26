@@ -64,16 +64,18 @@ class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
         $datasetResult = array();
         $i = 0;
         $rows = null;
+        $isResult = false;
         
         if(!$this->isConnectionAndNotEmpty($query))
-        return array('state'=>false,'msg'=>'invalid query or invalide database connection');
+        return array('state'=>$isResult,'msg'=>'invalid query or invalide database connection');
         
         $this->connectToDatabase();
         $result = mysqli_query($this->conn, $query);
         if($result)
         $rows = mysqli_num_rows($result);
-
+        
         if($rows){
+            $isResult = true;
             while($row = mysqli_fetch_array($result)){
                 $datasetResult[$i] = $row;
                 $i++;
@@ -82,7 +84,7 @@ class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
 
         mysqli_close($this->conn);
 
-        return array('state'=>true, 'data'=>$datasetResult);
+        return array('state'=>$isResult, 'data'=>$datasetResult);
        
     }
 
