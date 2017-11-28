@@ -1,0 +1,18 @@
+*{
+    margin:0;
+}
+.sidebar, .item-container{
+    float: left;
+    border: 1px solid blue;
+    height: 400px;
+}
+.sidebar{
+    background-color: yellow;
+    width: 20%;
+    
+}
+.item-container{
+ background-color: red;
+ width: 70%;
+ 
+}
