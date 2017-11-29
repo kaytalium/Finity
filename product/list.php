@@ -1,4 +1,8 @@
-<?php include 'item_profile.php'; ?>
+<?php 
+    include 'item_profile.php'; 
+    $itemList= $prolist->getItems();
+
+?>
 
 <div class="list-of-items">
 <?php 

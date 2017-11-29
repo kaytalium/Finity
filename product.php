@@ -15,9 +15,9 @@
     <div class="item-wrapper">
         <!-- this floats to the left with categories -->
         <div class="sidebar">
-            this is sidebar
+            
             <div class="catlist">
-                call for the categories 
+                <?php include 'product/category_list.php';?> 
             </div>
         </div> 
 
