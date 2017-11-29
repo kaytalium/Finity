@@ -100,7 +100,6 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         return $list_category;
     }
 
-    
     /**
      * Prepare the get all query statement with optional columns
      */
