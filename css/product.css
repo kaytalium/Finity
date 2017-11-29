@@ -6,13 +6,16 @@ font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .item-wrapper{
 max-width: 100%;
+height: 100%;
 margin: 0 auto;
 padding:15px;
 
 }
 .sidebar, .item-container{
 float: left;
-height: 800px;
+min-height: 800px;
+
+/* height: 100%; */
 }
 .sidebar{
 
@@ -23,12 +26,13 @@ border-right: 1px solid #cfcfcf;
 
 }
 .item-container{
-width: 75%;
-border: 2px solid #ffff;
-margin: 0 auto; 
-/* background: red; */
-
-
+    float: right;
+    width: 74%;
+    height: 800px;
+    border: 2px solid #ffff;
+    margin: 0 auto; 
+    overflow-y: scroll;
+    /* background: red; */
 }
 
 .imgebox
