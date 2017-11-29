@@ -1,18 +1,57 @@
-*{
+html, body{
+    height: 100%;
+    width:100%;
     margin:0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.item-wrapper{
+    max-width: 100%;
+    margin: 0 auto;
+    padding:15px;
+    
 }
 .sidebar, .item-container{
     float: left;
     border: 1px solid blue;
-    height: 400px;
+    height: 800px;
 }
 .sidebar{
-    background-color: yellow;
+    
+    background-color: white;
     width: 20%;
+    
     
 }
 .item-container{
- background-color: red;
  width: 70%;
+ border: 2px solid #ffff;
+ margin: 0 auto; 
  
+}
+
+.imgebox
+{
+box-sizing: border-box;
+height: 120px;
+padding-bottom: 80px;
+}
+.left{
+    float: left;
+    width: 50%;
+}
+.right{
+    float: right;
+    width: 50%;
+}
+.row{
+    width: 100%;
+    border: 2px solid green;
+}
+#name{
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+#descript, #price, #quan{
+    padding-top: 20px;
+    padding-bottom: 15px;
 }
