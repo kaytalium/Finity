@@ -1,4 +1,7 @@
 <?php
+//import header
+include 'header.php';
+
 /**
  * Login Test Environment
  */

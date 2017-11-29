@@ -1,6 +1,6 @@
 <?php
-    //Improve application library 
-    require_once 'lib/Finity/Autoloader.php';
+    //Import application library 
+    require_once '../lib/Finity/Autoloader.php';
 ?>
 <!DOCTYPE html> 
 <html lang="en">
@@ -12,6 +12,3 @@
 </head>
 <body>
 <h1>Finity Inventory</h1>
-
-</body>
-</html>

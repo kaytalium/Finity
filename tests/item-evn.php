@@ -1,4 +1,7 @@
 <?php
+//import header
+include 'header.php';
+
 /**
  * Inventory Management Test Environment
  */
