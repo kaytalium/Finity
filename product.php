@@ -9,14 +9,24 @@
 </head>
 <body>
     <?php
-     require_once 'lib/Finity/Autoloader.php';
-    $prolist= new \Finity\Product\ItemManager();
+        require_once 'lib/Finity/Autoloader.php';
+        $prolist= new \Finity\Product\ItemManager();
+
+        if($_SERVER['REQUEST_METHOD'] == 'GET'){
+           $selectedCat = (isset($_GET['q'])?$_GET['q']:'');
+            
+        }else{
+            $selectedCat = '';
+        }
+
     ?> 
     <div class="item-wrapper">
         <!-- this floats to the left with categories -->
         <div class="sidebar">
             
             <div class="catlist">
+                <div class="title">Category</div>
+
                 <?php include 'product/category_list.php';?> 
             </div>
         </div> 

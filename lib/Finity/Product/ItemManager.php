@@ -85,14 +85,14 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         $i=0;
 
         //Get the category query from the 
-        $query = "SELECT DISTINT category FROM items";
+        $query = "SELECT DISTINCT category FROM item";
 
-        $result = $this->query($query);
+        $result = $this->select($query);
 
         //Check to see if result, if true the prepare an array for return; else return enpty array
         if($result['state']){
             foreach($result['data'] as $category){
-                $list_category[$i] = $category;
+                $list_category[$i] = $category[0];
                 $i++;
             }
         }

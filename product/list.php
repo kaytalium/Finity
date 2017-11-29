@@ -1,6 +1,6 @@
 <?php 
     include 'item_profile.php'; 
-    $itemList= $prolist->getItems();
+    $itemList= $prolist->getItems(array('category'=>$selectedCat));
 
 ?>
 
