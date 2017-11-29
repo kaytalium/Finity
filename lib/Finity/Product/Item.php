@@ -54,22 +54,20 @@ class Item{
     }
 
     public function get_formatted_price(){
-        setlocale(LC_MONETARY, 'en_US');
         if(isset($this->price) && !empty($this->price)){
-            return money_format('%n',$this->price);
+            return toMoney($this->price);//money_format('%n',$this->price);
         }else{
-            return money_format('%n',0);
+            return toMoney();
         }
     }
 
     public function get_all(){
-        setlocale(LC_MONETARY, 'en_US');
         return array(
             'item_id'       => $this->item_id,
             'description'   => $this->description,
             'unit'          => $this->unit,
             'price'         => $this->price,
-            'format_price'  => money_format('%n',$this->price),
+            'format_price'  => toMoney($this->price),
             'name'          => $this->name,
             'category'      => $this->category,
             'type'          => $this->type
