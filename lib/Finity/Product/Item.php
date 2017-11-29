@@ -72,7 +72,7 @@ class Item{
             'name'          => $this->name,
             'category'      => $this->category,
             'type'          => $this->type,
-            'image_url'     => $this->imageUrl
+            'image_url'     => $this->imageUrl 
         );
     }
 
