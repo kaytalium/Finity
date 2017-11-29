@@ -22,6 +22,7 @@ class Item{
         $this->name         = (isset($arg['name'])?$arg['name']:'');
         $this->category     = (isset($arg['category'])?$arg['category']:'');
         $this->type         = (isset($arg['type'])?$arg['type']:'');
+        $this->imageUrl     = (isset($arg['image_url'])?$arg['image_url']:'');
     }
 
     //Getters
