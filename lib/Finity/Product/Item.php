@@ -40,6 +40,23 @@ class Item{
         return $this->item_id;
     }
 
+    public function get_name(){
+        return $this->name;
+    }
+
+    public function get_category(){
+        return $this->$type;
+    }
+
+    public function get_formatted_price(){
+        setlocale(LC_MONETARY, 'en_US');
+        if(isset($this->price) && !empty($this->price)){
+            return money_format('%n',$this->price);
+        }else{
+            return money_format('%n',0);
+        }
+    }
+
     public function get_all(){
         setlocale(LC_MONETARY, 'en_US');
         return array(
