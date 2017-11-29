@@ -9,7 +9,7 @@ class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
     private $user = 'root';
     private $secret = 'root';
     private $databaseName = 'inventory';
-    private $port = 8889;
+    //private $port = 8889;
 
     private $conn; //hold the connection of the database
 
@@ -18,7 +18,7 @@ class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
      * @return boolean 
      */
     private function connectToDatabase(){
-        $link = mysqli_connect($this->host, $this->user, $this->secret, $this->databaseName, $this->port);
+        $link = mysqli_connect($this->host, $this->user, $this->secret, $this->databaseName);
         if(!$link){
             return false;
         }
