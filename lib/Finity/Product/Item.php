@@ -71,7 +71,8 @@ class Item{
             'format_price'  => toMoney($this->price),
             'name'          => $this->name,
             'category'      => $this->category,
-            'type'          => $this->type
+            'type'          => $this->type,
+            'image_url'     => $this->imageUrl
         );
     }
 
