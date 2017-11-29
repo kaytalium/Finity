@@ -76,7 +76,31 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         return $list;        
     }
 
+    /**
+     * This function will get all the categories from the system based on the items in the database
+     */
+    public function getCategories() : Array{
+        //initialize vars
+        $list_category = array();
+        $i=0;
 
+        //Get the category query from the 
+        $query = "SELECT DISTINT category FROM items";
+
+        $result = $this->query($query);
+
+        //Check to see if result, if true the prepare an array for return; else return enpty array
+        if($result['state']){
+            foreach($result['data'] as $category){
+                $list_category[$i] = $category;
+                $i++;
+            }
+        }
+
+        return $list_category;
+    }
+
+    
     /**
      * Prepare the get all query statement with optional columns
      */
