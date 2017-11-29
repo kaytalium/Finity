@@ -8,6 +8,10 @@
     <title>Product</title>
 </head>
 <body>
+    <?php
+     require_once 'lib/Finity/Autoloader.php';
+    $prolist= new \Finity\Product\ItemManager();
+    ?> 
     <div class="item-wrapper">
         <!-- this floats to the left with categories -->
         <div class="sidebar">

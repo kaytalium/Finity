@@ -1,3 +1,10 @@
-<div class="list-of-items">
 <?php include 'item_profile.php'; ?>
+
+<div class="list-of-items">
+<?php 
+foreach($itemList as $key=>$item)
+{
+    echo item_profile($item);
+}
+?>
 </div> 

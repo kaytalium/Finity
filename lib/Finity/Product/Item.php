@@ -11,7 +11,8 @@ class Item{
     private $price = null;
     private $name = null;//[Basketball, Apple]
     private $category = null;//[Sports, fruits]
-    private $type = null;//[Spalding, Jamaican ]
+    private $type = null;//[Spalding, Jamaican ],
+    private $imageUrl = null;
 
     public function __construct($arg = array()){
         $this->description  = (isset($arg['description'])?$arg['description']:'');
@@ -38,6 +39,10 @@ class Item{
 
     public function get_item_id(){
         return $this->item_id;
+    }
+
+    public function get_image_url(){
+        return $this->imageUrl;
     }
 
     public function get_all(){
