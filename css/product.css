@@ -45,7 +45,7 @@ padding-bottom: 80px;
 }
 .row{
     width: 100%;
-    border: 2px solid green;
+    /* border: 1px solid green; */
 }
 #name{
     padding-top: 50px;
@@ -54,4 +54,57 @@ padding-bottom: 80px;
 #descript, #price, #quan{
     padding-top: 20px;
     padding-bottom: 15px;
+}
+
+
+/**
+    item profile styles 
+*/
+
+.item_profile_container{
+    width: 300px;
+    height: 410px;
+    /* background: red; */
+    margin: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+
+}
+
+.item_profile_image{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    text-align: center;
+    border-bottom:1px solid rgba(165, 45, 45, 0.2);
+}
+
+.item_profile_image > img{
+    width: 250px;
+    height: auto;
+    max-height: 250px;
+}
+
+.item_profile_container > .row > .description{
+    padding: 10px; 
+    font-size: 14px;
+    width: 290px;
+    white-space: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item_profile_container > .row > .name{
+    padding: 5px;
+}
+
+.item_profile_container > .row > .price{
+    padding: 5px;
+    font-size: 16px;
+}
+
+.item_profile_container > .row > .price > .quantity{
+    padding: 5px;
+    font-size:16px;
+    float: right;
 }
