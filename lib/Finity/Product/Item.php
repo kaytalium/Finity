@@ -41,10 +41,10 @@ class Item{
         return $this->item_id;
     }
 
-<<<<<<< HEAD
     public function get_image_url(){
         return $this->imageUrl;
-=======
+    }
+    
     public function get_name(){
         return $this->name;
     }
@@ -60,7 +60,6 @@ class Item{
         }else{
             return money_format('%n',0);
         }
->>>>>>> 7b4520a8984f9a5ecd4773b38d976fc5faf01503
     }
 
     public function get_all(){
