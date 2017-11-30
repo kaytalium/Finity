@@ -51,7 +51,11 @@ class Item{
     }
 
     public function get_category(){
-        return $this->$type;
+        return $this->category;
+    }
+
+    public function get_type(){
+        return $this->type;
     }
 
     public function get_formatted_price(){

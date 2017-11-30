@@ -47,8 +47,21 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
     /**
      * Get one item from the database base on item_id given by user
      */
-    public function getItem(String $itemID){
+    public function getItem(String $itemID): Item{
+        if(!empty($itemID)){
+            //get the item query for an single item
+            $query = $this->prepare(array("item_id"=>$itemID));
 
+            //Request from db
+            $result = $this->select($query);
+
+            //return result
+            if($result['state']){
+                return new Item($result['data'][0]);
+            }
+
+        }
+        
     }
 
     /**
@@ -122,5 +135,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
             return "SELECT * FROM item";
         }
     }
+
+    
     
 }
