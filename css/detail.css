@@ -8,6 +8,7 @@
     padding: 15px;
     display:flex;
     /* background: red; */
+    font-family: 'Barlow Semi Condensed', sans-serif;
     
 }
 .left{
@@ -15,7 +16,7 @@
     position: relative;
     float: left;
     text-align: center;
-    line-height: 700px;
+    line-height: 900px;
     /* background: blue; */
 
 }
@@ -27,6 +28,9 @@
 }
 .row i {
     float: right;
+    cursor: pointer;
+    margin-right: 10px;
+    /* background: pink; */
 }
 
 /*styling image*/
@@ -36,45 +40,63 @@
     /* background: green; */
   }
 .imgebox img{
-    width: 300px;
+    width: 400px;
     height: auto;
 }
 /*styling each row*/
 .topmost{
-    margin: 120px 0 0 0;
+    margin: 0 0 0px 0;
 }
-#name h3{
-    margin-top: -40px; 
+
+.topmost > span{
+    color: rgba(18, 18, 230, 0.913);
+    text-transform: uppercase;
+    font-size: 12px;
+    /* margin-bottom: 20px; */
+}
+#name{
+    height: 30px;
+    line-height: 30px;
+    /* background: red; */
+    padding: 20px 0 5px 0;
+}
+#name p{
     font-weight: 300;
     font-size: 45px;
     letter-spacing: -2px;
+    width: 80%;
+    /* margin-bottom: -50px; */
+    /* background: blue; */
+    float: left;
 }
 #descript{
+    max-height: 120px;
     line-height: 30px;
     border-bottom:1px solid #eaeaea;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    /* background: red; */
 }
 #descript p{
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 300;
     color: black;
     line-height: 24px;
+    width: 90%;
     
 }
-#price h3{
+#price p, #quan p, #type p{
     font-weight: 450;
     line-height: 30px;
+    font-size: 20px;
 }
-#quan h3 {
-    font-weight: 300;
-    line-height: 100px;
-
+#quan {
+    margin-top: 0px;;
+    padding: 0;
 }
-#type h3{
-    font-weight:300;
-    line-height: 100px;
-
-}
+#type{
+    padding: 20px 0 50px 0;
+     
+} 
 .btn{
     display: inline-block;
     background-color: black;
