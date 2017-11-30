@@ -7,7 +7,7 @@
     <!--left side of the container with Image-->
     <div class="left">
         <div class="imgebox">
-            <img  src= "image/<?php echo $detailItem->get_image_url(); ?>" alt="Dog">
+            <img  src= "image/<?php echo $detailItem->get_image_url(); ?>" alt="<?php echo $detailItem->get_name();?>">
         </div>
     </div>
 
