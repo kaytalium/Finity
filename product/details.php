@@ -10,7 +10,7 @@
     <div class="container"> 
     <div class="right"> 
         <div class="row">
-            <span>Category</span>
+            <span>Computer</span>
             <div id="name"><i class="fa fa-pencil" aria-hidden="true"></i>
                 <h3>Mac Book Pro</h3>
             </div> 
@@ -32,7 +32,10 @@
         <div class="row">
             <div id="quan"><i class="fa fa-pencil" aria-hidden="true"></i>
                 <h3>Quantity: 25</h3>
-       </div>        
+       </div> 
+       <div class="row">
+            <div id="type"><i class="fa fa-pencil" aria-hidden ="true"></i> 
+            <h3>Type: Laptop</h3>        
            <div>
                 <a href = "#" class="btn">Update</a>
             </div> 
