@@ -65,7 +65,6 @@ item profile styles
 .item_profile_container{
 width: 300px;
 height: 410px;
-/* background: red; */
 margin: 5px;
 border: 1px solid #cccccc;
 border-radius: 5px;
@@ -82,12 +81,12 @@ border-bottom:1px solid rgba(165, 45, 45, 0.2);
 }
 
 .item_profile_image > img{
-width: 250px;
+width: 200px;
 height: auto;
 max-height: 250px;
 }
 
-.item_profile_container > .row > .description{
+/*.item_profile_container > .row > .description{
 padding: 5px; 
 font-size: 14px;
 width: 290px;
@@ -95,22 +94,33 @@ white-space: wrap;
 overflow: hidden;
 text-overflow: ellipsis;
 
-}
+}*/
 
 .item_profile_container > .row > .name{
-padding: 5px;
+padding: 10px 5px 10px 8px;
+font-size: 22px;
 }
 
 .item_profile_container > .row > .price{
-padding: 5px;
+padding: 10px 5px 12px 8px;
 font-size: 16px;
+letter-spacing: 1px;
 }
 
-.item_profile_container > .row > .price > .quantity{
-padding: 5px;
-font-size:16px;
-float: right;
+.item_profile_container > .row > .quantity{
+padding: 8px 5px 12px 8px;
+font-size: 16px;
+letter-spacing: 1px;
 }
+.row i{
+    float: right;
+    cursor: pointer;
+}
+.plus{
+    padding-right: 15px;
+    color:rgb(100, 235, 100);
+}
+
 /* Category Style*/
 
 .title, .catlist{
