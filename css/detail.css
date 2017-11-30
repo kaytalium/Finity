@@ -109,9 +109,12 @@
     background-color: black;
     color: #d1990f;
     border-radius: 6px;
-    font-size: 20px;
-    padding: 12px 30px;
+    font-size: 18px;
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
     text-decoration: none;
+    text-align: center;
 }
 
 /**************************************

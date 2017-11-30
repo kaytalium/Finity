@@ -1,40 +1,40 @@
-<link rel="stylesheet" href="../css/user_update.css"> 
+<link rel="stylesheet" href="css/user_update.css"> 
 
 <form class="userform"> 
     <div class="user-wrapper">
         <div class="imgprofile">
-        <img src="../image/camera.png">
+        <img src="image/alicia.jpg">
         </div>
 
         <div class=" userinfo">
             <div class="row">
-                <div class="fn">First Name: Kelly</div>
-                <div class="hide"><input class="fntxt" type="text"></div>
+                <div class="text">First Name: Kelly</div>
+                <div class="txtbox hide"><input class="fntxt" type="text" placeholder="first name"></div>
             </div>    
         
             <div class="row">
-                <div class="ln">Last Name: Logan</div>
-                <div class="hide"><input class="fntxt" type="text"></div>
+                <div class="text">Last Name: Logan</div>
+                <div class="txtbox hide"><input class="fntxt" type="text" placeholder="last name"></div>
             </div>
 
             <div class="row">
-                <div class="email">Emai: goallie@gmail.com</div>
-                <div class="hide"><input class="fntxt" type="text"></div>
+                <div class="text">Email: goallie@gmail.com</div>
+                <div class="txtbox hide"><input class="fntxt" type="text" placeholder="email"></div>
             </div>
 
             <div class="row">   
-                <div class ="passwrd">Change Password: </div>  
-                <div class="hide"><input class="fntxt" type="text"></div>
+                <!-- <div class ="text">Change Password: </div>   -->
+                <div class="txtbox hide"><input class="fntxt" type="text" placeholder="c password"></div>
             </div>
 
             <div class="row">
-                <div class="ustype">User Type: </div>
-                <div class="hide"><input class="fntxt" type="text"></div>
+                <div class="text">User Type: Administrator</div>
+                <div class="txtbox hide"><input class="fntxt" type="text" placeholder="usertype"></div>
             </div>
 
-            <div class="row">
-                <a href = "#" class="btn">Edit</a>
-                <a href = "#" class="btn">Cancel</a>
+            <div class="row buttons">
+                <button class="btn" id="editusprofile">Edit</button>
+                <button class="btn" id="canusprofile">Cancel</button>
             </div>
         </div>       
     </div>

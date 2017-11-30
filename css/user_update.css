@@ -1,66 +1,60 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
-*{
-    margin:0;
-    padding: 0;
-}
-body{
-    background-color: aliceblue;
-}
-/*styling the container*/
+
+   /*styling the container*/
 .user-wrapper{
-    border: 1px solid;
-    width: 450px;
-    padding-left: 15px;
+    width: 100%;
+    font-family:'Barlow Semi Condensed', sans-serif;
+    font-size: 20px;
 }
 .imgprofile{
-   /* border: 1px solid rgb(155, 155, 231);*/
-    margin: auto;
-    display: block;
-    width: 40%;
-    padding: 5px 5px 5px 12px;
+   display: block;
+    width: 100%;
+   
 }
+
+.imgprofile > img{
+    width: auto;
+    height: 250px;
+}
+
 /*styling each row*/
-/*.row .fn, .row .ln, .row .email, .row .passwrd, .row .ustype {
-    padding: 5px 12px 0px 15px;
-    margin-left: 12px;
-    width: 80%;
-    height: 52px;
-}*/
-.row .fn, .row .ln, .row .email, .row .passwrd, .row .ustype, .row .btn{
-    padding: 10px 12px 5px 12px;
-    margin-left:40px;
-    width:100%;
-    font-family:'Barlow Semi Condensed', sans-serif;
-    font-size: 30px;
+.text{
+    margin-left:10px;
+    padding: 0;
+       
 }
- .fntxt{
-    height: 50px;
-    padding: 5px 12px 0 12px;
-    margin-left: 40px;
-    width: 80%;
+
+.userinfo > .row{
+    /* background: red; */
+    /* border: 1px solid; */
+    height: 75px;
+}
+
+ input[type="text"]{
+    height: 30px;
+    width: 90%;
+    font-size: 18px;
+    border-radius:5px;
+    outline: none;
+    background: none;
+    border: none;
+    border: 1px solid rgb(124, 122, 122);
+    color: #fff;
+    padding: 10px;
   }
-.row .ln{
-    padding: 10px 12px 5px 12px;
-    margin-left:40px;
-    width:50%;
+button{
+    outline: none;
+    border: none;
+    cursor: pointer;
 }
-.row .ustype{
-    padding-bottom: 18px;
-}
+  .txtbox{
+   width: 100%;
+   margin-left:10px;
+  }
+
 .hide{
  display: none;    
 }
 
-  /*.row .email{
-padding: 5px 5px 5px 12px; 
-margin-left:40px;
+.buttons{
+    text-align: center;
 }
- .row .passwrd{
-
-padding: 5px 5px 5px 12px;
-margin-left:40px;
-} 
-.row .ustype{
-padding: 5px 5px 5px 12px;
-margin-left:40px;
-}*/

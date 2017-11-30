@@ -55,13 +55,16 @@ profile{
 }
 
 profile-detail{
+    display:none;
     background: #d1990f;
     border: 1px solid #645e5e;
     width: 400px;
-    height: 600px;
+    min-height: 600px;
+    height: 800px;
     position: absolute;
     /* z-index: -999; */
     margin: 5px 100px 0 -210px;
     border-radius: 5px;
+    overflow: hidden;
 }
 
