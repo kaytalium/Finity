@@ -22,6 +22,11 @@
                 </p>
                 <i class="fa fa-pencil" aria-hidden="true"></i>
             </div> 
+            <div id="edit_name">
+                <input type="text" name="name" placeholder="Enter a name"; value="<?php echo $detailItem->get_name(); ?>"/>
+                <i class="fa fa-check-circle fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+            </div>
         </div> 
                         
         <div class="row"> 
