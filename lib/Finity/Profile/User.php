@@ -10,6 +10,8 @@ class User extends Person{
     private $db_password; //password for the database
     private $personId;
     private $harsh;
+    private $state;
+
 
     /**
      * when a user class is created it has an optional load info of that user
