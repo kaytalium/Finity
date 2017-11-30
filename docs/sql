@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 29, 2017 at 06:17 PM
+-- Generation Time: Nov 30, 2017 at 04:20 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
@@ -13,8 +13,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `inventory`
 --
-CREATE DATABASE IF NOT EXISTS `inventory` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `inventory`;
 
 -- --------------------------------------------------------
 
@@ -30,43 +28,32 @@ CREATE TABLE `item` (
   `category` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `unit` int(11) DEFAULT NULL,
-  `price` float DEFAULT NULL
+  `price` float DEFAULT NULL,
+  `image_url` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `name`, `description`, `category`, `type`, `unit`, `price`) VALUES
-(1, 'Basket Ball', 'A Wilson basket ball made in 1987', 'Sport', 'rubber', 34, 15678.9),
-(2, 'Foot Baller', 'A Addidas Football made in 2017', 'Sport', 'Plastic', 34, 24342.6),
-(3, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(4, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(5, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(6, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(7, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(8, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(9, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(10, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(11, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(12, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(13, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(14, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(15, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(16, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599),
-(17, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `item` (`item_id`, `name`, `description`, `category`, `type`, `unit`, `price`, `image_url`) VALUES
+(1, 'Basket Ball', 'A Wilson basket ball made in 1987', 'Sport', 'rubber', 34, 15678.9, 'camera.png'),
+(2, 'Addidas Football', 'On May 24, 1964, a deadly riot broke out at a soccer match in Lima, Peru. The game between Peru and Argentina was a qualifying match for the 1964 Olympics. With several minutes left in the game, the referee waived off a goal scored by Peru, causing some', 'Sport', 'leather', 3678, 24342.6, 'football.jpg'),
+(3, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(4, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(5, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(6, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(7, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(8, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(9, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(10, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(11, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(12, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(13, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(14, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(15, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(16, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
+(17, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, '');
 
 --
 -- Indexes for dumped tables
