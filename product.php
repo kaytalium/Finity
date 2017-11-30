@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/detail.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/font/css/font-awesome.min.css">
     <title>Product</title>
 </head>
 <body>
@@ -13,8 +16,26 @@
         $prolist= new \Finity\Product\ItemManager();
 
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
-           $selectedCat = (isset($_GET['q'])?$_GET['q']:'');
-            
+          $iscat = false;
+          $isitem = false;
+           $requester = (isset($_GET['v'])?$_GET['v']:'');
+
+           switch($requester){
+               case "catreq": 
+               $selectedCat = (isset($_GET['q'])?$_GET['q']:'');
+               $iscat = true;
+               break;
+
+               case "itemreq":
+               $itemid = (isset ($_GET['c'])?$_GET['c']:'');
+               $isitem = true;
+               break;
+
+               default: 
+               $selectedCat= "";
+               $iscat = true;
+           }
+                     
         }else{
             $selectedCat = '';
         }
@@ -33,7 +54,13 @@
 
         <!-- area for items to display to user-->
         <div class="item-container">
-            <?php include 'product/list.php'; ?>
+            <?php
+                if($iscat)
+                include 'product/list.php';
+
+                if($isitem)
+                include 'product/details.php';
+             ?>
         </div>
 
     </div>

@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    max-width: 1370px;
+    margin: 0 auto;
+    padding: 15px;
+    display:flex;
+}
+.left{
+    width: 50%;
+    position: relative;
+
+}
+.right{
+    width: 60%;
+    margin-top:60%;
+    
+}
+.row i {
+    float: right;
+    
+}
+
+/*styling image*/
+.left img{
+    width: 50%;
+    position: absolute;
+    left:0;
+    top: 0;
+  }
+/*styling each row*/
+#name h3{
+    font-weight: 300;
+    font-size: 45px;
+    letter-spacing: -2px;
+}
+#descript{
+    line-height: 30px;
+    border-bottom:1px solid #eaeaea;
+    margin-bottom: 20px;
+}
+#descript p{
+    font-size: 16px;
+    font-weight: 300;
+    color: black;
+    line-height: 24px;
+    
+}
+#price h3{
+    font-weight: 450;
+    line-height: 30px;
+}
+#quan h3 {
+    font-weight: 300;
+    line-height: 100px;
+
+}
+.btn{
+    display: inline-block;
+    background-color: black;
+    color: #d1990f;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 12px 30px;
+    text-decoration: none;
+}
+.btn a{
+    
+
+}
