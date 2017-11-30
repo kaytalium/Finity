@@ -69,6 +69,13 @@
     /* background: blue; */
     float: left;
 }
+#edit_name{
+    display: none;
+    margin: 10px 0 0 0;
+}
+
+
+
 #descript{
     max-height: 120px;
     line-height: 30px;
@@ -105,4 +112,24 @@
     font-size: 20px;
     padding: 12px 30px;
     text-decoration: none;
+}
+
+/**************************************
+            Input Styles
+**************************************/
+input[type="text"]{
+    width: 70%;
+    height: 25px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.fa-check-circle{
+    color:rgb(100, 235, 100);
+    font-size: 20px;
+    height: 16px;
+}
+
+.fa-times-circle{
+    color: rgb(223, 90, 90);
 }
