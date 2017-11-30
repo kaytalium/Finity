@@ -42,8 +42,9 @@
         }else{
             $selectedCat = '';
         }
-
+        include 'header.php';
     ?> 
+
     <div class="item-wrapper">
         <!-- this floats to the left with categories -->
         <div class="sidebar">
