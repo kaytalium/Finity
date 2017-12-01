@@ -20,6 +20,9 @@
         $prolist= new \Finity\Product\ItemManager();
 
         if($_SERVER['REQUEST_METHOD'] == 'GET'){
+            if(empty($_GET)){
+                $_GET['v'] = 'catreq';
+            }
           $iscat = false;
           $isitem = false;
            $requester = (isset($_GET['v'])?$_GET['v']:'');

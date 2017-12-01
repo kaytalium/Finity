@@ -141,6 +141,11 @@ height:60px;
 line-height: 60px;
 }
 
+.cat-list > li > a.active{
+    background-color: #000;
+    color: #fff;
+    border-radius: 8px;
+}
 
 .cat-list{
     list-style-type: none;
