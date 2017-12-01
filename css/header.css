@@ -68,3 +68,17 @@ profile-detail{
     overflow: hidden;
 }
 
+menu{
+    position: absolute;
+    margin-left:210px;
+    /* background: red; */
+    padding: 0;
+    width: 210px;
+    color: #fff;
+}
+
+menu > ul > li{
+    display: inline-block;
+    margin-left: 5px;
+}
+

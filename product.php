@@ -66,6 +66,11 @@
                 if($isitem)
                 include 'product/details.php';
              ?>
+             <div class="plus_btn">
+                <a href="#">
+                    <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+                </a>
+             </div>
         </div>
 
     </div>

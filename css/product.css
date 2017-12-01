@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed');
 html, body{
-height: 100%;
+height: 100vh;
 width:100%;
 margin:0;
 font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .item-wrapper{
 max-width: 100%;
-height: 100%;
+height: 100vh;
 margin: 8px 0 0 0;
 /* padding:15px; */
 
@@ -16,7 +16,7 @@ margin: 8px 0 0 0;
 }
 .sidebar, .item-container{
 float: left;
-min-height: 800px;
+min-height: 100vh;
 
 /* height: 100%; */
 }
@@ -38,6 +38,7 @@ box-sizing: border-box;
 height: 120px;
 padding-bottom: 80px;
 }
+
 .left{
 float: left;
 width: 50%;
@@ -181,4 +182,25 @@ li:last-child{
     color: white;
     border-radius: 8px;
 }
+
+.plus_btn{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    right: 60px;
+    bottom: 50px;
+    position: fixed;
+    margin: 0;
+    background: rgb(63, 74, 224);
+    color: #fff;
+    line-height: 50px;
+}
+
+.plus_btn > a > i{
+    margin: 0 0 0 17px;
+    padding: 0;
+    color: #fff;
+}
+
+
 
