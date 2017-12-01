@@ -14,7 +14,7 @@
    
     <profile>
         <div class="profile-holder">
-            <img src="image/alicia.jpg"/>
+            <img src="image/users/default.png"/>
         </div> 
         <div class="logout">
 

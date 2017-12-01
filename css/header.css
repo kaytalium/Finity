@@ -44,7 +44,7 @@ profile{
     border-radius: 60px;
     margin-top: 15px; 
     overflow: hidden;
-    background: red;
+    background: #fff;
     cursor: pointer;
 }
 

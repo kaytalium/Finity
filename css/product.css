@@ -202,5 +202,11 @@ li:last-child{
     color: #fff;
 }
 
+footer{
+    width: 100%;
+    height: 70px;
+    background: #333;
+}
+
 
 
