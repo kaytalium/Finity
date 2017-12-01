@@ -1,20 +1,20 @@
--- phpMyAdmin SQL Dump
--- version 4.7.3
+phpMyAdmin SQL Dump
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Nov 30, 2017 at 04:33 PM
--- Server version: 5.6.35
--- PHP Version: 7.1.8
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 01, 2017 at 02:01 AM
+-- Server version: 5.7.19
+-- PHP Version: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 --
 -- Database: `inventory`
 --
-CREATE DATABASE IF NOT EXISTS `inventory` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `inventory`;
 
 -- --------------------------------------------------------
 
@@ -23,143 +23,43 @@ USE `inventory`;
 --
 
 DROP TABLE IF EXISTS `item`;
-CREATE TABLE `item` (
-  `item_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `item` (
+  `item_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   `unit` int(11) DEFAULT NULL,
   `price` float DEFAULT NULL,
-  `image_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `image_url` varchar(255) NOT NULL,
+  PRIMARY KEY (`item_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `item`
 --
 
 INSERT INTO `item` (`item_id`, `name`, `description`, `category`, `type`, `unit`, `price`, `image_url`) VALUES
-(1, 'Basket Ball', 'A Wilson basket ball made in 1987', 'Sport', 'rubber', 34, 15678.9, 'camera.png'),
-(2, 'Addidas Football', 'On May 24, 1964, a deadly riot broke out at a soccer match in Lima, Peru. The game between Peru and Argentina was a qualifying match for the 1964 Olympics. With several minutes left in the game, the referee waived off a goal scored by Peru, causing some', 'Sport', 'leather', 3678, 24342.6, 'football.jpg'),
-(3, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(4, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(5, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(6, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(7, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(8, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(9, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(10, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(11, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(12, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(13, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(14, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(15, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(16, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, ''),
-(17, 'Samsung', 'Washing Machine', 'Appliance', 'Kitchen Appliance', 32, 89599, '');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `person`
---
-
-DROP TABLE IF EXISTS `person`;
-CREATE TABLE `person` (
-  `person_id` int(10) NOT NULL,
-  `firstname` varchar(255) NOT NULL,
-  `lastname` varchar(255) NOT NULL,
-  `image_url` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `person`
---
-
-INSERT INTO `person` (`person_id`, `firstname`, `lastname`, `image_url`) VALUES
-(1, 'Ovel', 'Heslop', 'user/profile/default.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
-  `user_id` int(10) NOT NULL,
-  `person_id` int(10) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `user_type_id` int(10) NOT NULL,
-  `harsh` varchar(255) NOT NULL,
-  `status` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `person_id`, `username`, `password`, `user_type_id`, `harsh`, `status`) VALUES
-(1, 1, 'heslopok', 'admin', 222, 'hdsgcGAcVdcDcbs', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_type`
---
-
-DROP TABLE IF EXISTS `user_type`;
-CREATE TABLE `user_type` (
-  `user_type_id` int(10) NOT NULL,
-  `type` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `user_type`
---
-
-INSERT INTO `user_type` (`user_type_id`, `type`) VALUES
-(222, 'admin'),
-(675, 'normal');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`item_id`);
-
---
--- Indexes for table `person`
---
-ALTER TABLE `person`
-  ADD PRIMARY KEY (`person_id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `item`
---
-ALTER TABLE `item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
---
--- AUTO_INCREMENT for table `person`
---
-ALTER TABLE `person`
-  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+(1, 'Basketball', 'The NBA Street Phantom Basketball Soft Grip Technology comes with ultra durable soft grip cover and wide channel design, this ball will provide great grip and improved recognition. ', 'Sport', 'Rubber', 34, 15678.9, 'basketball.jpg'),
+(2, 'Addidas Football', 'Adidas 16 MLS GLI Ball [WHITE/SHOPIN/BLACK] \r\n', 'Sport', 'Ball', 28, 3533.42, 'soccer2.png'),
+(3, 'Wilson', 'V-matrix technology for a large sweet spot for increased power\r\nStop shock sleeves for reduced racket vibration and greater control \r\nAirlite alloy for lightweight strength \r\n', 'Sport', 'Racket', 10, 4500, 'tennis.png'),
+(4, 'Cricket Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play.', 'Sport', 'Bat', 15, 8408.74, 'cricket.jpg'),
+(5, 'Hockey Stick', 'Quick strike Saber taper \r\nTrue 1 Phantom feel \r\nMinimus carbon \r\nErgo shaft shape \r\nPro grip for locking your hands in place \r\n', 'Sport', 'Stick', 20, 7558.74, 'hockey.jpg'),
+(6, 'Baseball Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play ', 'Sport', 'Bat', 10, 5164.74, 'baseball.jpg'),
+(7, 'Rugby Ball', 'Synthetic latex bladder \r\nSize 5 \r\nArrives deflated \r\nOfficially licensed ball \r\nTraining/Recreational/Souvenir ', 'Sport', 'Ball', 9, 1888.74, 'rugby.jpg'),
+(8, 'Samsung Galaxy Tablet', '9.7-inch XGA Touchscreen Display with a 1024 x 768 resolution \r\n1.2GHz Quad Core Qualcomm APQ 8016 Processor; 1.5GB RAM Memory, 16GB Flash Memory(expandable up to 128GB with micoSD slot) ', 'Electronics', 'Tablet', 8, 23814, 'samsungtab.jpg'),
+(9, 'FitBit', 'See simplified heart rate zones for quickly checking exercise intensity during workouts with PurePulse(TM) continuous, wrist-based heart rate monitoring\r\nUse multi-sport tracking to track runs, cardio, cross-training, biking and more.', 'Electronics', 'Watch', 10, 25067.7, 'fitbit.jpg'),
+(10, 'Sony Headphones', 'Hear music at its best with Hi-Res Audio compatibility, Connect and stream music easily with Bluetooth, Focus on the music with Digital Noise Cancelling.  \r\nListen smarter with Noise Cancelling that adapts to your surroundings.\r\n', 'Electronics', 'Headphones', 5, 39160.8, 'headphone.jpg'),
+(11, 'JBL Bluetooth Speakers', 'Bluetooth - Wirelessly connect up to 3 smartphones or tablets to the speaker and take turns playing powerful stereo sound. \r\nBuilt-in rechargeable Li-ion battery supports up to 20 hours of playtime and charges smartphones and tablets via USB.', 'Electronics', 'Speakers', 15, 14742, 'speakers.jpg'),
+(12, 'Canon Mirrorless Camera', '24.2 Megapixel CMOS (APS-C) Sensor. \r\nBuilt-in Wi-Fi*, NFC** and Bluetooth***. \r\nIntuitive Touchscreen, 3.0-inch Tilt-type LCD. ', 'Electronics', 'Camera', 5, 62874, 'canon.jpg'),
+(13, 'Sony Mirrorless Lens', 'Lens not Zoomable \r\nExceptionally portable and versatile for everyday use \r\nMinimum working distance of only 9.75cm with 1:1 magnification \r\n', 'Electronics', 'Camera Lens', 2, 31878, 'lens.jpg'),
+(14, 'X-box One Controller', 'Feel the action with Impulse Triggers. Impulse Triggers deliver fingertip vibration feedback so you can feel every jolt and crash in high definition. \r\nResponsive thumbsticks and an enhanced D-pad provide greater precision. ', 'Electronics', 'Game Controller', 5, 8566.74, 'xbox.jpg'),
+(15, 'Sony Playstation', 'Your Favorite Franchises Live Here: Dig into a huge catalog of exclusive games, including generation defining titles like The Last of Us and entries in popular franchises like LittleBigPlanet, God of War, Gran Turismo, and UNCHARTED.', 'Electronics', 'Game Console', 3, 45018.7, 'playstation.jpg'),
+(16, 'HP Pavilion Monitor', 'Monitor: 21.5-inch diagonal Full HD (1920x1080) IPS; Enjoy vibrant images with 178-degree wide-viewing angles. \r\nResolution and aspect ratio: Full HD and 16:9; 2 million pixels for crystal-clear visuals and vibrant image quality', 'Computer', 'Monitor', 4, 12598.7, 'monitor1.jpg'),
+(17, 'Dell 2-in-1 Laptop', '8th Generation Intel Core i5-8250U Processor (Quad Core, 6MB Cache, up to 3.4 GHz) \r\n8GB 2400MHz DDR4 up to [32GB], (additional memory sold separately) [8GB1D] \r\n1TB 5400RPM Hard Drive Storage, No Optical Drive ', 'Computer', 'Laptop', 3, 81898.7, 'dellcomputer.jpg'),
+(18, 'TP-Link', 'FASTER WIFI - Stream 4K Ultra HD video and game online without lag over a clear 5GHz band while using the 2.4GHz band for everyday tasks \r\nWIFI FOR ALL YOUR DEVICES - Simultaneous dual band networks, 2.4GHz (600Mbps) and 5GHz (1300Mbps).', 'Computer', 'Router', 6, 13453, 'router.jpg'),
+(19, 'Espon', 'Cartridge-free printing — comes with up to 2 years of ink in the box (1). \r\nIncludes enough ink to print up to 4,000 pages black/6,500 color (2) — equivalent to about 20 ink cartridge sets (3). \r\n', 'Computer', 'Printer', 3, 28978.7, 'printer.jpg'),
+(20, 'HP Sprocket ', 'A PHOTO PRINTER FOR ON-THE-GO FUN – Print and share 2x3-inch snapshots or stickers from your iOS or Android devices with a simple tap \r\nPERFECTLY PORTABLE –this lightweight, portable photo printer easily fits into a pocket or backpack ', 'Computer', 'Portable Printer', 8, 16373.7, 'sprocket.jpg'),
+(21, 'Epson Projector', 'Up to 3x Higher Color Brightness, and reliable performance - 3LCD, 3-chip technology \r\nColor Brightness: 2200 lumens, White Brightness: 2200 lumens ', 'Computer', 'Projector', 4, 75598.7, 'projector.jpg'),
+(22, 'Acer All in One', '7th Generation Intel Core i5-7400T Processor (Up to 3.0GHz) \r\n23.8\" Full HD Widescreen IPS LED Back-lit Touch Screen Display (1920 x 1080) \r\n12GB DDR4 Memory, 1TB 5400RPM Hard Drive. Processor Core : Quad-core ', 'Computer', 'All in One Computer', 6, 84418.7, 'allinone.jpg');
+COMMIT;
