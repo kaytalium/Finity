@@ -9,7 +9,7 @@ logo{
 .co-name{
     color: #fff;
     margin: 10px 0 0 0px;
-    font-size: 16px;
+    font-size: 14px;
     float: left;
 
     
@@ -26,14 +26,15 @@ profile{
     float: right;
     width: 200px;
     height: 100%;
-    line-height: 80px;
+    color: #C5C6C6;
+    /* line-height: 80px; */
     
 }
 
 .profile-holder{
-    width: 50px;
-    height: 50px;
-    border-radius: 60px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
     margin-top: 15px; 
     overflow: hidden;
     background: #fff;
@@ -42,8 +43,29 @@ profile{
 
 .profile-holder >img{
     width: auto;
-    height: 50px;
-    right: 50px;
+    height: 40px;
+    right: 40px;
+}
+
+profile > .info{
+    margin: 5px 0 0 -40px;
+    width: 70%;
+    float: left;
+    /* background: red; */
+}
+
+profile > .logout{
+    float: left;
+    width: 40%;
+    height: 20px;
+    margin: 5px 0 0 0;
+    padding-left: 10px;
+    border-left: 2px solid #C5C6C6;
+}
+
+profile > .logout > a{
+    color: #C5C6C6;
+    font-size: 15px;
 }
 
 profile-detail{
@@ -60,17 +82,47 @@ profile-detail{
     overflow: hidden;
 }
 
-menu{
+/* Search Style */
+search{
     position: absolute;
-    margin-left:210px;
+    width: 60%;
+    margin: 1.5vh 0 0 55px;
+    /* background: red; */
+}
+
+search form > input[type="text"]{
+    border: none;
+    height: 35px;
+    width: 80%;
+    border-radius: 5px;
+    outline: none;
+    padding-left: 5px;
+    font-size: 15px;
+    
+}
+
+/* Menu for admin user */
+menunav{
+    position: absolute;
+    margin-left:0px;
     /* background: red; */
     padding: 0;
     width: 210px;
-    color: #fff;
+    margin-top: 6vh;
+    color: #C5C6C6;
 }
 
-menu > ul > li{
+menunav > ul > li > a{
+    color: #C5C6C6;
+    text-decoration: none;
+}
+
+menunav > ul > li > a:hover{
+    text-decoration: underline;
+}
+
+menunav > ul > li{
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 15px;
 }
 

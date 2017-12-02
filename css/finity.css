@@ -13,9 +13,10 @@ body, html{
     /* position: fixed; */
     width: 100%;
     height: 12vh;
-    background: #1d1d1b;
+    background: #232F3D;
     border-bottom: 2px solid #eaeaea; 
     line-height: 110%;
+    padding: 0;
 }
 
 .content{
@@ -30,7 +31,7 @@ body, html{
 .footer {
     width: 100%;
     height: 8vh;
-    background: rgb(50, 51, 50);
+    background: #232F3D;
     color: #fff;
     float: left;
     padding: 10px;

@@ -1,11 +1,8 @@
-*{
-    margin: 0;
-    padding: 0;
-}
+
 .catalog-container{
     max-width: 1370px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 0 15px;
     display:flex;
     /* background: red; */
     font-family: 'Barlow Semi Condensed', sans-serif;
@@ -120,7 +117,7 @@
 /**************************************
             Input Styles
 **************************************/
-input[type="text"]{
+.catalog-container > input[type="text"]{
     width: 70%;
     height: 25px;
     padding: 5px;

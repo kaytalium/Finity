@@ -29,7 +29,7 @@
     height: 75px;
 }
 
- input[type="text"]{
+.user-wrapper > input[type="text"]{
     height: 30px;
     width: 90%;
     font-size: 18px;
