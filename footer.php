@@ -1,3 +1,3 @@
 <footer>
-    <p>copyright @ Finity Ltd</p>
+    <p>Copyright @ Finity Ltd</p>
 </footer>

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="css/header.css" />
-<div class="header">
+<div class="header1">
     <logo>
         <img src ="image/logo.png" id="logo">
         <div class="co-name">Finity<br> Inventory<br> System</div>
