@@ -17,15 +17,8 @@ $(document).ready(function(){
       
     })
 
-    //Picking up the profile detail container to show & hide onclick
 
-    profileDetail = $("profile-detail");
-    profileHolder = $(".profile-holder");
-    
-    profileHolder.click(function(){
-        profileDetail.toggle();
 
-    })
 
 
 

@@ -4,6 +4,7 @@
     $detailItem = $prolist->getItem($itemid);
 ?>
 <div class="catalog-container">
+    <div class="goback"> <a href=""><< Go back to List</a></div>
     <!--left side of the container with Image-->
     <div class="left">
         <div class="imgebox">

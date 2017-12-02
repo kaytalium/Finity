@@ -29,6 +29,7 @@
                     }
                 $iscat = false;
                 $isitem = false;
+                $isProfile = false;
                 $requester = (isset($_GET['v'])?$_GET['v']:'');
 
                 switch($requester){
@@ -40,6 +41,10 @@
                     case "itemreq":
                     $itemid = (isset ($_GET['c'])?$_GET['c']:'');
                     $isitem = true;
+                    break;
+
+                    case 'user-profile':
+                    $isProfile = true;
                     break;
 
                     default: 
@@ -54,31 +59,16 @@
             ?> 
         </div>
         <div class="content">
-            <div class="item-wrapper">
-                <!-- this floats to the left with categories -->
-                <div class="sidebar">
-                    <div class="catlist">
-                        <div class="title">Category</div>
-                        <?php include 'product/category_list.php';?> 
-                    </div>
-                </div> 
+            <?php
+                if($isitem)
+                include 'product/details.php';
 
-                <!-- area for items to display to user-->
-                <div class="item-container">
-                    <?php
-                        if($iscat)
-                        include 'product/list.php';
+                if($iscat)
+                include 'product/main_cat_list.php';
 
-                        if($isitem)
-                        include 'product/details.php';
-                    ?>
-                    <div class="plus_btn">
-                        <a href="#">
-                            <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>    
+                if($isProfile)
+                include 'user/profile.php';
+            ?> 
         </div>
 
         <div class="footer">

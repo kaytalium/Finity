@@ -20,7 +20,9 @@
    
     <profile>
         <div class="profile-holder" title="Your Profile">
-            <img src="image/users/default.png"/>
+            <a href="<?php echo $_SERVER["PHP_SELF"]."?v=user-profile";?>">
+                <img src="image/users/default.png"/>
+            </a>
         </div> 
         <div class="info">
             Hello, Kimberley           
@@ -28,8 +30,5 @@
         <div class="logout">
         <a href="#"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Exit</i><p class ="text"></p></a>
         </div>
-        <profile-detail>
-            <?php include 'user/update.php'; ?>
-        </profile-detail>
     </profile>
 </div> 

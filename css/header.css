@@ -41,7 +41,7 @@ profile{
     cursor: pointer;
 }
 
-.profile-holder >img{
+.profile-holder > a img{
     width: auto;
     height: 40px;
     right: 40px;
