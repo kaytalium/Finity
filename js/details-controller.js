@@ -1,24 +1,22 @@
 $(document).ready(function(){
-    //setting up referrence
-    $name = $("#name");
-    $edit_name = $("#edit_name")
-    $name_pencil = $name.children('i')
-
-    //btns
-    $close = $edit_name.children('.fa-check-circle')
-    $confirm = $edit_name.children('.fa-times-circle')
+    //setting up referrence to containers
+    $display_info   = $("#display_info")
+    $edit_info      = $(".edit_info")
     
-    $name_pencil.click(function(){
-        hideShow($name,$edit_name)    
+    //btns
+    $editBtn    = $("#edit-btn")
+    $cancelBtn  = $("#cancel-btn") 
+
+    //functionality
+    $editBtn.click(function(){
+        hideShow($display_info,$edit_info)    
     })
 
-    $close.click(function(){
-        hideShow($edit_name, $name);
+    $cancelBtn.click(function(e){
+        e.preventDefault();
+        hideShow($edit_info, $display_info)
     })
 
-    $confirm.click(function(){
-        hideShow($edit_name,$name)
-    })
 });
 
 /**
@@ -27,6 +25,6 @@ $(document).ready(function(){
  * @param {*container that you want to show} showCon 
  */
 function hideShow(hideCon, showCon){
-    hideCon.hide();
-    showCon.show();
+    hideCon.hide()
+    showCon.show()
 }
