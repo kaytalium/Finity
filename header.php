@@ -15,6 +15,7 @@
         <ul>
             <li><a href="admin.php">Admin</a></li>
             <li><a href="product.php">Products</a></li>
+            <li><a href="report.php">Report</a></li>
         </ul>
     </menunav>
    
