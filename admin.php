@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="css/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/finity.css">
     <link rel="stylesheet" href="css/admin.css">
+
     <title>Admin</title>
+    <script src="js/details-controller.js"></script>
 </head>
 <?php
     $isList = false;

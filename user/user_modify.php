@@ -15,29 +15,26 @@
             </tr>
             <tr>
                 <td>Email:</td>
-                <td><input type="email" placeholder="Email" class="textbox" required></td>
+                <td width="55%"><input type="email" placeholder="Email" class="textbox" required></td>
             </tr>
             <tr>
                 <td>Password:</td>
                 <td><input type="password" placeholder="Password" class="textbox" required></td>
-            </tr>
-            <tr>
-                <td>Retype Password:</td>
-                <td><input type="password" placeholder="Retype Password" class="textbox" required></td>
+                <td><span class="clickable">Generate Password</span></td>
             </tr>
             <tr>
                 <td>User Type</td>
                 <td>
                     <select class='select'>
-                        <option value="default" hidden>--Usertype--</option>
+                        <option value="default" hidden>--User Type--</option>
                         <option value="admin">Administrator</option>
-                        <option value="normal">Normal user</option>
+                        <option value="normal">Normal User</option>
                     <select>
                 </td>
             </tr>
             <tr>
-                <td><input type = "submit" value="Submit" class="btn"></td>
-                <td><input type = "button" value="Cancel" class="btn"></td>
+                <td><input type = "submit" value="submit" class="btn"></td>
+                <td><input type = "submit" value="cancel" class="btn"></td>
             </tr>
         </table>
     </form>
