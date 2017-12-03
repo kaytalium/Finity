@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 spl_autoload_register(function($class) {
     if (strpos($class, "Finity\\") === 0) {
         $path = str_replace('Finity', '', $class);
