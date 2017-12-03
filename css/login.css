@@ -50,6 +50,7 @@
 
 .small-title{
     font-size: .25em;
+    margin-left: -20px; 
 }
 
 .trademark{
@@ -94,7 +95,6 @@ a{
 .signuppage
 {
 	width: 600px;
-    height: 90vh;
     background-color: #eaeaea;
     border-radius: 4px;
     margin: auto;
