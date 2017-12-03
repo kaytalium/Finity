@@ -4,7 +4,7 @@
             <div class="title">
                 <img src ="image/logo.png" class="logo-img">    
                 Finity
-                <span class="small-title">Inventory System</span>
+                <span class="small-title">Inventory System</span> <span class="trademark">tm</span>
             </div>  
             
             <div class="username">

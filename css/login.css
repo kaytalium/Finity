@@ -9,9 +9,11 @@
     text-align: center;
 }
 
+
+
 .loginpage
 {
-    width: 500px;
+    width: 520px;
     height: 400px;
     /* border:1px solid rgb(26, 26, 122); */
     background: #eaeaea; /*#07485B;*/
@@ -40,7 +42,7 @@
     font-size: 5em;
     text-transform: uppercase;
     /* background: red; */
-    text-align: left;
+    text-align: center;
     border-bottom: 2px solid #cccccc;
     margin-bottom: 50px;
     
@@ -48,8 +50,11 @@
 
 .small-title{
     font-size: .25em;
-    /* background: blue; */
-    
+}
+
+.trademark{
+    font-size: .15em;
+    margin-left: -12px;
     
 }
 

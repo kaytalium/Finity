@@ -5,8 +5,9 @@
             <div class="title">
                 <img src ="image/logo.png" class="logo-img">    
                 Finity
-                <span class="small-title">Inventory System</span>
-            </div>
+                <span class="small-title">Inventory System</span> <span class="trademark">tm</span>
+            </div>  
+            
             <div class="form-input">
                 <label>Email:</label>
                 <input type="email" placeholder="Email Address" name="emailad" required>
