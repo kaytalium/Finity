@@ -59,7 +59,7 @@
     background: red;
 }
 
-input[type="email"], input[type="text"], input[type="password"]
+input[type="email"], input[type="text"], input[type="password"], input[type='date']
 {     
     outline: none;
     background: none;
@@ -89,11 +89,31 @@ a{
 .signuppage
 {
 	width: 600px;
-    height: 560px;
-    text-align: center;
-    background-color: darkgray;
+    height: 90vh;
+    background-color: #eaeaea;
     border-radius: 4px;
     margin: auto;
-    padding: inherit;
-    margin-top: 120px;
+}
+
+.signuppage input[type="text"], input[type='email'], input[type="date"], input[type="password"]{
+    width: 95%;
+}
+
+.username{
+    width: 80%;
+    margin: 0 auto;
+    /* border: 1px solid black; */
+    height: 75px;
+    /* background: red; */
+    text-align: center;
+}
+
+.username .form-input{
+    width: 50%;
+    float: left;
+    /* background: green; */
+}
+
+.username input[type="text"]{
+    width: 90%;
 }
