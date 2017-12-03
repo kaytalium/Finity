@@ -49,7 +49,8 @@ profile{
 
 profile > .info{
     margin: 5px 0 0 -40px;
-    width: 70%;
+    width: 120px;
+text-align: center;
     float: left;
     /* background: red; */
 }

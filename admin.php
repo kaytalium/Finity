@@ -18,6 +18,7 @@
         $isList = false;
         $isMod = false;
         $isCreate = false;
+        $isProfile = false;
 
         $requestor = (isset($_GET['v'])?$_GET['v']:'');
         switch($requestor){
@@ -43,6 +44,10 @@
             $isList = true;
             break;
 
+            case 'user-profile':
+            $isProfile = true;
+            break;
+
             default:
             $isList = true;
 
@@ -64,6 +69,9 @@
             
                 if($isMod || $isCreate)
                 include 'user/user_modify.php';
+
+                if($isProfile)
+                include 'user/profile.php';
             ?>
             
         </div>

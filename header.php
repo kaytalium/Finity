@@ -25,7 +25,7 @@
             </a>
         </div> 
         <div class="info">
-            Hello, Kimberley           
+            Hello, Kelly           
         </div>
         <div class="logout">
         <a href="#"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Exit</i><p class ="text"></p></a>
