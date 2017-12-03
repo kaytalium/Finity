@@ -76,7 +76,7 @@ class User extends Person{
 
     //Other public functions
     public function loginQueryString(){
-        return "SELECT `secret`,`harsh`,`personid` FROM user WHERE `username`=$this->username";
+        return "SELECT `secret`,`harsh`,`person_id`, `type` FROM user u, user_type ut WHERE `username`='$this->username' AND u.user_type_id=ut.user_type_id";
     }
 
 }
