@@ -87,8 +87,29 @@ $(document).ready(function(){
                 $retypePwd.val("")
             })
         }
-        
     })
+
+    /**
+     * Admin functionalities
+     * admin has two main containers that we will swap onclick
+     */
+
+     //containers
+     $createUserContainer       = $(".createUser")
+     $mainListContainer         = $(".mainList")
+     $password_txt              = $("#password_txt")
+
+     //btns
+     $generateNewPassword       = $("#clickable")
+
+     //functionality
+     $generateNewPassword.click(function(e){
+        e.preventDefault()
+        $.get('user/generate_password.php',function(data){
+            $password_txt.val(data)
+        })
+     })
+     
 
 });
 

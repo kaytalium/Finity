@@ -2,7 +2,15 @@
 <div class="createUser">
     <form class="modify-user-form" action="#" method="POST">
         <div class="tablehead">
-            <h1>Create User</h1>
+            <h1>
+                <?php 
+                    if($isMod)
+                        echo 'Update User';
+                    
+                    if($isCreate)
+                        echo 'Create User';
+                ?>
+            </h1>
         </div>
         <table>
             <tr>
@@ -19,8 +27,18 @@
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type="password" placeholder="Password" class="textbox" required></td>
-                <td><span class="clickable">Generate Password</span></td>
+                <td><input type="text" placeholder="Password" class="textbox" required id="password_txt"></td>
+                <td>
+                    <span class="clickable" id="clickable">
+                        <?php
+                            if($isMod)
+                                echo 'Reset Password';
+                            
+                            if($isCreate)
+                                echo 'Generate Password';
+                        ?>
+                    </span>
+                </td>
             </tr>
             <tr>
                 <td>User Type</td>
@@ -34,7 +52,7 @@
             </tr>
             <tr>
                 <td><input type = "submit" value="submit" class="btn"></td>
-                <td><input type = "submit" value="cancel" class="btn"></td>
+                <td><a href="<?php echo $_SERVER["PHP_SELF"].'?v=list'; ?>" class="btn">Cancel</a></td>
             </tr>
         </table>
     </form>

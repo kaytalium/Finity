@@ -24,25 +24,34 @@ line-height: 50px;
     margin: 0 auto;
 }
 
-.userlist-table > table{
-    width: 80%;
+.mainList .userlist-table{
+    width: 100%;
     margin: 0 auto;
     border-collapse:collapse; 
+    margin-bottom: 100px;
 }
 
-.userlist-table > table > th{
+.mainList .userlist-table th{
     height: 40px; 
     background: rgb(76, 132, 235);
     color: #fff;
 }
 
-.userlist-table > table tr > td{
+.mainList .userlist-table tr > td{
     padding: 10px;
     text-align: center;
 }
 
-.userlist-table > table > tr:hover{
+.mainList .userlist-table > tr:hover{
     background: rgb(207, 206, 206);
     /* color: #eeeeee; */
     cursor: pointer;
+}
+
+.mainList{
+    width: 80%;
+    margin: 0 auto;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 80vh;
 }
