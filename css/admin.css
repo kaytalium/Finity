@@ -24,24 +24,24 @@ line-height: 50px;
     margin: 0 auto;
 }
 
-table{
+.userlist-table > table{
     width: 80%;
     margin: 0 auto;
     border-collapse:collapse; 
 }
 
-th{
+.userlist-table > table > th{
     height: 40px; 
     background: rgb(76, 132, 235);
     color: #fff;
 }
 
-tr > td{
+.userlist-table > table tr > td{
     padding: 10px;
     text-align: center;
 }
 
-tr:hover{
+.userlist-table > table > tr:hover{
     background: rgb(207, 206, 206);
     /* color: #eeeeee; */
     cursor: pointer;

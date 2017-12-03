@@ -36,6 +36,20 @@ body, html{
     float: left;
     padding: 10px;
     text-align: center;
-    }
+}
+
+.btn{
+    display: inline-block;
+    background-color: black;
+    color: #d1990f;
+    border-radius: 6px;
+    font-size: 18px;
+    width: 120px;
+    height: 50px; 
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+}
 
 
