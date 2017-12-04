@@ -1,3 +1,4 @@
+<?php require_once 'lib/Finity/Autoloader.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,7 @@
     <div class="wrapper">
         <div class="header">
             <?php
-                require_once 'lib/Finity/Autoloader.php';
+                
                 $prolist= new \Finity\Product\ItemManager();
 
                 if($_SERVER['REQUEST_METHOD'] == 'GET'){
