@@ -44,10 +44,10 @@ class DatabaseConnection implements \Finity\Authenticate\SQLInterface{
     /**
      * Insert into Table
      */
-    public function insert(String $query, $data = false){
+    public function insert(String $query){
         if(!$this->isConnectionAndNotEmpty($query))
-        return array('state'=>false,'msg'=>'invalid query or invalide database connection');
-
+        return array('state'=>false,'msg'=>'invalid query or invalid database connection');
+        
         $this->connectToDatabase();
         $result = mysqli_query($this->conn, $query);
         $id = $this->conn->insert_id;
