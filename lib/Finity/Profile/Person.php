@@ -8,7 +8,7 @@ class Person{
     private $person_id;
     private $firstname;
     private $lastname;
-    private $image_url;
+    private $image_url = "user/profile/default.jpg";
     private $dob;
 
     public function __construct($arg = array()){
@@ -62,8 +62,13 @@ class Person{
     }
 
     //other public functions
-    public function personQueryString($personID){
-        //get all the information from the user
+    public function personCreateQueryString(){
+        return "INSERT INTO `person`(`firstname`, `lastname`, `dob`,`image_url`) 
+        VALUES ('$this->firstname', '$this->lastname', '$this->dob','$this->image_url')";
+    }
+
+    public function personQueryString($id){
+        return "SELECT `firstname`, `lastname`, `image_url`, `dob` FROM `person` WHERE `person_id`=$this->person_id";
     }
 
 }

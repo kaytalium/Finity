@@ -1,3 +1,7 @@
+<?php 
+    $errors = (isset($_SESSION['errors'])?$_SESSION['errors']:array());
+    unset($_SESSION['errors']);
+?>
 <div class="wrapper">
     <div class = "loginpage">
         <form method="POST" action="functions/validate.php?t=login">
@@ -10,7 +14,10 @@
             
             <div class="display_errors">
                 <?php
-                    print_r($_SESSION['errors']);
+                    if(isset($errors) && !is_array($errors))
+                        echo $errors;
+
+                        
                 ?>
             </div>
 

@@ -10,7 +10,7 @@ interface UserRequestInterface{
      * @param Item this is the item class with an optional construct to accept all details of an item
      * @return Item this is the same class been return to the calling function
      */
-    public function createNewPerson(Item $user) : User;
+    public function createProfile(User $user) : User;
 
     /**
      * Update an existing record in the item table

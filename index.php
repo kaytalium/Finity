@@ -1,6 +1,7 @@
 <?php
     //Improve application library 
     require_once 'lib/Finity/Autoloader.php';
+   
 ?>
 <!DOCTYPE html> 
 <html lang="en">

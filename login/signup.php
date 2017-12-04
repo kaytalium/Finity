@@ -1,6 +1,8 @@
 <?php
     $userInput = (isset($_SESSION['userInput'])?$_SESSION['userInput']:array());
     $userErrors = (isset($_SESSION['errors'])?$_SESSION['errors']:array());
+    unset($_SESSION['userInput']);
+    unset($_SESSION['errors']);
 
     //print_ra($userErrors);
     //print_ra($userInput);
@@ -20,14 +22,14 @@
                     <label>First Name:</label><div class="msg"><?php echo isVarSet($userErrors,'fname');?></div>
                     <input type="text" placeholder="First Name" name="fname" 
                         value="<?php echo (isset($userInput['fname'])?$userInput['fname']:'');?>"
-                        class="<?php echo isClass($_SESSION['errors']['fname']);?>">
+                        class="<?php echo isClass($userErrors['fname']);?>">
                 </div>
                 
                 <div class="form-input">
                     <label>Last Name:</label> <div class="msg"><?php echo isVarSet($userErrors,'lname');?></div>
                     <input type="text" placeholder="Last Name" name="lname" 
                     value="<?php echo (isset($userInput['lname'])?$userInput['lname']:'');?>"
-                        class="<?php echo isClass($_SESSION['errors']['lname']);?>">
+                        class="<?php echo isClass($userErrors['lname']);?>">
                 </div>
             </div>
 
@@ -35,14 +37,14 @@
                 <label>Date of Birth:</label> <div class="msg"><?php echo isVarSet($userErrors,'bday');?></div>
                 <input type="date" placeholder="Date of Birth" name="bday" 
                 value="<?php echo (isset($userInput['bday'])?$userInput['bday']:'');?>"
-                class="<?php echo isClass($_SESSION['errors']['bday']);?>">
+                class="<?php echo isClass($userErrors['bday']);?>">
             </div>
                     
             <div class="form-input">
                 <label>Email:</label> <div class="msg"><?php echo isVarSet($userErrors,'email');?></div>
                 <input type="email" placeholder="Enter your Email" name="email" 
                 value="<?php echo (isset($userInput['email'])?$userInput['email']:'');?>"
-                class="<?php echo isClass($_SESSION['errors']['email']);?>">
+                class="<?php echo isClass($userErrors['email']);?>">
             </div>
                     
             <div class="form-input">

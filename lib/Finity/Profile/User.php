@@ -7,10 +7,11 @@ class User extends Person{
     private $username;
     private $password;//is the user typed password
 
+    private $user_id;
     private $db_password; //password for the database
-    private $personId;
     private $harsh;
-    private $state;
+    private $user_type_id;
+    private $status;
 
 
     /**
@@ -37,8 +38,16 @@ class User extends Person{
         return $this->harsh;
     }
 
-    public function get_personId(){
-        return $this->personId;
+    public function get_user_id(){
+        return $this->user_id;
+    }
+
+    public function get_user_type_id(){
+        return $this->user_type_id;
+    }
+
+    public function get_status(){
+        return $this->status;
     }
 
     public function get_profile(){
@@ -46,7 +55,10 @@ class User extends Person{
             'user'          =>$this->username,
             'firstname'     =>$this->get_firstname(),
             'lastname'      =>$this->get_lastname(),
-            'personId'      =>$this->personId,
+            'image_url'     =>$this->get_image_url(),
+            'dob'           =>$this->get_dob(),
+            'personId'      =>$this->get_person_id(),
+            'userType'      =>$this->user_type_id
         );
     }
 
@@ -57,12 +69,19 @@ class User extends Person{
     public function loadUser($arg=array()){
         
         //These var is for the user input
-        $this->username     = (isset($arg['username'])?$arg['username']:"");
-        $this->password     = (isset($arg['password'])?$arg['password']:"");
+        $this->username     = (isset($arg['username'])?$arg['username']:$this->username);
+        $this->password     = (isset($arg['password'])?$arg['password']:$this->password);
+        $this->user_type_id = (isset($arg['user_type_id'])?$arg['user_type_id']:$this->user_type_id);
+        $this->status       = (isset($arg['status'])?$arg['status']:$this->status);
 
-        $this->personId     = (isset($arg['personid'])?$arg['personid']:"");
-        $this->harsh        = (isset($arg['harsh'])?$arg['harsh']:"");
-        $this->db_password  = (isset($arg['secret'])?$arg['secret']:"");
+        //from db
+        $this->user_id      = (isset($arg['user_id'])?$arg['user_id']:$this->user_id);
+        $this->harsh        = (isset($arg['harsh'])?$arg['harsh']:$this->harsh);
+        $this->db_password  = (isset($arg['secret'])?$arg['secret']:$this->db_password);
+        
+
+
+        //load the person constructor
         parent::__construct($arg);
     }
 
@@ -74,9 +93,37 @@ class User extends Person{
         $this->username = $username;
     }
 
+    public function set_harsh($salt){
+        $this->harsh = $salt;
+    }
+
+    public function set_user_id($id){
+        $this->user_id = $id;
+    }
+
+    public function set_user_type_id($id){
+        $this->user_type_id = $id;
+    }
+
+    public function set_status($status){
+        $this->user_status = $status;
+    }
+
+    public function set_db_password($db_pwd){
+        $this->db_password = $db_pwd;
+    }
+
+
+
     //Other public functions
     public function loginQueryString(){
-        return "SELECT `secret`,`harsh`,`person_id`, `type` FROM user u, user_type ut WHERE `username`='$this->username' AND u.user_type_id=ut.user_type_id";
+        return "SELECT `secret`,`harsh`,`person_id`, `user_type_id`, `status` FROM user u WHERE `username`='$this->username'";
+    }
+
+    //
+    public function userCreateQueryString(){
+        return "INSERT INTO `user`(`person_id`, `username`, `secret`, `user_type_id`, `harsh`, `status`) 
+        VALUES ('".$this->get_person_id()."','$this->username','$this->password','$this->user_type_id','$this->harsh','$this->status')";
     }
 
 }

@@ -46,13 +46,13 @@ Use the rubric below to organize and develop your project
 
 Functionality/Database Design                                  
 ---
-- [ ] Admin login works properly                                
+- [x] Admin login works properly                                
 - [ ] Admin can create user accounts properly                   
 - [ ] Admin can delete user accounts properly                   
 - [ ] Admin can suspend user accounts properly 
 <br/>
 
-- [ ] Client login works properly                              
+- [x] Client login works properly                              
 - [ ] Client can properly update account details               
 - [ ] Client can add inventory                                  
 - [ ] Client can update inventory   
@@ -62,7 +62,7 @@ Functionality/Database Design
 - [ ] Appropriate management report                             
 - [ ] Functional user interface for adhoc queries               
 - [ ] Evidence of emerging trend implemented                    
-- [ ] Sessions and Cookies used appropriately
+- [x] Sessions and Cookies used appropriately
 
 Max marks for Project is 39                                     
 

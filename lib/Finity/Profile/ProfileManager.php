@@ -12,8 +12,29 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
      * All persons of the system is a user, since the user class extends a person 
      * we will then load the user construct with the new person information
      */
-    public function createNewPerson(Item $user) : User{
+    public function createProfile(User $user) : User{
+        //we must first check to see if the username already exist
+        $userQuery = "SELECT `person_id` FROM user WHERE `username`='".$user->get_username()."'";
         
+        $userResult = $this->select($userQuery);
+
+        if(!$userResult['state']){
+            //This mean this username is not in the database
+            //therefore we can go ahead and create a new person
+            $user->set_person_id($this->insert($user->personCreateQueryString()));
+
+            //not that we have the person id that was just created 
+            //we can go ahead and setup the user for creation
+
+            //Create the harsh and encrypt password
+            $Oauth = new \Finity\Authenticate\Oauth($user);
+            $user = $Oauth->encrypt_password();
+            
+            //Create user and return new user_id
+            $user->set_user_id($this->insert($user->userCreateQueryString()));
+        }
+
+        return $user;
     }
     
        

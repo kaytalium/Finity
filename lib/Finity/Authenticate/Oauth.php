@@ -20,16 +20,17 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
     public function login(){
         //check to see if user can be authenticate
         if(!empty($this->user->get_username())){
+            
             $user_result = $this->select($this->user->loginQueryString());
             if($user_result['state']){
                 //once we are here it means the username is in the database
                 //@return secret, harsh, personid
                 //now that we have the password from the database we need to campare 
                 //the user password to stored 
-
+                
                 //load the user class with the resulting data for user use.
-                $this->user->loadUser($user_result['data']);
-
+                $this->user->loadUser($user_result['data'][0]);
+                
                 //compare and return the boolean state
                 return $this->comparePasswords(); 
     
@@ -57,9 +58,10 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
         if($this->isUserAuthenticated){
             //now that we know that the user is authenticated we can now grab the person info for the user 
             //from the person table 
-            $person_result = $this->select($this->user->personQueryString($this->user->get_personId()));
+            $person_result = $this->select($this->user->personQueryString($this->user->get_person_id()));
+            //print_ra($person_result);
             if($person_result['state']){
-                $this->user->loadUser($person_result['data']);
+                $this->user->loadUser($person_result['data'][0]);
             }
             return $this->user;
         }
@@ -88,10 +90,25 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
         }
         else
         {
-            $this->errors ="Invalid password provided";
+            $this->errors ="Invalid username/password provided";
             return $this->isUserAuthenticated = false;
             
         }
+    }
+
+    public function encrypt_password(){
+
+        
+        if(CRYPT_BLOWFISH != 1) 
+            throw new Exception("bcrypt not supported in this installation. See http://php.net/crypt"); //This is vital for Bcyrpt to work so leave it!
+      
+        $salt = bin2hex(random_bytes(12));
+        $cryptpass = crypt($this->user->get_password(), $salt); //Hashes the password they entered!
+
+        $this->user->set_harsh($salt);
+        $this->user->set_password($cryptpass);
+
+        return $this->user;
     }
 
     public function test(){
