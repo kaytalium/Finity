@@ -31,7 +31,7 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
                 $this->user->loadUser($user_result['data']);
 
                 //compare and return the boolean state
-                return comparePasswords(); 
+                return $this->comparePasswords(); 
     
             }else{
                 $this->errors = "Invalid user name";
@@ -88,7 +88,7 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
         }
         else
         {
-            $this->errors ="invalid password provided";
+            $this->errors ="Invalid password provided";
             return $this->isUserAuthenticated = false;
             
         }
