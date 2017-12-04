@@ -13,8 +13,10 @@
 
     <menunav>
         <ul>
-            <li><a href="admin.php">Admin</a></li>
-            <li><a href="product.php">Products</a></li>
+            <?php 
+            if(isset($_SESSION['userType']) && $_SESSION['userType']==222)
+                echo '<li><a href="admin.php">Admin</a></li>';
+            ?><li><a href="product.php">Products</a></li>
             <li><a href="report.php">Report</a></li>
         </ul>
     </menunav>
@@ -26,10 +28,10 @@
             </a>
         </div> 
         <div class="info">
-            Hello, Kelly           
+            Hello, <?php echo (isset($_SESSION['fname'])?$_SESSION['fname']:'user'); ?>           
         </div>
         <div class="logout">
-        <a href="#"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Exit</i><p class ="text"></p></a>
+        <a href="functions/logout.php"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Exit</i><p class ="text"></p></a>
         </div>
     </profile>
 </div> 

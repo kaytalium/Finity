@@ -124,6 +124,7 @@ print_ra($isDataGood);
                 $_SESSION['userType'] = $user->get_user_type_id();
                 $_SESSION['status'] = $user->get_status();
                 
+                
                 //now we send the user to thier rightful view
                 //Normal view
                 if($user->get_user_type_id()==675 && $user->get_status()==1)
