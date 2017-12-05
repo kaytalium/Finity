@@ -48,7 +48,7 @@ Functionality/Database Design
 ---
 - [x] Admin login works properly                                
 - [ ] Admin can create user accounts properly                   
-- [ ] Admin can delete user accounts properly                   
+- [x] Admin can delete user accounts properly                   
 - [x] Admin can suspend user accounts properly 
 <br/>
 
@@ -58,7 +58,7 @@ Functionality/Database Design
 - [ ] Client can update inventory   
 <br/>
 
-- [ ] 3NF Database design with relationships properly  modelled 
+- [x] 3NF Database design with relationships properly  modelled 
 - [ ] Appropriate management report                             
 - [ ] Functional user interface for adhoc queries               
 - [ ] Evidence of emerging trend implemented                    
