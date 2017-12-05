@@ -22,6 +22,6 @@ interface UserRequestInterface{
 
     public function createNewUser(User $user) : User;
 
-    public function updateUser(String $userId) : bool;
+    public function deleteUser(String $userId) : bool;
 
 }

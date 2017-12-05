@@ -31,9 +31,6 @@
 
         $requestor = (isset($_GET['v'])?$_GET['v']:'');
         switch($requestor){
-            case 'list':
-            $isList = true;
-            break;
 
             case 'edit':
             $isMod = true;
@@ -43,13 +40,9 @@
             $isCreate = true;
             break;
 
+            case 'list':
             case 'delete':
-            //call some function to delete user
-            $isList = true;
-            break;
-
             case 'suspend':
-            //call some function to suspend user
             $isList = true;
             break;
 

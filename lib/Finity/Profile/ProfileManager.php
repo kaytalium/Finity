@@ -46,12 +46,24 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
 
     }
 
-    public function updateUser(String $userId) : bool{
+    public function deleteUser(String $userId) : bool{
 
+        $query = "DELETE FROM user WHERE `person_id`='$userId'";
+        $this->delete($query);
+
+        $deqry= "DELETE FROM person WHERE 'person_id'='$userId'";
+
+        return true;
+        
     }
 
-    public function suspenUser(String $userId) : bool{
-
+    public function suspendUser(String $personId, String $status) : bool{
+            $status = ($status==0?1:0);
+            $upqry= "UPDATE user  SET `status`='$status' WHERE `person_id`='$personId' ";
+             $result = $this->update($upqry);
+             echo 'Hello';
+             print_ra($result);
+             return true;
     }
 
     public function getAllUsers():array{
