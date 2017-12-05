@@ -54,7 +54,25 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
 
     }
 
-    public function test(){
-        echo '<br>Hello';
+    public function getAllUsers():array{
+        $listofUsers = array();
+        $i=0;
+        //get the query string for all users in the db
+        $allUsersQueryString = "SELECT `u`.`person_id`,`username`, `type`, `status`, `firstname`, `lastname` 
+        FROM `user` `u`, `person` `p`, `user_type` `ut` WHERE `u`.`user_type_id`=`ut`.`user_type_id` 
+        AND `p`.`person_id`=`u`.`person_id`";
+
+        $result = $this->select($allUsersQueryString);
+        
+        if($result['state'])
+            foreach($result['data'] as $user){
+                //print_ra($user);
+                $listofUsers[$i] = new User($user);
+                $i++;
+            }
+        
+        return $listofUsers;
     }
+
+   
 }

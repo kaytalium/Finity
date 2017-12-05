@@ -12,6 +12,10 @@ class User extends Person{
     private $harsh;
     private $user_type_id;
     private $status;
+    private $type;
+
+    private $typeDef = array(222=>"Admin", 675=>"Normal");
+    private $statusDef = array('Suspend','Active');
 
 
     /**
@@ -50,6 +54,14 @@ class User extends Person{
         return $this->status;
     }
 
+    public function get_status_def(){
+        return (isset($this->status)?$this->statusDef[$this->status]:'');
+    }
+
+    public function get_type(){
+        return $this->type;
+    }
+
     public function get_profile(){
         return array(
             'user'          =>$this->username,
@@ -73,6 +85,7 @@ class User extends Person{
         $this->password     = (isset($arg['password'])?$arg['password']:$this->password);
         $this->user_type_id = (isset($arg['user_type_id'])?$arg['user_type_id']:$this->user_type_id);
         $this->status       = (isset($arg['status'])?$arg['status']:$this->status);
+        $this->type         = (isset($arg['type'])?$arg['type']:$this->type);
 
         //from db
         $this->user_id      = (isset($arg['user_id'])?$arg['user_id']:$this->user_id);
@@ -111,6 +124,10 @@ class User extends Person{
 
     public function set_db_password($db_pwd){
         $this->db_password = $db_pwd;
+    }
+
+    public function set_type($type){
+        $this->type = $type;
     }
 
 

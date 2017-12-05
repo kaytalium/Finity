@@ -4,6 +4,8 @@
 
     if(isset($_SESSION['userType']) && $_SESSION['userType'] !=222)
         header('Location: product.php');
+
+    $pm = new \Finity\Profile\ProfileManager();
 ?>
 <!DOCTYPE html>
 <html lang="en">
