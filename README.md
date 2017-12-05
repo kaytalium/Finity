@@ -47,9 +47,9 @@ Use the rubric below to organize and develop your project
 Functionality/Database Design                                  
 ---
 - [x] Admin login works properly                                
-- [x] Admin can create user accounts properly                   
+- [ ] Admin can create user accounts properly                   
 - [ ] Admin can delete user accounts properly                   
-- [ ] Admin can suspend user accounts properly 
+- [x] Admin can suspend user accounts properly 
 <br/>
 
 - [x] Client login works properly                              
