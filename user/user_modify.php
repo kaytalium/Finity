@@ -1,6 +1,20 @@
+<?php
+    $user = new \Finity\Profile\User();
+    $v = ($isMod?'edit':'create');
+    if($isMod){
+        $person_id= (isset($_GET['id'])?$_GET['id']:'');
+        $user = $pm->getUser($person_id);
+    }
+
+   
+
+
+
+?>
 <link rel="stylesheet" href="css/createuser.css">
 <div class="createUser">
-    <form class="modify-user-form" action="#" method="POST">
+    <form class="modify-user-form" action="functions/admin.php?v=<?php echo $v;?>" method="POST">
+        <input type="text" name="person_id" value="<?php echo $user->get_person_id(); ?>" hidden>
         <div class="tablehead">
             <h1>
                 <?php 
@@ -15,19 +29,22 @@
         <table>
             <tr>
                 <td>Firstname:</td>
-                <td><input type="text" placeholder="FirstName" class="textbox" required></td>
+                <td><input type="text" placeholder="FirstName" class="textbox" name="firstname" required 
+                value="<?php echo $user->get_firstname(); ?>"></td>
             </tr>
             <tr>
                 <td>Lastname:</td>
-                <td><input type="text" placeholder="LastName" class="textbox" required></td>
+                <td><input type="text" placeholder="LastName" class="textbox" name="lastname" required
+                value="<?php echo $user->get_lastname(); ?>"></td>
             </tr>
             <tr>
                 <td>Email:</td>
-                <td width="55%"><input type="email" placeholder="Email" class="textbox" required></td>
+                <td width="55%"><input type="email" placeholder="Email" class="textbox" name="username" required
+                value="<?php echo $user->get_username(); ?>"></td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type="text" placeholder="Password" class="textbox" required id="password_txt"></td>
+                <td><input type="text" placeholder="Password" class="textbox" id="password_txt" name="password"></td>
                 <td>
                     <span class="clickable" id="clickable">
                         <?php
@@ -42,16 +59,16 @@
             </tr>
             <tr>
                 <td>User Type</td>
-                <td>
-                    <select class='select'>
+                <td> 
+                    <select class='select' name="user_type_id">
                         <option value="default" hidden>--User Type--</option>
-                        <option value="admin">Administrator</option>
-                        <option value="normal">Normal User</option>
+                        <option value="222" <?php echo ($user->get_type()=='admin'?'selected':''); ?>>Administrator</option>
+                        <option value="675" <?php echo ($user->get_type()=='normal'?'selected':''); ?>>Normal User</option>
                     <select>
                 </td>
             </tr>
             <tr>
-                <td><input type = "submit" value="submit" class="btn"></td>
+                <td><input type = "submit" value="Submit" class="btn"></td>
                 <td><a href="<?php echo $_SERVER["PHP_SELF"].'?v=list'; ?>" class="btn">Cancel</a></td>
             </tr>
         </table>

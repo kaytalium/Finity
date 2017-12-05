@@ -18,10 +18,11 @@ interface UserRequestInterface{
      * @param accept the item ID as a string therefore all non-string datatype will need to be converted
      * @return boolean this will tell if process was successful or failed
      */
-    public function updatePerson(String $personId) : bool;
+    public function updateUser(User $user) : bool;
 
-    public function createNewUser(User $user) : User;
 
-    public function deleteUser(String $userId) : bool;
+    public function deleteUser(String $personId) : bool;
+
+    public function suspendUser(String $personId, String $status) : bool;
 
 }

@@ -36,23 +36,18 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
 
         return $user;
     }
-    
        
-    public function updatePerson(String $ItemId) : bool{
-
-    }
-
-    public function createNewUser(User $user) : User{
-
+    public function updateUser(User $user) : bool{
+        return true;
     }
 
     public function deleteUser(String $userId) : bool{
 
-        $query = "DELETE FROM user WHERE `person_id`='$userId'";
+        $query = "DELETE FROM `user` WHERE `person_id`='$userId'";
         $this->delete($query);
 
-        $deqry= "DELETE FROM person WHERE 'person_id'='$userId'";
-
+        $deqry= "DELETE FROM `person` WHERE `person_id`='$userId'";
+        $this->delete($deqry);
         return true;
         
     }
@@ -61,9 +56,7 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
             $status = ($status==0?1:0);
             $upqry= "UPDATE user  SET `status`='$status' WHERE `person_id`='$personId' ";
              $result = $this->update($upqry);
-             echo 'Hello';
-             print_ra($result);
-             return true;
+             return $result['state'];
     }
 
     public function getAllUsers():array{
@@ -84,6 +77,21 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
             }
         
         return $listofUsers;
+    }
+
+    public function getUser($person_id){
+
+        $user = new User();
+        $usersQueryString = "SELECT `u`.`person_id`,`username`, `type`, `status`, `firstname`, `lastname` 
+        FROM `user` `u`, `person` `p`, `user_type` `ut` WHERE `u`.`user_type_id`=`ut`.`user_type_id` 
+        AND `u`.`person_id`=`p`.`person_id` AND `u`.`person_id`='$person_id'";
+
+        $result = $this->select($usersQueryString);
+
+        if($result['state'])
+            $user->loadUser($result['data'][0]);
+
+        return $user;
     }
 
    

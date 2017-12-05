@@ -64,13 +64,15 @@ class User extends Person{
 
     public function get_profile(){
         return array(
-            'user'          =>$this->username,
+            'username'      =>$this->username,
             'firstname'     =>$this->get_firstname(),
             'lastname'      =>$this->get_lastname(),
             'image_url'     =>$this->get_image_url(),
             'dob'           =>$this->get_dob(),
             'personId'      =>$this->get_person_id(),
-            'userType'      =>$this->user_type_id
+            'userType'      =>$this->user_type_id,
+            'type'          =>$this->type,
+            'password'      =>$this->password
         );
     }
 
