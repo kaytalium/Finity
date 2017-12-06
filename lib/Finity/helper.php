@@ -83,3 +83,8 @@ function isShow($arg){
 function isVarSet($arg = array(), $str){
     return (isset($arg[$str])?$arg[$str]:'');
 }
+
+function hasAccess(){
+    if(!isset($_SESSION['user']))
+        header('Location: index.php');
+}
