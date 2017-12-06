@@ -50,11 +50,12 @@
         </div>
 
         <div class="edit_info">
-            <form action="procut/func/update.php" method="post">
+            <form action="functions/item_controller.php?v=update" method="POST">
+                <input type="text" value="<?php echo $itemid; ?>" hidden="hidden" name="item_id">
                 <div class="row">
                     <div class="edit_cat">
                         <label for="category">Category</label>
-                        <select>
+                        <select name="category">
                             <?php
                                 $clist = $prolist->getCategories();
                                 foreach($clist as $cat){

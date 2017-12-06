@@ -28,6 +28,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
      * Update an item from the user and return bool state
      */
     public function updateItem(Item $Item, $paramArray = array()) : bool{
+        //$Item->preparedUpdateQueryString($paramArray);
         $result = $this->update($Item->preparedUpdateQueryString($paramArray));
         
         //Do something with the result from the request

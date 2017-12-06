@@ -112,6 +112,7 @@ class Item{
     //Public class functions
 
     public function preparedUpdateQueryString($paramArray){
+        print_ra($this->updateQueryString($paramArray));
         return $this->updateQueryString($paramArray);
     }
 
