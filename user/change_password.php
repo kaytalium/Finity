@@ -8,6 +8,7 @@
 
 
     if(!empty($user)){
+        //print_ra($pm->setPassword($user, $pwd));
         if($pm->setPassword($user, $pwd))
             echo "Password Successfully Changed.";
         else

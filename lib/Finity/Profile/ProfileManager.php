@@ -38,7 +38,11 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
     }
        
     public function updateUser(User $user) : bool{
+        $query = $this->prepare($user->get_profile());
+        print_ra($query);
+        $this->update($query);
         return true;
+         
     }
 
     public function deleteUser(String $userId) : bool{
@@ -95,8 +99,43 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
     }
 
     public function setPassword($username, $password){
-        return true;
+        //Create the harsh and encrypt password
+        $Oauth = new \Finity\Authenticate\Oauth(new User);
+        $crypt = $Oauth->raw_encrypt($password);
+
+        //query
+        $query = "UPDATE `user` SET `secret`='".$crypt['secret']."', `harsh`='".$crypt['harsh']."' WHERE `username`='".$username."'";
+        $result = $this->update($query);
+        return $result['state'];
     }
+
+    private function prepare($paramArray){
+        if(!empty($paramArray)){
+            $q = 'UPDATE `person` `p`, `user` `u` SET ';
+            $paramArray = array_filter($paramArray);
+
+            $count = count($paramArray);
+            $i = 2;
+            echo 'Count: '.$count;
+            foreach($paramArray as $key=>$value){
+
+                if(!empty($value) && $key !='person_id' ){
+                    $q .= "`".$key."`='".$value."'";
+
+                    if($count>1 && $i<$count)
+                    $q .=',';
+                    
+                }  
+                $i++;
+                                       
+                
+                
+            }
+            $q .= " WHERE `u`.`person_id`=`p`.`person_id` AND `u`.`person_id`='".$paramArray['person_id']."'";
+            return $q;
+        }
+    }
+
 
    
 }

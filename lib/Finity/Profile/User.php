@@ -69,8 +69,8 @@ class User extends Person{
             'lastname'      =>$this->get_lastname(),
             'image_url'     =>$this->get_image_url(),
             'dob'           =>$this->get_dob(),
-            'personId'      =>$this->get_person_id(),
-            'userType'      =>$this->user_type_id,
+            'person_id'     =>$this->get_person_id(),
+            'user_type_id'  =>$this->user_type_id,
             'type'          =>$this->type,
             'password'      =>$this->password
         );

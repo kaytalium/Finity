@@ -54,6 +54,8 @@
             <div class="edituserinfo">
                 <form action="functions/admin.php?v=edit_current_user" method="POST" class="edituserinfoform"> 
                     <input type="text" name="person_id" value="<?php echo $person_id; ?>" hidden="hidden"></inuput>
+                    <input type="text" name="image_url" value="<?php echo $img_url; ?>" hidden="hidden"></inuput>
+
                     <table>
                         <tr>
                             <td>Firstname:</td>

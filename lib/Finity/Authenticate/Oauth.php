@@ -97,21 +97,20 @@ class Oauth extends \Finity\Authenticate\DatabaseConnection{
     }
 
     public function encrypt_password(){
+        $crypt = $this->raw_encrypt($this->user->get_password());
 
-        
-        if(CRYPT_BLOWFISH != 1) 
-            throw new Exception("bcrypt not supported in this installation. See http://php.net/crypt"); //This is vital for Bcyrpt to work so leave it!
-      
-        $salt = bin2hex(random_bytes(12));
-        $cryptpass = crypt($this->user->get_password(), $salt); //Hashes the password they entered!
-
-        $this->user->set_harsh($salt);
-        $this->user->set_password($cryptpass);
-
+        $this->user->set_harsh($crypt['harsh']);
+        $this->user->set_password($crypt['secret']);
         return $this->user;
     }
 
-    public function test(){
-        return 'Username: '.$this->username.'<br>Password: '.$this->password;
+    public function raw_encrypt($password){
+        if(CRYPT_BLOWFISH != 1) 
+        throw new Exception("bcrypt not supported in this installation. See http://php.net/crypt"); //This is vital for Bcyrpt to work so leave it!
+  
+    $salt = bin2hex(random_bytes(12));
+    $cryptpass = crypt($password, $salt); //Hashes the password they entered!
+
+    return array('harsh'=>$salt, 'secret'=>$cryptpass);
     }
 }

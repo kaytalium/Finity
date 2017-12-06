@@ -40,5 +40,10 @@
         $user = new \Finity\Profile\User($_POST);
         print_ra($user->get_profile());
         $pm->updateUser($user);
+        $_SESSION['fname']  = $user->get_firstname(); 
+        $_SESSION['lname']  = $user->get_lastname(); 
+        $_SESSION['user']   = $user->get_username(); 
+        $_SESSION['dob']    = $user->get_dob(); 
+        
         header('Location: ../admin.php?v=user-profile');
     }

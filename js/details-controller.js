@@ -9,6 +9,12 @@ $(document).ready(function(){
     $pswd_changer   = $("#pswd_changer")
     //change password container
     $chngPassword       = $(".change-password")
+
+    //Password textbox
+    $newpwd             = $("#newPwd")
+    $retypePwd          = $("#rtyPwd")
+
+    $pwd_msg             = $("#pwd_msg")
     
 
     
@@ -39,6 +45,8 @@ $(document).ready(function(){
         hideShow($userDetail,$edituserinfo)
         $pswd_changer.hide(600)
         $chngPassword.hide(600)
+        $newpwd.val("")
+        $retypePwd.val("")
     
     })
 
@@ -55,11 +63,6 @@ $(document).ready(function(){
     $savePassword       = $("#save-password")
     $cancelPassword     = $("#cancel-password")
 
-    //Password textbox
-    $newpwd             = $("#newPwd")
-    $retypePwd          = $("#rtyPwd")
-
-    $pwd_msg             = $("#pwd_msg")
 
     //functions
     $chngPswdbtn.click(function(){
