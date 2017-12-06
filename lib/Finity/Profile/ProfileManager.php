@@ -94,5 +94,9 @@ class ProfileManager extends \Finity\Authenticate\DatabaseConnection implements 
         return $user;
     }
 
+    public function setPassword($username, $password){
+        return true;
+    }
+
    
 }

@@ -118,11 +118,14 @@ print_ra($isDataGood);
             
             if($isloggedIn){
                 $user = $Oauth->getLoggedInUser(); 
-                $_SESSION['user'] = $user->get_username();
-                $_SESSION['fname'] = $user->get_firstname();
-                $_SESSION['lname'] = $user->get_lastname();
-                $_SESSION['userType'] = $user->get_user_type_id();
-                $_SESSION['status'] = $user->get_status();
+                $_SESSION['user']       = $user->get_username();
+                $_SESSION['fname']      = $user->get_firstname();
+                $_SESSION['lname']      = $user->get_lastname();
+                $_SESSION['userType']   = $user->get_user_type_id();
+                $_SESSION['status']     = $user->get_status();
+                $_SESSION['dob']        = $user->get_dob();
+                $_SESSION['person_id']  = $user->get_person_id();
+                $_SESSION['image_url']  = $user->get_image_url();
                 
                 
                 //now we send the user to thier rightful view

@@ -39,8 +39,8 @@
 
 .userinfo{
     border-bottom: 1px solid #c0c0c0;
-    padding: 40px 0 0 0;
-    height: 250px;
+    padding: 40px 0 10px 0;
+    height: auto;
 }
 
 .profile-image{
@@ -161,4 +161,9 @@
 
 .ok{
     border: 1px solid green;
+}
+
+.password-table{
+    float: left;
+    position: absolute;
 }

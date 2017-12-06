@@ -5,6 +5,12 @@ $(document).ready(function(){
     $display_info   = $("#display_info")
     $edit_info      = $(".edit_info")
 
+    //Change password display text container
+    $pswd_changer   = $("#pswd_changer")
+    //change password container
+    $chngPassword       = $(".change-password")
+    
+
     
     //btns
     $editBtn    = $("#edit-btn")
@@ -12,7 +18,7 @@ $(document).ready(function(){
 
     //functionality
     $editBtn.click(function(){
-        hideShow($display_info,$edit_info)    
+        hideShow($display_info,$edit_info)
     })
 
     $cancelBtn.click(function(e){
@@ -31,17 +37,18 @@ $(document).ready(function(){
     //funcationalies
     $editProfile.click(function(){
         hideShow($userDetail,$edituserinfo)
+        $pswd_changer.hide(600)
+        $chngPassword.hide(600)
+    
     })
 
     $cancelUserUpdate.click(function(e){
         e.preventDefault()
         hideShow($edituserinfo,$userDetail)
+        $pswd_changer.delay(1000).show(1000)
     })
 
     //Change Password functionalities
-
-    //change password container
-    $chngPassword       = $(".change-password")
 
     //button
     $chngPswdbtn        = $("#change-password")
@@ -52,9 +59,12 @@ $(document).ready(function(){
     $newpwd             = $("#newPwd")
     $retypePwd          = $("#rtyPwd")
 
+    $pwd_msg             = $("#pwd_msg")
+
     //functions
     $chngPswdbtn.click(function(){
-        
+        $newpwd.removeClass('ok').removeClass("error")
+        $retypePwd.removeClass('ok').removeClass("error")
         $chngPassword.toggle(600, function(){
             $newpwd.val("")
             $retypePwd.val("")
@@ -69,20 +79,36 @@ $(document).ready(function(){
         $chngPassword.hide(300, function(){
             $newpwd.val("")
             $retypePwd.val("")
+            $pwd_msg.html('');
+            $pwd_msg.parent('tr').show();
         })
     })
 
     //Save New Password
     $savePassword.click(function(){
         //check to see if password match before closing
-        
-        if($newpwd.val() != $retypePwd.val() || $newpwd.val().length == 0){
+        $pwd_msg.html('');
+        $pwd_msg.parent('tr').show();
+        if($newpwd.val() != $retypePwd.val()){
             $newpwd.addClass('error')
             $retypePwd.addClass('error')
-        }else{
+            $pwd_msg.html('Password does not match')
+        }
+        else if($newpwd.val().length == 0 ){
+            $newpwd.addClass('error')
+            $retypePwd.addClass('error')
+            $pwd_msg.html('No password was provided')
+        }
+        else if($newpwd.val().length < 8){
+            $newpwd.addClass('error')
+            $retypePwd.addClass('error')
+            $pwd_msg.html('Password too short, minimum 8 characters')
+        }
+        else{
             $newpwd.addClass('ok').removeClass("error")
             $retypePwd.addClass('ok').removeClass("error")
             $chngPassword.hide(600, function(){
+                changePassword($newpwd, $pwd_msg)
                 $newpwd.val("")
                 $retypePwd.val("")
             })
@@ -121,4 +147,18 @@ $(document).ready(function(){
 function hideShow(hideCon, showCon){
     hideCon.fadeOut(600).delay(300)
     showCon.delay(600).fadeIn(300)
+}
+
+function changePassword(pwd, pwd_msg){
+    $.ajax({
+        type: 'GET',
+        url: 'user/change_password.php',
+        data: {password:pwd.val()},
+        success: function(data){
+            console.log(data)
+            pwd_msg.html(data).parent('tr').delay(4000).css("opacity",".55").hide(600)
+        },
+        error: function(error){console.log(error)}
+    })
+       
 }

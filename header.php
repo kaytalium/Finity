@@ -1,3 +1,6 @@
+<?php 
+$img_url = (isset($_SESSION['image_url'])?$_SESSION['image_url']:"users/profile/default.png");
+?>
 <link rel="stylesheet" href="css/header.css" />
 <div class="header1">
     <logo>
@@ -24,7 +27,7 @@
     <profile>
         <div class="profile-holder" title="Your Profile">
             <a href="<?php echo $_SERVER["PHP_SELF"]."?v=user-profile";?>">
-                <img src="image/users/default.png"/>
+                <img src="image/<?php echo $img_url; ?>"/>
             </a>
         </div> 
         <div class="info">

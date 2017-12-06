@@ -24,8 +24,9 @@
     if($requestor=='edit'){
         $person_id = $person_id = (isset($_GET['id'])?$_GET['id']:'');
         $user = new \Finity\Profile\User($_POST);
+        print_ra($user->get_profile());
         $pm->updateUser($user);
-        header('Location: ../admin.php');
+        header('Location: ../admin.php?');
     }
 
     if($requestor==='create'){
@@ -33,4 +34,11 @@
         print_ra($user->get_profile());
         $pm->createProfile($user);
         header('Location: ../admin.php');
+    }
+
+    if($requestor==='edit_current_user'){
+        $user = new \Finity\Profile\User($_POST);
+        print_ra($user->get_profile());
+        $pm->updateUser($user);
+        header('Location: ../admin.php?v=user-profile');
     }

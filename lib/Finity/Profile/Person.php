@@ -12,11 +12,11 @@ class Person{
     private $dob;
 
     public function __construct($arg = array()){
-        $this->firstname = (isset($arg['firstname'])?$arg['firstname']:"");
-        $this->lastname = (isset($arg['lastname'])?$arg['lastname']:"");
-        $this->person_id = (isset($arg['person_id'])?$arg['person_id']:"");
-        $this->image_url = (isset($arg['image_url'])?$arg['image_url']:"");
-        $this->dob = (isset($arg['dob'])?$arg['dob']:"");
+        $this->firstname = (isset($arg['firstname'])?$arg['firstname']:$this->firstname);
+        $this->lastname = (isset($arg['lastname'])?$arg['lastname']:$this->lastname);
+        $this->person_id = (isset($arg['person_id'])?$arg['person_id']:$this->person_id);
+        $this->image_url = (isset($arg['image_url'])?$arg['image_url']:$this->image_url);
+        $this->dob = (isset($arg['dob'])?$arg['dob']:$this->dob);
     }
 
     //Getters
