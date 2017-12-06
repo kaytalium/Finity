@@ -55,7 +55,7 @@ Functionality/Database Design
 - [x] Client login works properly                              
 - [x] Client can properly update account details               
 - [ ] Client can add inventory                                  
-- [ ] Client can update inventory   
+- [x] Client can update inventory   
 <br/>
 
 - [x] 3NF Database design with relationships properly  modelled 
