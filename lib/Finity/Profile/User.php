@@ -72,7 +72,8 @@ class User extends Person{
             'person_id'     =>$this->get_person_id(),
             'user_type_id'  =>$this->user_type_id,
             'type'          =>$this->type,
-            'password'      =>$this->password
+            'password'      =>$this->password,
+            'harsh'         =>$this->harsh
         );
     }
 

@@ -22,8 +22,14 @@
 
 
     if($requestor=='edit'){
-        $person_id = $person_id = (isset($_GET['id'])?$_GET['id']:'');
+        $pwd = (isset($_POST['password'])?$_POST['password']:'');
         $user = new \Finity\Profile\User($_POST);
+        
+        if(!empty($pwd)){
+            $Oauth = new \Finity\Authenticate\Oauth($user);
+            $user = $Oauth->encrypt_password();    
+        }
+       
         print_ra($user->get_profile());
         $pm->updateUser($user);
         header('Location: ../admin.php?');
