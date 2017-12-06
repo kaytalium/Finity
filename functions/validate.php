@@ -62,7 +62,7 @@ print_ra($isDataGood);
             $user  = $pm->createProfile($user);
 
             if($user->get_person_id())
-                echo "<div class='content'><h1>Your profile was created successfull.</h1><p> go to <a href='index.php'>login</a></p> </di>" ;
+                echo "<div class='content'><h1>Your profile was created successfully.</h1><p> go to <a href='index.php'>login</a></p> </di>" ;
             else{
                 unset($_SESSION['errors']);
                 echo $_SESSION['errors']['create'] = "There was a problem creating your profile try again later.";

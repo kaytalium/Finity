@@ -1,3 +1,11 @@
+<?php 
+    $fname = (isset($_SESSION['fname'])?$_SESSION['fname']:''); 
+    $lname = (isset($_SESSION['lname'])?$_SESSION['lname']:''); 
+    $user  = (isset($_SESSION['user'])?$_SESSION['user']:''); 
+    $type  = (isset($_SESSION['userType']) && $_SESSION['userType']==222?'Administrator':'Normal User'); 
+
+    ?>
+
 <link rel="stylesheet" href="css/user_profile.css"> 
 
     <div class="user-wrapper">
@@ -15,15 +23,15 @@
                 <table class="info-table">
                     <tr>
                         <td>Name:</td>
-                        <td>Kelly Logan</td>
+                        <td><?php echo $fname.' '.$lname; ?></td>
                     </tr>
                     <tr>
                         <td>Email:</td>
-                        <td>goallie@gmail.com</td>
+                        <td><?php echo $user; ?></td>
                     </tr>
                     <tr>
                         <td>User Type:</td>
-                        <td>Administrator</td>
+                        <td><?php echo $type; ?></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -37,19 +45,22 @@
             </div>
 
             <div class="edituserinfo">
-                <form action="" method="POST" class="edituserinfoform"> 
+                <form action="functions/admin.php?v=edit_current_user" method="POST" class="edituserinfoform"> 
                     <table>
                         <tr>
                             <td>Firstname:</td>
-                            <td><input type="text" placeholder="Firstname" class="input" required/></td>
+                            <td><input type="text" placeholder="Firstname" class="input" required
+                            value="<?php echo $fname; ?>"/></td>
                         </tr>
                         <tr>
                             <td>Lastname:</td>
-                            <td><input type="text" placeholder="Lastname" class="input" required/></td>
+                            <td><input type="text" placeholder="Lastname" class="input" required 
+                            value="<?php echo $lname; ?>"/></td>
                         </tr>
                         <tr>
                             <td>Email:</td>
-                            <td><input type="email" placeholder="Email" class="input" required/></td>
+                            <td><input type="email" placeholder="Email" class="input" required
+                            value="<?php echo $user; ?>"/></td>
                         </tr>
                         <tr>
                             <td><input type="submit" value="Update" class="btn"></td>

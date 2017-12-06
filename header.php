@@ -31,7 +31,7 @@
             Hello, <?php echo (isset($_SESSION['fname'])?$_SESSION['fname']:'user'); ?>           
         </div>
         <div class="logout">
-        <a href="functions/logout.php"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Exit</i><p class ="text"></p></a>
+        <a href="functions/logout.php"><i class="fa fa-sign-out fa-lg" aria-hidden="true" title="logout">Logout</i><p class ="text"></p></a>
         </div>
     </profile>
 </div> 
