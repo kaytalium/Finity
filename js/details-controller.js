@@ -21,6 +21,17 @@ $(document).ready(function(){
     //btns
     $editBtn    = $("#edit-btn")
     $cancelBtn  = $("#cancel-btn") 
+    $cancelNewItem = $('#cancel-new-item')
+
+    $cancelNewItem.click(function(){
+        console.log($("#it-cat").html())
+        $('#it-cat').removeAttr('required')
+        $('#it-name').removeAttr('required')
+        $('#it-desc').removeAttr('required')
+        $('#it-price').removeAttr('required')
+        $('#it-unit').removeAttr('required')
+        $('#it-type').removeAttr('required')
+    })
 
     //functionality
     $editBtn.click(function(){

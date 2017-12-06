@@ -60,7 +60,7 @@
                 <div class="row">
                     <div class="edit_cat">
                         <label for="category">Category</label>
-                        <select required="required" name="category">
+                        <select required="required" name="category" id="it-cat">
                             <option value="" hidden>--Category--</option>
                             <?php
                                 $clist = $prolist->getCategories();
@@ -79,33 +79,33 @@
                     
                     <div class="edit_name">
                         <label for="name">Item Name</label>
-                        <input required class="input" type="text" name="name" placeholder="Enter Item Name"; value="<?php echo $detailItem->get_name(); ?>"/>
+                        <input required class="input" id="it-name" type="text" name="name" placeholder="Enter Item Name"; value="<?php echo $detailItem->get_name(); ?>"/>
                     </div>
 
                     <div class="edit_description">
                         <label for="description">Description</label>
-                        <textarea class="textarea" maxlength=250 required  name="description" placeholder="Enter item Description"><?php echo $detailItem->get_description(); ?></textarea>
+                        <textarea class="textarea" id="it-desc" maxlength=250 required  name="description" placeholder="Enter item Description"><?php echo $detailItem->get_description(); ?></textarea>
                     </div>
 
                     <div class="edit_price">
                         <label for="price">Price</label>
-                        <input required class="input" type="number" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
+                        <input required class="input" id="it-price" type="number" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
                     </div>
 
                     <div class="edit_unit">
                         <label for="unit">Unit</label>
-                        <input required class="input" type="number" name="unit" placeholder="Enter your Unit"; value="<?php echo $detailItem->get_unit(); ?>"/>
+                        <input required class="input" id="it-unit" type="number" name="unit" placeholder="Enter your Unit"; value="<?php echo $detailItem->get_unit(); ?>"/>
                     </div>
 
                     <div class="edit_type">
                         <label for="type">Type</label>
-                        <input required class="input" type="text" name="type" placeholder="Enter a Type"; value="<?php echo $detailItem->get_type(); ?>"/>
+                        <input required id="it-type" class="input" type="text" name="type" placeholder="Enter a Type"; value="<?php echo $detailItem->get_type(); ?>"/>
                     </div>
                 </div>
 
                 <div class="row">
                     <input type="submit" name="button" class="btn" value="Save"/>
-                    <input type="submit" class="btn bg-red" name="button" value="Cancel" id=" <?php echo ($showEdit?'':'cancel-btn'); ?>"/>
+                    <input type="submit" class="btn bg-red" name="button" value="Cancel" id="<?php echo ($showEdit?'cancel-new-item':'cancel-btn'); ?>"/>
                 </div>
             </form>
         </div>
