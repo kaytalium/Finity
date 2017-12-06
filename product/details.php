@@ -1,6 +1,11 @@
 <?php
     //at this point we need the id for the item we wish to display 
     //to pass in the function that will return an item object
+    $detailItem = new \Finity\Product\Item;
+    $detailItem->set_description('');
+    $showEdit = ($itemid ==-1?true:false);
+
+    if(!$showEdit)
     $detailItem = $prolist->getItem($itemid);
 ?>
 <div class="catalog-container">
@@ -20,7 +25,7 @@
     <!-- Right side of the container with description-->
     
     <div class="right"> 
-        <div class="display_info" id="display_info">
+        <div class="display_info <?php echo ($showEdit?'hide':''); ?>" id="display_info">
             <div class="row">
                 <div class="topmost">
                     <p><?php echo $detailItem->get_category(); ?></p>
@@ -49,13 +54,14 @@
             </div>
         </div>
 
-        <div class="edit_info">
-            <form action="functions/item_controller.php?v=update" method="POST">
+        <div class="edit_info <?php echo ($showEdit?'show':''); ?>">
+            <form action="functions/item_controller.php?v=<?php echo ($showEdit?'create':'update'); ?>" method="POST">
                 <input type="text" value="<?php echo $itemid; ?>" hidden="hidden" name="item_id">
                 <div class="row">
                     <div class="edit_cat">
                         <label for="category">Category</label>
-                        <select name="category">
+                        <select required="required" name="category">
+                            <option value="" hidden>--Category--</option>
                             <?php
                                 $clist = $prolist->getCategories();
                                 foreach($clist as $cat){
@@ -68,40 +74,38 @@
                             
                             ?>
                         </select>
-                        
+
                     </div>
                     
                     <div class="edit_name">
                         <label for="name">Item Name</label>
-                        <input class="input" type="text" name="name" placeholder="Enter Item Name"; value="<?php echo $detailItem->get_name(); ?>"/>
+                        <input required class="input" type="text" name="name" placeholder="Enter Item Name"; value="<?php echo $detailItem->get_name(); ?>"/>
                     </div>
 
                     <div class="edit_description">
                         <label for="description">Description</label>
-                        <textarea class="textarea" rows="4" name="description" placeholder="Enter item Description">
-                            <?php echo $detailItem->get_description(); ?>
-                        </textarea>
+                        <textarea class="textarea" maxlength=250 required  name="description" placeholder="Enter item Description"><?php echo $detailItem->get_description(); ?></textarea>
                     </div>
 
                     <div class="edit_price">
                         <label for="price">Price</label>
-                        <input class="input" type="number" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
+                        <input required class="input" type="number" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
                     </div>
 
                     <div class="edit_unit">
                         <label for="unit">Unit</label>
-                        <input class="input" type="number" name="unit" placeholder="Enter your Unit"; value="<?php echo $detailItem->get_unit(); ?>"/>
+                        <input required class="input" type="number" name="unit" placeholder="Enter your Unit"; value="<?php echo $detailItem->get_unit(); ?>"/>
                     </div>
 
                     <div class="edit_type">
                         <label for="type">Type</label>
-                        <input class="input" type="text" name="type" placeholder="Enter a Type"; value="<?php echo $detailItem->get_type(); ?>"/>
+                        <input required class="input" type="text" name="type" placeholder="Enter a Type"; value="<?php echo $detailItem->get_type(); ?>"/>
                     </div>
                 </div>
 
                 <div class="row">
-                    <input type="submit" name="save" class="btn" value="Save"/>
-                    <button class="btn bg-red" id="cancel-btn">Cancel</button>
+                    <input type="submit" name="button" class="btn" value="Save"/>
+                    <input type="submit" class="btn bg-red" name="button" value="Cancel" id=" <?php echo ($showEdit?'':'cancel-btn'); ?>"/>
                 </div>
             </form>
         </div>

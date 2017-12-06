@@ -183,3 +183,7 @@ select{
     width: 90%;
     margin-bottom: 30px;
 }
+
+.show{
+    display: block;
+}

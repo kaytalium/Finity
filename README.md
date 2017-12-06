@@ -54,7 +54,7 @@ Functionality/Database Design
 
 - [x] Client login works properly                              
 - [x] Client can properly update account details               
-- [ ] Client can add inventory                                  
+- [x] Client can add inventory                                  
 - [x] Client can update inventory   
 <br/>
 

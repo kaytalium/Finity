@@ -31,7 +31,27 @@ switch($requester){
      * Create new product function
      */
     function createProduct(){
+        $cleanData = cleanPostDataFromUser(unserialize(ITEM_ATTRIBUTES));
+        $btn = $_POST['button'];
+        print_ra($_POST);
+        if($btn=="Cancel"){
+            header('Location: ../product.php');
+            return;
+        }
+           
+        $im = new \Finity\Product\ItemManager;
 
+        $item = new \Finity\Product\Item($cleanData);
+        $item->set_item_id('');
+        echo 'Item id: '.$item->get_item_id();
+
+        $item = $im->createNewItem($item);
+
+        if(!empty($item->get_item_id()))
+            echo 'Your item was created successfully';
+        else
+            echo "There was a problem creating your item";
+        header('Location: ../product.php?c='.$item->get_item_id().'&v=itemreq');
     }
 
     /**
