@@ -89,7 +89,7 @@
 
                     <div class="edit_price">
                         <label for="price">Price</label>
-                        <input required class="input" id="it-price" type="number" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
+                        <input required class="input" id="it-price" type="number" step="0.01" min="0" name="price" placeholder="Enter the Price"; value="<?php echo $detailItem->get_price(); ?>"/>
                     </div>
 
                     <div class="edit_unit">
