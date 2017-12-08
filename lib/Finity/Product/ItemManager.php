@@ -137,6 +137,49 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         }
     }
 
+    /**
+     * Search Result function
+     */
+    public function getSearchResult($criteria){
+
+        $list = array();
+        $i = 0;
+
+        $search_exploded = explode ( " ", $criteria ); 
+        $x = 0; 
+        $construct = ""; 
+
+        foreach( $search_exploded as $search_each ){
+             $x++; 
+             
+             
+             if($x==1){
+                $construct .="`name` LIKE '%$search_each%'"; 
+             }else{
+                $construct .="AND `name` LIKE '%$search_each%'"; 
+             }
+
+             $construct .="OR `category` LIKE '%$search_each%'"; 
+                
+        }
+        
+        $construct = " SELECT * FROM `item` WHERE $construct ";
+
+        //echo $construct;
+        $res = $this->select($construct);
+
+        if($res['state']){
+            foreach($res['data'] as $Item){
+                $list[$i] = new Item($Item);
+                $i++;
+            }
+        }
+        return $list;
+        
+        
+        
+    }
+
     
     
 }

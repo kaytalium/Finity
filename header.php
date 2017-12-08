@@ -9,8 +9,8 @@ $img_url = (isset($_SESSION['image_url'])?$_SESSION['image_url']:"users/profile/
     </logo>
 
     <search>
-        <form action="">
-            <input type="text" name="searchbox" placeholder="Search for items here: e.g Soccer">
+        <form action="search.php">
+            <input type="text" id="searchbox" name="searchbox" placeholder="Search for items here: e.g Soccer">
         </form>
     </search>
 
