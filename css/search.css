@@ -1,13 +1,11 @@
 /* Stylesheet */
 .search_result{
     overflow-y: scroll;
-    border:1px solid red;
 }
     
 .result_info{
     height: 50px;
     border-bottom: 1px solid #ccc;
-    /* line-height: 50px; */
     padding: 10px 0 0 30px; 
     background: rgb(255, 255, 255);
     
@@ -19,6 +17,46 @@
 
 .items{
     margin-top: 30px;
-    padding: 10px 0 80px 30px;
+    padding: 10px 0 100px 30px;
+}
+/* Cooding the Item view */
+
+.item_container{
+    height: 200px; 
+    border-top: 1px solid #eaeaea;
+    width: 98%;
+    padding: 30px 0 0 5px;
+}
+
+.img{
+    /* background: red; */
+    width: 20%;
+    height: 200px;
+    float: left;
+}
+
+.item_info{
+    width: 79%;
+    height: 200px;
+    float: left;
+    /* background: blue; */
+}
+
+.name{
+    font-size: 2em;
+}
+
+.name > a{
+    color: #0E68BD;
+    text-decoration: none;
+}
+
+.name > a:hover{
+    color: rgb(253, 151, 151);
+}
+
+.price{
+    margin: 5px 0;
+    font-size: 18px;
 }
 

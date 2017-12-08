@@ -1,5 +1,10 @@
 <?php 
 $img_url = (isset($_SESSION['image_url'])?$_SESSION['image_url']:"users/profile/default.png");
+if(isset($_GET['searchbox'])){
+    $searchWord = strtolower((isset($_GET["searchbox"])?$_GET["searchbox"]:''));
+    $_SESSION['searchWord'] = $searchWord;
+}
+
 ?>
 <link rel="stylesheet" href="css/header.css" />
 <div class="header1">
@@ -10,7 +15,8 @@ $img_url = (isset($_SESSION['image_url'])?$_SESSION['image_url']:"users/profile/
 
     <search>
         <form action="search.php">
-            <input type="text" id="searchbox" name="searchbox" placeholder="Search for items here: e.g Soccer">
+            <input type="text" id="searchbox" name="searchbox" placeholder="Search for items here: e.g Soccer"
+            value="<?php echo (isset($searchWord)?$searchWord:''); ?>">
         </form>
     </search>
 

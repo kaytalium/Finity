@@ -7,13 +7,28 @@
 
     if(!$showEdit)
     $detailItem = $prolist->getItem($itemid);
+
+    $sw = (isset($_SESSION['searchWord'])?$_SESSION['searchWord']:'');
+    $s  = (isset($_GET['s'])?$_GET['s']:'');
+    
 ?>
 <div class="catalog-container">
-    <div class="goback"> 
-        <a href="<?php echo $_SERVER["PHP_SELF"].'?&v=catreq';?>">
+    <?php
+    if($s){
+        echo '<div class="goback"> 
+        <a href="search.php?&searchbox='.$sw.'">
+            <i class="fa fa-angle-double-left" aria-hidden="false"> Go back to search result</i>
+        </a>
+    </div>';
+    }else{
+        echo '<div class="goback"> 
+        <a href="'.$_SERVER["PHP_SELF"].'?&v=catreq">
             <i class="fa fa-angle-double-left" aria-hidden="false"> Go back to List</i>
         </a>
-    </div>
+    </div>';
+    }
+    
+    ?>
     <!--left side of the container with Image-->
     <div class="left">
         
