@@ -2,8 +2,6 @@
     //Improve application library 
     require_once 'lib/Finity/Autoloader.php';
     hasAccess();
-    if(isset($_SESSION['userType']) && $_SESSION['userType'] !=222)
-        header('Location: product.php');
 
     $prolist= new \Finity\Product\ItemManager();
 ?>

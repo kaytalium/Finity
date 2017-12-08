@@ -8,7 +8,7 @@ class Person{
     private $person_id;
     private $firstname;
     private $lastname;
-    private $image_url = "user/profile/default.jpg";
+    private $image_url = "users/profile/default.png";
     private $dob;
 
     public function __construct($arg = array()){

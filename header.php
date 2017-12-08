@@ -23,10 +23,14 @@ if(isset($_GET['searchbox'])){
     <menunav>
         <ul>
             <?php 
-            if(isset($_SESSION['userType']) && $_SESSION['userType']==222)
+            if(isset($_SESSION['userType']) && $_SESSION['userType']==222){
                 echo '<li><a href="admin.php">Admin</a></li>';
-            ?><li><a href="product.php">Products</a></li>
-            <li><a href="report.php">Report</a></li>
+                echo '<li><a href="report.php">Report</a></li>';
+            }
+                
+            ?>
+            <li><a href="product.php">Products</a></li>
+            
         </ul>
     </menunav>
    
