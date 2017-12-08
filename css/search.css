@@ -1,0 +1,24 @@
+/* Stylesheet */
+.search_result{
+    overflow-y: scroll;
+    border:1px solid red;
+}
+    
+.result_info{
+    height: 50px;
+    border-bottom: 1px solid #ccc;
+    /* line-height: 50px; */
+    padding: 10px 0 0 30px; 
+    background: rgb(255, 255, 255);
+    
+    
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(158,155,158,1);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(158,155,158,1);
+    box-shadow: 0px 5px 5px 0px rgba(158,155,158,1);
+}
+
+.items{
+    margin-top: 30px;
+    padding: 10px 0 80px 30px;
+}
+
