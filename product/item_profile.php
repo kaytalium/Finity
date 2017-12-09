@@ -32,7 +32,7 @@
         <div class="row"> 
             <div class="modify_item_plus">
                 <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=itemreq">
-                    <i class="fa fa-plus fa-lg plus" aria-hidden="true" title="Edit Item"></i>
+                    <i class="fa fa-pencil fa-lg plus" aria-hidden="true" title="Edit Item"></i>
                 </a>
             </div>
         </div>
