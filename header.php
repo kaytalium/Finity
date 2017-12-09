@@ -25,7 +25,13 @@ if(isset($_GET['searchbox'])){
             <?php 
             if(isset($_SESSION['userType']) && $_SESSION['userType']==222){
                 echo '<li><a href="admin.php">Admin</a></li>';
-                echo '<li><a href="report.php">Report</a></li>';
+                echo '<li>
+                        <a href="#" class="report_anchor">Report</a>
+                            <ul class="sub-menu">
+                                <li><a href="report.php?v=mreport">Management Report</a></li>
+                                <li><a href="report.php?v=adhocreport">Adhoc Report</a></li>
+                            </ul>
+                     </li>';
             }
                 
             ?>

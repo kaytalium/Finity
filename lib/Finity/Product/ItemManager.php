@@ -75,7 +75,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
 
         //Prepare the query statement with the user request if given or return default
         $query = $this->prepare($arr);
-
+       
         //Get the result array from the database 
         $result = $this->select($query);
 
@@ -137,6 +137,42 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         }
     }
 
+    private function prepareAdhocReport($paramArray){
+        if(!empty($paramArray)){
+            $q = 'SELECT * FROM item Where ';
+            $arg = array_filter($paramArray,function($k){
+                return $k == "unit" || $k =="price" || $k =="name" || $k == "category";
+            }, ARRAY_FILTER_USE_KEY);
+
+            $count = count($arg);
+            $i = 1;
+            
+            foreach($arg as $key=>$value){
+
+                switch($key){
+                    case "name":
+                    case "category":
+                        $q .= "`".$key."` LIKE '%".$value."%'";
+                    break;
+
+                    case "price":
+                        $q .= "`".$key."`".$paramArray['price_logic']."'".$value."'";
+                    break;
+
+                    case "unit":
+                        $q .= "`".$key."`".$paramArray['unit_logic']."'".$value."'";
+                    break;
+                }
+
+                if($count>1 && $i<$count)
+                    $q .=' AND ';
+                
+                $i++;
+            }
+            return $q;
+        }
+    }
+
     /**
      * Search Result function
      */
@@ -180,6 +216,16 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         
     }
 
+    /**
+     * 
+     */
+    public function adhocReport($arg = array()){
+        $query = $this->prepareAdhocReport($arg);
+        //print_ra($query);
+        $result  = $this->select($query);
+
+        return $result;
+    }
     
     
 }

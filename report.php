@@ -1,4 +1,12 @@
-<?php require_once 'lib/Finity/Autoloader.php'; hasAccess();?>
+<?php
+ require_once 'lib/Finity/Autoloader.php'; 
+ hasAccess(); 
+
+ if(isset($_SESSION['userType']) && $_SESSION['userType'] !=222)
+ header('Location: product.php');
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,41 +16,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/font/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/finity.css">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/report.css">
 
     <title>Report</title>
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/details-controller.js"></script>
+    <script src="js/report-controller.js"></script>
 </head>
 <?php
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        $isList = false;
-        $isMod = false;
-        $isCreate = false;
+        $isMreport = false;
+        $isAdhoc = false;
         $isProfile = false;
 
         $requestor = (isset($_GET['v'])?$_GET['v']:'');
         switch($requestor){
-            case 'list':
-            $isList = true;
+            case 'mreport':
+            $isMreport = true;
             break;
 
-            case 'edit':
-            $isMod = true;
-            break;
-
-            case 'create':
-            $isCreate = true;
-            break;
-
-            case 'delete':
-            //call some function to delete user
-            $isList = true;
-            break;
-
-            case 'suspend':
-            //call some function to suspend user
-            $isList = true;
+            case 'adhocreport':
+            $isAdhoc = true;
             break;
 
             case 'user-profile':
@@ -50,7 +44,7 @@
             break;
 
             default:
-            $isList = true;
+            $isMreport = true;
 
         }
 
@@ -64,8 +58,14 @@
         </div>
 
         <div class="content">
+            
             <?php 
                 
+                if($isMreport)
+                include 'report/management_report.php';
+
+                if($isAdhoc)
+                include 'report/adhoc_report.php';
 
                 if($isProfile)
                 include 'user/profile.php';
