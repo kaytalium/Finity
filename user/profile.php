@@ -16,6 +16,7 @@
             <div class="profile-image">
                 <div class="imgprofile">
                     <img src="image/<?php echo $img_url; ?>">
+                    <input type="file" id="uploadfile" style= "display: none"/>
                 </div>
                 <div class="imageController">
                     <button class="btn lg" id="editusphoto">Change Picture</button>
