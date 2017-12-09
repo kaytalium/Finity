@@ -70,6 +70,13 @@
         </div>
 
         <div class="edit_info <?php echo ($showEdit?'show':''); ?>">
+        <div class="mini_menu">
+            <ul>
+                <li class="active">Product Detail</li>
+                <li>Reduce Stock</li>
+                <li>Update Stock</li>
+            </ul>
+        </div>
             <form action="functions/item_controller.php?v=<?php echo ($showEdit?'create':'update'); ?>" method="POST">
                 <input type="text" value="<?php echo $itemid; ?>" hidden="hidden" name="item_id">
                 <div class="row">

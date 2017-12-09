@@ -156,33 +156,36 @@ $(document).ready(function(){
        
         $('#uploadfile').change( function openFileDialog(event) {
             var tmppath = URL.createObjectURL(event.target.files[0]);
-            $(".imgprofile>img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+            $(".imgprofile>img").fadeIn("fast")
+            .attr('src',URL.createObjectURL(event.target.files[0]))
+        })
+    
     });
     
        
  
-/**
- * 
- * @param {*container that you want to hide} hideCon 
- * @param {*container that you want to show} showCon 
- */
-function hideShow(hideCon, showCon){
-    hideCon.fadeOut(600).delay(300)
-    showCon.delay(600).fadeIn(300)
-}
+    /**
+     * 
+     * @param {*container that you want to hide} hideCon 
+     * @param {*container that you want to show} showCon 
+     */
+    function hideShow(hideCon, showCon){
+        hideCon.fadeOut(600).delay(300)
+        showCon.delay(600).fadeIn(300)
+    }
 
-function changePassword(pwd, pwd_msg){
-    $.ajax({
-        type: 'GET',
-        url: 'user/change_password.php',
-        data: {password:pwd.val()},
-        success: function(data){
-            console.log(data)
-            pwd_msg.html(data).parent('tr').delay(4000).css("opacity",".55").hide(600)
-        },
-        error: function(error){console.log(error)}
-    })
-       
-}
-})
+    function changePassword(pwd, pwd_msg){
+        $.ajax({
+            type: 'GET',
+            url: 'user/change_password.php',
+            data: {password:pwd.val()},
+            success: function(data){
+                console.log(data)
+                pwd_msg.html(data).parent('tr').delay(4000).css("opacity",".55").hide(600)
+            },
+            error: function(error){console.log(error)}
+        })
+        
+    }
+
 })

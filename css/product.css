@@ -225,6 +225,41 @@ li:last-child{
     color: #fff;
 }
 
+/* mini_menu */
+.mini_menu{
+    background: rgb(248, 247, 247);
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+
+    box-shadow: 3px 3px 3px rgb(196, 193, 193);
+}
+.mini_menu > ul{
+    margin: 0;
+    padding: 0;
+}
+.mini_menu > ul li{
+    list-style: none;
+    display: inline-block;
+}
+
+.mini_menu li{
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+.mini_menu li:hover{
+    background: #d1990f;
+    text-decoration: underline;
+}
+
+.active{
+    background: #d1990f;
+    text-decoration: underline;
+    /* border-bottom: 200px solid green; */
+	/* border-left: 200px solid transparent; */
+}
 
 
 
