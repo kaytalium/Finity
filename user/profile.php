@@ -14,7 +14,7 @@
     <div class="user-wrapper">
         <div class="userinfo">
             <div class="profile-image">
-                <div class="imgprofile">
+                <div class="imgprofile" id= "upimg">
                     <img src="image/<?php echo $img_url; ?>">
                     <input type="file" id="uploadfile" style= "display: none"/>
                 </div>

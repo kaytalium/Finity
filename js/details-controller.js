@@ -149,13 +149,18 @@ $(document).ready(function(){
             $password_txt.val(data)
         })
      })
-   
+
+    
     $("#editusphoto").click(function openFileDialog(){
         $('#uploadfile').trigger('click');
-    })
-
-});
-
+       
+        $('#uploadfile').change( function openFileDialog(event) {
+            var tmppath = URL.createObjectURL(event.target.files[0]);
+            $(".imgprofile>img").fadeIn("fast").attr('src',URL.createObjectURL(event.target.files[0]))
+    });
+    
+       
+ 
 /**
  * 
  * @param {*container that you want to hide} hideCon 
@@ -179,3 +184,5 @@ function changePassword(pwd, pwd_msg){
     })
        
 }
+})
+})
