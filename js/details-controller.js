@@ -149,7 +149,10 @@ $(document).ready(function(){
             $password_txt.val(data)
         })
      })
-     
+   
+    $("#editusphoto").click(function openFileDialog(){
+        $('#uploadfile').trigger('click');
+    })
 
 });
 

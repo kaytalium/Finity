@@ -19,7 +19,7 @@
                     <input type="file" id="uploadfile" style= "display: none"/>
                 </div>
                 <div class="imageController">
-                    <button class="btn lg" id="editusphoto">Change Picture</button>
+                    <button class="btn lg" id="editusphoto" onclick= "openFileDialog">Change Picture</button>
                 </div>
             </div>
         
