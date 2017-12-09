@@ -4,7 +4,9 @@
     
     return '<div class="item_profile_container">
         <div class="item_profile_image">
-              <img  src= "image/'.$item->get_image_url().'" width= "210" alt="'.$item->get_name().'">
+            <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=itemreq">
+                <img  src= "image/'.$item->get_image_url().'" width= "210" alt="'.$item->get_name().'">
+            </a>
        </div> 
 
        <!-- <div class="row">
@@ -12,7 +14,11 @@
         </div>-->
 
         <div class="row">
-            <div class="name">'.$item->get_name().'</div> 
+            <div class="name">
+                <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=itemreq">
+                    '.$item->get_name().'
+                </a>
+            </div> 
         </div>
 
         <div class="row">
@@ -20,13 +26,13 @@
         </div>
 
         <div class="row">
-           <div class="quantity">Quantity: '.$item->get_unit().'</div>
+           <div class="quantity">In Stock: '.$item->get_unit().'</div>
         </div> 
 
         <div class="row"> 
-            <div>
+            <div class="modify_item_plus">
                 <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=itemreq">
-                    <i class="fa fa-plus fa-lg plus" aria-hidden="true"></i>
+                    <i class="fa fa-plus fa-lg plus" aria-hidden="true" title="Edit Item"></i>
                 </a>
             </div>
         </div>
@@ -45,7 +51,7 @@
             <div class="quantity">In Stock: '.$item->get_unit().'</div>
             <a href="'.$_SERVER["PHP_SELF"].'"></a>
         </div>
-    </div>';
+        </div>';
     }
 
 ?>
