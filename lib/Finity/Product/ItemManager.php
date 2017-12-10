@@ -99,10 +99,10 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         $i=0;
 
         //Get the category query from the 
-        $query = "SELECT DISTINCT category FROM item";
+        $query = "SELECT `category` FROM `item_category`";
 
         $result = $this->select($query);
-
+        
         //Check to see if result, if true the prepare an array for return; else return enpty array
         if($result['state']){
             foreach($result['data'] as $category){
@@ -119,7 +119,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
      */
     private function prepare($paramArray){
         if(!empty($paramArray)){
-            $q = 'SELECT * FROM item Where ';
+            $q = 'SELECT * FROM `item` `i`, `item_category` `ic` WHERE `i`.`category_id`=`ic`.`category_id` AND ';
             $count = count($paramArray);
             $i = 1;
             
@@ -133,7 +133,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
             }
             return $q;
         }else{
-            return "SELECT * FROM item";
+            return "SELECT * FROM `item` `i`, `item_category` `ic` WHERE `i`.`category_id`=`ic`.`category_id`";
         }
     }
 
@@ -214,6 +214,56 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         
         
         
+    }
+
+    /**
+     * 
+     */
+    public function addNewCategory($new_cat, $item_id){
+        //We must first check to see if category already in database
+        $sel_query = "SELECT * FROM `item_category` WHERE `category`='$new_cat'";
+        $sel_res = $this->select($sel_query);
+        if(!$sel_res['state']){
+            $query = "INSERT INTO `item_category` (`category`) VALUES ('$new_cat')";
+            $id = $this->insert($query);
+            echo 'Id: '.$id;
+
+            //we now need to update the current item with the new category
+            $up_item_query = "UPDATE `item` SET `category_id`='$id' WHERE `item_id`='$item_id'";
+            $res = $this->update($up_item_query);
+
+            return $res['state'];
+
+        }else{
+            return false;
+        }
+        
+
+    }
+
+    /**
+     * 
+     */
+    public function editCategory($arg = array()){
+        if(!empty($arg)){
+            $query = "UPDATE `item_category` SET `category`='".$arg['edit_category']."' WHERE `category`='".$arg['category']."'";
+            $res = $this->update($query);
+
+            return $res['state'];
+        }
+    }
+
+    /**
+     * Update Category from the item edit
+     */
+    public function updatecategory($category, $item_id){
+        $res = $this->select("SELECT `category_id` FROM `item_category` WHERE `category`='$category'");
+       
+        if($res['state']){
+            $update_res = $this->update("UPDATE `item` SET `category_id`='".$res['data'][0]['category_id']."' WHERE `item_id`='$item_id'");
+
+            return $update_res['state'];
+        }
     }
 
     /**

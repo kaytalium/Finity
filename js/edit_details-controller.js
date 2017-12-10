@@ -18,6 +18,8 @@ $(document).ready(function(){
          cat_pencil.hide();
          cat_close.show()
          item_cat.hide()
+         edit_input.attr('name','new_category')
+         edit_input.val('')
          edit_input.show()
          $(this).hide()
      })
@@ -27,6 +29,7 @@ $(document).ready(function(){
         cat_close.show()
         $(this).hide()
         item_cat.hide()
+        edit_input.attr('name','edit_category')
         edit_input.show(function(){
             $(this).val(item_cat.val())
         })
@@ -38,8 +41,9 @@ $(document).ready(function(){
         cat_plus.show()
         cat_pencil.show()
         item_cat.show()
+        edit_input.attr('name','category')
         edit_input.hide()
-        edit_input.val('')
+        edit_input.val('empty')
     })
 
     //Click function on the mini menu 

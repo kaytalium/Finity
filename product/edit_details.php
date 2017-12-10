@@ -7,7 +7,7 @@ $showEdit = ($itemid ==-1?true:false);
 
 if(!$showEdit)
 $detailItem = $prolist->getItem($itemid);
-
+//print_ra($detailItem->get_minimum());
 $sw = (isset($_SESSION['searchWord'])?$_SESSION['searchWord']:'');
 $s  = (isset($_GET['s'])?$_GET['s']:'');
 

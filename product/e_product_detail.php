@@ -1,4 +1,4 @@
-<form action="functions/item_controller.php?v=<?php echo ($showEdit?'create':'update'); ?>" method="POST">
+<form action="functions/item_controller.php?v=<?php echo ($showEdit?'create':'update'); ?>&opt=product_detail" method="POST">
     <input type="text" value="<?php echo $itemid; ?>" hidden="hidden" name="item_id">
     <div class="row">
         <div class="edit_cat">
@@ -8,7 +8,7 @@
             <i class="fa fa-pencil fa edit_pencil" id="edit_pencil" aria-hidden="true" mytitle="Edit Category"></i>
             <i class="fa fa-close fa edit_close hide" id="edit_close" aria-hidden="true" mytitle="Close"></i>
             </label>
-            <input required="required" type="text" placeholder="Enter new category" name="category" class="input hide" id="it-input-cat">
+            <input required="required" type="text" placeholder="Enter new category" name="category" class="input hide" id="it-input-cat" value="empty"/>
             <select required="required" name="category" id="it-cat">
                 <option value="" hidden>--Category--</option>
                 <?php
@@ -56,14 +56,14 @@
             <label for="price">Minimum Stock</label>
             <input required class="input" id="it-min" type="number" min="0" 
             name="minimum" placeholder="Enter Minimum Capacity"
-            value="<?php echo $detailItem->get_unit(); ?>"/>
+            value="<?php echo $detailItem->get_minimum(); ?>"/>
         </div>
 
         <div class="edit_max">
             <label for="type">Maximum Stock</label>
             <input required id="it-max" class="input" type="number" min="0" 
             name="maximum" placeholder="Enter Maximum Capacity"
-            value="<?php echo $detailItem->get_unit(); ?>"/>
+            value="<?php echo $detailItem->get_maximum(); ?>"/>
         </div>
     </div>
 

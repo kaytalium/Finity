@@ -1,17 +1,22 @@
 <?php ob_start();
     //include Finity library 
     include '../lib/Finity/Autoloader.php';
+    print_ra($_POST);
     define('ITEM_ATTRIBUTES', serialize(array(
         "description"   =>"",
-        "unit"          =>"",
         "price"         =>"",
         "item_id"       =>"",
         "name"          =>"",
         "category"      =>"",
+        "new_category"  =>"",
+        "edit_category" =>"",
         "type"          =>"",
+        "maximum"       =>"",
+        "minimum"       =>""
     )));
 
     $requester = (isset($_GET['v'])?$_GET['v']:'');
+    $opt =(isset($_GET['opt'])?$_GET['opt']:'');
 
 switch($requester){
     case 'update':
@@ -58,16 +63,55 @@ switch($requester){
      * Update product function
      */
     function updateProduct(){
-        $cleanData = cleanPostDataFromUser(unserialize(ITEM_ATTRIBUTES));
+        $opt =(isset($_GET['opt'])?$_GET['opt']:'');
+
+        switch($opt){
+            case 'product_detail':
+            $data = cleanPostDataFromUser(unserialize(ITEM_ATTRIBUTES));
+
+            $category = array_filter($data, function($v, $k){
+                return $k =="new_category" && !empty($v) || $k == "category" || $k == "edit_category" && !empty($v);                
+            }, ARRAY_FILTER_USE_BOTH);
+
+            
+            $filter = array_filter($data, function($k){
+                return $k !=="new_category" && $k !=="category";
+            }, ARRAY_FILTER_USE_KEY);
+
         
-        $im = new \Finity\Product\ItemManager;
-        $item = new \Finity\Product\Item($cleanData);
+            $im = new \Finity\Product\ItemManager;
+            $item = new \Finity\Product\Item($filter);
+    
+            $res = $im->updateItem($item);
+    
+            if($res)
+                echo 'Item updated';
+            else
+                echo 'Item was not updated';
 
-        $im->updateItem($item);
+            //Item detail update we now update the category if it was changed or new Category
+            print_ra($category);
+            if(count($category)>1){
+                if(array_key_exists('new_category',$category)){
+                    $res = $im->addNewCategory($category['new_category'], $item->get_item_id());
+                    
+                    echo ($res?'Added successfully':'Adding error');
+                }
 
-        if($im->updateItem($item))
-            echo 'Item updated';
-        else
-            echo 'Item was not updated';
-        header('Location: ../product.php?c='.$item->get_item_id().'&v=itemreq');
+                if(array_key_exists('edit_category',$category)){
+                    $res = $im->editCategory($category);
+
+                    echo ($res?'Edit successfully':'edit error');
+                }
+            }else{
+                //update the category
+                $res = $im->updateCategory($category['category'], $item->get_item_id());
+                
+                echo ($res?'update successfully':'Update error');
+            }
+            header('Location: ../product.php?c='.$item->get_item_id().'&v=itemreq');
+
+            break;
+        }
+        
     }

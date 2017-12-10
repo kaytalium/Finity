@@ -7,12 +7,13 @@ class Item{
     //private vars
     private $item_id = null;
     private $description = null;
-    private $unit = null;
     private $price = null;
     private $name = null;//[Basketball, Apple]
     private $category = null;//[Sports, fruits]
     private $type = null;//[Spalding, Jamaican ],
     private $imageUrl = null;
+    private $max = null;
+    private $min = -1;
 
     public function __construct($arg = array()){
         $this->description  = (isset($arg['description'])?$arg['description']:'');
@@ -23,6 +24,8 @@ class Item{
         $this->category     = (isset($arg['category'])?$arg['category']:'');
         $this->type         = (isset($arg['type'])?$arg['type']:'');
         $this->imageUrl     = (isset($arg['image_url'])?$arg['image_url']:'');
+        $this->max          = (isset($arg['maximum'])?$arg['maximum']:'');
+        $this->min          = (isset($arg['minimum'])?$arg['minimum']:'');
     }
 
     //Getters
@@ -58,6 +61,14 @@ class Item{
         return $this->type;
     }
 
+    public function get_maximum(){
+        return $this->max;
+    }
+
+    public function get_minimum(){
+        return $this->min;
+    }
+
     public function get_formatted_price(){
         if(isset($this->price) && !empty($this->price)){
             return toMoney($this->price);//money_format('%n',$this->price);
@@ -70,13 +81,14 @@ class Item{
         return array(
             'item_id'       => $this->item_id,
             'description'   => $this->description,
-            'unit'          => $this->unit,
             'price'         => $this->price,
             'format_price'  => toMoney($this->price),
             'name'          => $this->name,
             'category'      => $this->category,
             'type'          => $this->type,
-            'image_url'     => $this->imageUrl 
+            'image_url'     => $this->imageUrl,
+            'maximum'       => $this->max,
+            'minimum'       => $this->min
         );
     }
 
@@ -109,16 +121,24 @@ class Item{
         $this->type = $type;
     }
 
+    public function set_maximum($max){
+        $this->max = $max;
+    }
+
+    public function set_min($min){
+        $this->min = $min;
+    }
+
     //Public class functions
 
     public function preparedUpdateQueryString($paramArray){
-        print_ra($this->updateQueryString($paramArray));
+        //print_ra($this->updateQueryString($paramArray));
         return $this->updateQueryString($paramArray);
     }
 
     public function preparedInsertQueryString(){
-        return "INSERT INTO `item`  (`description`,`unit`,`price`,`name`,`category`,`type`) 
-        VALUES('$this->description','$this->unit','$this->price','$this->name','$this->category','$this->type')";
+        return "INSERT INTO `item`  (`description`,`unit`,`price`,`name`,`category`,`type`, `maximum`, `minimum`) 
+        VALUES('$this->description','$this->unit','$this->price','$this->name','$this->category','$this->type','$this->max','$this->min')";
     }
 
     public function preparedDeleteQueryString(){
@@ -143,8 +163,8 @@ class Item{
             }
             return $q .=" Where `item_id`='".$this->item_id."'";
         }else{
-            return "UPDATE `item` SET `description`='$this->description', `unit`='$this->unit', `price`='$this->price',
-            `name`='$this->name', `category`='$this->category', `type`='$this->type' WHERE `item_id`='$this->item_id'";
+            return "UPDATE `item` SET `description`='$this->description', `price`='$this->price',
+            `name`='$this->name', `type`='$this->type', `maximum`='$this->max', `minimum`='$this->min' WHERE `item_id`='$this->item_id'";
         }
     }
 

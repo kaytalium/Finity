@@ -1,7 +1,7 @@
 <div class="row update_stock_name">
     <h3><?php echo $detailItem->get_name(); ?></h3>
 </div>
-<form action="" method="POST" class="update_stock_form">
+<form action="functions/item_controller.php?v=update&opt=update_stock" method="POST" class="update_stock_form">
 
     <div class="add_date row">
         <label for="unit">Purchase Date</label>
