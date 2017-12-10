@@ -168,7 +168,9 @@ select{
 }
 
 .edit_price{
-    width: 60%;
+    width: 50%;
+    /* background: red; */
+    float: left;
 }
 
 .edit_unit{
@@ -180,10 +182,39 @@ select{
 }
 
 .edit_type{
-    width: 90%;
+    width: 50%;
     margin-bottom: 30px;
+    /* background: green; */
+    float: left;
 }
 
 .show{
     display: block;
+}
+
+.edit_plus, .edit_pencil{
+    position: absolute;
+
+}
+
+.edit_plus{
+    margin: 3px 0 0 10px;
+}
+
+.edit_pencil{
+    margin: 3px 0 0 30px;
+}
+
+.edit_plus:hover:after, .edit_pencil:hover:after{
+    content: attr(mytitle);
+    opacity: .95;
+    background: rgb(29, 26, 26);
+    color: #fff;
+    padding: 8px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20px;
+    border-radius: 5px;
 }

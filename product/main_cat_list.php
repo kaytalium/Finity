@@ -13,7 +13,7 @@
                         include 'product/list.php';
                     ?>
                     <div class="plus_btn">
-                        <a href="<?php echo $_SERVER["PHP_SELF"].'?c=-1&v=itemreq';?>">
+                        <a href="<?php echo $_SERVER["PHP_SELF"].'?c=-1&v=create_itemreq';?>">
                             <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
                         </a>
                     </div>

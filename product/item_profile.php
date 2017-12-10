@@ -31,7 +31,7 @@
 
         <div class="row"> 
             <div class="modify_item_plus">
-                <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=itemreq">
+                <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=edit_itemreq">
                     <i class="fa fa-plus fa-lg plus" aria-hidden="true" title="Edit Item"></i>
                 </a>
             </div>

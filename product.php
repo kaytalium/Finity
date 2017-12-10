@@ -28,10 +28,11 @@
                     if(empty($_GET)){
                         $_GET['v'] = 'catreq';
                     }
-                $iscat = false;
-                $isitem = false;
-                $isProfile = false;
-                $requester = (isset($_GET['v'])?$_GET['v']:'');
+                $iscat      = false;
+                $isitem     = false;
+                $isProfile  = false;
+                $isitemEdit = false;
+                $requester  = (isset($_GET['v'])?$_GET['v']:'');
 
                 switch($requester){
                     case "catreq": 
@@ -42,6 +43,12 @@
                     case "itemreq":
                     $itemid = (isset ($_GET['c'])?$_GET['c']:'');
                     $isitem = true;
+                    break;
+
+                    case "edit_itemreq":
+                    case "create_itemreq":
+                    $itemid = (isset ($_GET['c'])?$_GET['c']:'');
+                    $isitemEdit = true;
                     break;
 
                     case 'user-profile':
@@ -63,6 +70,9 @@
             <?php
                 if($isitem)
                 include 'product/details.php';
+
+                if($isitemEdit)
+                include 'product/edit_details.php';
 
                 if($iscat)
                 include 'product/main_cat_list.php';
