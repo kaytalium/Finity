@@ -30,7 +30,7 @@
         </div> 
 
         <div class="row"> 
-            <div class="modify_item_plus">
+            <div class="modify_item_plus '.item_inventory_level($item->get_unit()).'">
                 <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=edit_itemreq">
                     <i class="fa fa-plus fa-lg plus" aria-hidden="true" title="Edit Item"></i>
                 </a>
@@ -52,6 +52,20 @@
             <a href="'.$_SERVER["PHP_SELF"].'"></a>
         </div>
         </div>';
+    }
+
+    function item_inventory_level($level){
+        //return $level;
+        if($level == 0)
+        return 'item_critical';
+
+        if($level < 5 && $level > 0)
+        return 'item_warning';
+
+        if($level >= 5)
+        return 'item_go';
+
+
     }
 
 ?>

@@ -112,11 +112,6 @@
 /**************************************
             Input Styles
 **************************************/
-.edit_info{
-    padding: 20px 0 0 0;
-    display: none;
-}
-
  .textarea, 
  .input,
  select{
@@ -139,7 +134,7 @@ select{
     height: 38px;
 }
 
-.edit_info label{
+.product_detail label{
     width: 100%;
     padding: 5px 0;
     display: list-item;
@@ -192,20 +187,20 @@ select{
     display: block;
 }
 
-.edit_plus, .edit_pencil{
+.edit_plus, .edit_pencil, .edit_close{
     position: absolute;
 
 }
 
-.edit_plus{
-    margin: 3px 0 0 10px;
+.edit_plus, .edit_close{
+    margin: 0px 0 0 10px;
 }
 
 .edit_pencil{
-    margin: 3px 0 0 30px;
+    margin: 0px 0 0 30px;
 }
 
-.edit_plus:hover:after, .edit_pencil:hover:after{
+.edit_plus:hover:after, .edit_pencil:hover:after, .edit_close:hover:after{
     content: attr(mytitle);
     opacity: .95;
     background: rgb(29, 26, 26);
@@ -218,3 +213,4 @@ select{
     z-index: 20px;
     border-radius: 5px;
 }
+

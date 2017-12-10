@@ -24,7 +24,7 @@ $(document).ready(function(){
     $cancelNewItem = $('#cancel-new-item')
 
     $cancelNewItem.click(function(){
-        console.log($("#it-cat").html())
+        //console.log($("#it-cat").html())
         $('#it-cat').removeAttr('required')
         $('#it-name').removeAttr('required')
         $('#it-desc').removeAttr('required')
@@ -159,7 +159,7 @@ $(document).ready(function(){
             $(".imgprofile>img").fadeIn("fast")
             .attr('src',URL.createObjectURL(event.target.files[0]))
         })
-    
+
     });
     
        
@@ -180,7 +180,7 @@ $(document).ready(function(){
             url: 'user/change_password.php',
             data: {password:pwd.val()},
             success: function(data){
-                console.log(data)
+                //console.log(data)
                 pwd_msg.html(data).parent('tr').delay(4000).css("opacity",".55").hide(600)
             },
             error: function(error){console.log(error)}

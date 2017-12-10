@@ -138,8 +138,20 @@ letter-spacing: 1px;
     float: right;
     width: 0;
 	height: 0;
-	border-bottom: 200px solid green;
+	
 	border-left: 200px solid transparent;
+}
+
+.item_go{
+    border-bottom: 200px solid green;
+}
+
+.item_warning{
+    border-bottom: 200px solid #d1990f;
+}
+
+.item_critical{
+    border-bottom: 200px solid rgb(128, 0, 0);
 }
 
 /* Category Style*/
@@ -231,7 +243,7 @@ li:last-child{
     width: 100%;
     height: 40px;
     line-height: 40px;
-    margin: -15px 0 10px 0;
+    margin: 10px 0 30px 0;
     box-shadow: 3px 3px 3px rgb(196, 193, 193);
 }
 .mini_menu > ul{
@@ -261,6 +273,53 @@ li:last-child{
 	/* border-left: 200px solid transparent; */
 }
 
+/**************************************
+            update stock Styles
+**************************************/
+.update_stock{
+    width: 60%;
+}
+.update_stock label {
+    width: 100%;
+    /* background: red; */
+}
+
+.update_stock input[type='text'], input[type="number"], .us_sel_supplier, input[type="date"]{
+    width: 100%;
+    margin: 5px 0;
+}
+
+.update_stock .row{
+    height: 80px;
+}
+
+
+.add_plus, .add_pencil, .add_close{
+    position: absolute;
+
+}
+
+.add_plus, .add_close{
+    margin: 0px 0 0 10px;
+}
+
+.add_pencil{
+    margin: 0px 0 0 30px;
+}
+
+.add_plus:hover:after, .add_pencil:hover:after, .add_close:hover:after{
+    content: attr(mytitle);
+    opacity: .95;
+    background: rgb(29, 26, 26);
+    color: #fff;
+    padding: 8px;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20px;
+    border-radius: 5px;
+}
 
 
 
