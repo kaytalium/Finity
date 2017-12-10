@@ -94,7 +94,11 @@ input[type="text"], .num{
 #name_input_box, #qty_sel_input_box, #price_sel_input_box, #cat_select_box{
     display: none;
 }
-/*Management Report*/
+/**************************************************************************
+ *
+ *                          Management Report
+ * 
+ ***************************************************************************/
 .m_report_container{
     border: 1px solid green;
     width: 2000px;
@@ -108,14 +112,13 @@ input[type="text"], .num{
 }
 .right{
     border: 1px solid blue;
-    float: right;
+    float: left;
     width: 50%;
     height: 50%;
     margin:  0;
-    padding-left: 600px;
 }
 /*styling the buttons*/
-.quan_btn, .sales_btn, .inven_btn, .purs_btn{
+.r_btn{
 background-color: rgb(20, 107, 184);
 color: #d1990f;
 border-radius: 6px;
@@ -126,7 +129,7 @@ line-height: 50px;
 text-align: center;
 cursor: pointer;
 }
-.space1, .space2, .space3, .space4{
+.space{
     padding-bottom: 15px;
 }
 /*styling report*/
