@@ -353,7 +353,7 @@ li:last-child{
 }
 
 .reduce_stock .item_table th{
-    background: rgb(76, 132, 235);
+    background: #d1990f;
     height: 25px;
     color: #fff;
 }
