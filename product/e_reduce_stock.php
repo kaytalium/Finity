@@ -7,6 +7,8 @@
 ?>
 <div class="row">
     <h3><?php echo $detailItem->get_name(); ?></h3>
+</div>
+<div class="report_info">
     <table class="item_detail_tbl"> 
         <tr>
             <td> 
@@ -29,12 +31,12 @@
 </div>
 <div class="tbl_container row">
     <table class="item_table">
-        <!-- <tr>
+        <tr>
             <th></th>
             <th>Item Id</th>
             <th>Price</th>
             
-        </tr> -->
+        </tr>
         <?php
         for($i=0; $i<$item_c; $i++){
             echo '
