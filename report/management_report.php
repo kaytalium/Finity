@@ -10,9 +10,9 @@
 
     <div class ="right">
         <div class="report_container">
-            <div class="title_header"><h3>Finity Inventory System</h3></div>
-                <div class ="date_gen"><h4>Date Generated:</h4></div>
-               <div><h4>Name: </h4></div>
+              <div class="title_header"><h3>Finity Inventory System</h3></div>
+                 <div><h4>Name: </h4></div>
+                 <div class ="date_gen"><h4>Date Generated:</h4></div>
             <div class="tbl-header">
                 <table cellpadding="0"  cellspacing="0" border="0">
                     <thead>
