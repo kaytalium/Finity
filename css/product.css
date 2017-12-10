@@ -284,7 +284,7 @@ li:last-child{
     /* background: red; */
 }
 
-.update_stock input[type='text'], input[type="number"], .us_sel_supplier, input[type="date"]{
+.update_stock input[type='text'], .us_sel_supplier, .update_stock input[type="date"]{
     width: 100%;
     margin: 5px 0;
 }
@@ -319,6 +319,51 @@ li:last-child{
     white-space: nowrap;
     z-index: 20px;
     border-radius: 5px;
+}
+
+.update_stock_name{
+    margin: -20px 0 0 0;
+    height: 20px;
+    
+}
+
+.update_stock_form{
+    margin: -40px 0 0 0;
+    /* background: red; */
+}
+
+.add_unit_capacity{
+    font-size: 14px;
+    /* background: red; */
+    height: 40px;
+    line-height: 40px;
+    width: auto;
+    float: left;
+}
+
+.add_unit_capacity::before{
+    content: '*';
+    padding-left: 10px;
+}
+
+.update_stock input[type='number']{
+    width: 50%;
+    margin: 5px 0;
+}
+
+.f-left{
+    float: left;
+}
+.lg-1{
+    width: 100px;
+}
+
+.us_unit_err{
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    margin: -12px 0 0 85px; 
+    display: none;
 }
 
 

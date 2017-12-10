@@ -35,7 +35,6 @@
             <th></th>
             <th>Item Id</th>
             <th>Price</th>
-            
         </tr>
         <?php
         for($i=0; $i<$item_c; $i++){
@@ -54,5 +53,5 @@
 </div>
     <div class="row">
         <a href="" class="btn">Ok</a>
-        <a href="" class="btn">Cancel</a>
+        <a class="btn bg-red" href="<?php echo $_SERVER['PHP_SELF'].'?c='.$itemid.'&v=itemreq'; ?>">Cancel</a>
     </div>

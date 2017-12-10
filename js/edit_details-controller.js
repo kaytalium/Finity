@@ -111,6 +111,45 @@ $(document).ready(function(){
         supplier_input.val('')
     })
 
+    //stop and check form if unit is greater than capacity
+    capacity       = $("#us_cap_amt");
+    update_btn     = $("#us_update_btn")
+    us_input_unit  = $("#us_input_unit")
+    us_unit_err    = $("#us_unit_err")
+
+    //Stop form and check unit input
+    update_btn.click(function(e){
+       // e.preventDefault()
+        us_unit_err.hide().html("")
+        us_input_unit.css("border","1px solid grey")
+        //get values to compare
+        cap = parseInt(capacity.html())
+        input = parseInt(us_input_unit.val())
+
+        //check no nil value for capacity coming from database
+        if(typeof(cap)!='number' && isNaN(cap) || typeof(cap) === 'number' && isNaN(cap)){
+            us_input_unit.css("border","1px solid red")
+            us_unit_err.show().html('check capacity')
+            return 
+        }
+        
+        //check no nil value for input coming from user
+        if(typeof(input) === "number" && isNaN(input) || typeof(input) != "number" && isNaN(input)){
+            us_input_unit.css("border","1px solid red")
+            us_unit_err.html('No unit was provided').show()
+            return 
+        }
+
+        //at this point we can compare both numbers
+        if(input > cap){
+            us_input_unit.css("border","1px solid red")
+            us_unit_err.html('Cannot stock greater than capacity').show()
+            return 
+        }
+        //at this point we will be ok to submit form
+        $('.update_stock_form').submit()
+    })
+
 
 })
 

@@ -1,4 +1,7 @@
-<form action="" method="POST">
+<div class="row update_stock_name">
+    <h3><?php echo $detailItem->get_name(); ?></h3>
+</div>
+<form action="" method="POST" class="update_stock_form">
 
     <div class="add_date row">
         <label for="unit">Purchase Date</label>
@@ -35,21 +38,22 @@
     </div>
 
     <div class="add_price row">
-        <label for="unit">Purchase Price</label>
-        <input required class="input" id="it-unit" type="number" 
+        <div class="lg-1" >Purchase Price</div>
+        <input required class="input" id="us_input_price" type="number" 
         name="purchase_price" placeholder="Enter your Price" 
         value=""/>
     </div>
 
     <div class="add_unit row">
-        <label for="unit">Units Bought</label>
-        <input required class="input" id="it-unit" type="number" 
+        <div for="unit" class="lg-1">Units Bought</div><span id="us_unit_err" class="us_unit_err"></span>
+        <input required class="input f-left" id="us_input_unit" type="number" 
         name="unit" placeholder="Enter your Unit" 
         value=""/>
+        <div class="add_unit_capacity">Available Capacity <span id="us_cap_amt">10</span> </div>
     </div>
 
     <div class="row">
-        <input type="submit" name="button" class="btn" value="Update"/>
-        <input type="submit" class="btn bg-red" name="button" value="Cancel" id="<?php echo ($showEdit?'cancel-new-item':'cancel-btn'); ?>"/>
+        <input type="submit" name="button" class="btn" value="Update" id="us_update_btn"/>
+        <a class="btn bg-red" href="<?php echo $_SERVER['PHP_SELF'].'?c='.$itemid.'&v=itemreq'; ?>">Cancel</a>
     </div>
 </form>

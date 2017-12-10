@@ -42,17 +42,17 @@ $s  = (isset($_GET['s'])?$_GET['s']:'');
     <div class="right"> 
             <div class="mini_menu">
                 <ul id="mini_menu_ul">
-                    <li>Product Detail</li>
-                    <li class="active">Reduce Stock</li>
+                    <li class="active">Product Detail</li>
+                    <li>Reduce Stock</li>
                     <li>Update Stock</li>
                 </ul>
             </div>
 
-            <div id="product_detail" class="product_detail hide">
+            <div id="product_detail" class="product_detail">
                 <?php include 'e_product_detail.php';?>
             </div>
     
-            <div id="reduce_stock" class="reduce_stock">
+            <div id="reduce_stock" class="reduce_stock hide">
                 <?php include 'e_reduce_stock.php'; ?>
             </div>
 

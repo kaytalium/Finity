@@ -164,7 +164,8 @@ select{
 
 .edit_price{
     width: 50%;
-    background: red;
+    /* margin-right: 5px; */
+    /* background: red; */
     overflow: hidden;
     float: left;
 }
@@ -179,9 +180,20 @@ select{
 
 .edit_type{
     width: 50%;
-    margin-bottom: 30px;
-    background: green;
+    margin-bottom: 5px;
+    /* background: green; */
     float: left;
+}
+
+.edit_min{
+    width: 50%;
+    float: left;
+}
+
+.edit_max{
+    width: 50%;
+    float: left;
+    margin-bottom: 10px;
 }
 
 .show{
