@@ -26,11 +26,11 @@
         </div>
 
         <div class="row">
-           <div class="quantity">In Stock: '.$item->get_unit().'</div>
+           <div class="quantity">In Stock: '.$item->get_quantity_on_hand().'</div>
         </div> 
 
         <div class="row"> 
-            <div class="modify_item_plus '.item_inventory_level($item->get_unit()).'">
+            <div class="modify_item_plus '.item_inventory_level($item->get_minimum(), $item->get_quantity_on_hand()).'">
                 <a href="'.$_SERVER["PHP_SELF"].'?c='.$item->get_item_id().'&v=edit_itemreq">
                     <i class="fa fa-plus fa-lg plus" aria-hidden="true" title="Edit Item"></i>
                 </a>
@@ -54,15 +54,15 @@
         </div>';
     }
 
-    function item_inventory_level($level){
+    function item_inventory_level($min, $onHand){
         //return $level;
-        if($level == 0)
+        if($onHand == 0)
         return 'item_critical';
 
-        if($level < 5 && $level > 0)
+        if($onHand <= $min && $onHand > 0)
         return 'item_warning';
 
-        if($level >= 5)
+        if($onHand > $min)
         return 'item_go';
 
 
