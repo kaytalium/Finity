@@ -14,18 +14,20 @@ class Item{
     private $imageUrl = null;
     private $max = null;
     private $min = -1;
+    private $quantityOnHand= null;
 
     public function __construct($arg = array()){
-        $this->description  = (isset($arg['description'])?$arg['description']:'');
-        $this->unit         = (isset($arg['unit'])?$arg['unit']:'');
-        $this->price        = (isset($arg['price'])?$arg['price']:'');
-        $this->item_id      = (isset($arg['item_id'])?$arg['item_id']:'');
-        $this->name         = (isset($arg['name'])?$arg['name']:'');
-        $this->category     = (isset($arg['category'])?$arg['category']:'');
-        $this->type         = (isset($arg['type'])?$arg['type']:'');
-        $this->imageUrl     = (isset($arg['image_url'])?$arg['image_url']:'');
-        $this->max          = (isset($arg['maximum'])?$arg['maximum']:'');
-        $this->min          = (isset($arg['minimum'])?$arg['minimum']:'');
+        $this->description      = (isset($arg['description'])?$arg['description']:'');
+        $this->unit             = (isset($arg['unit'])?$arg['unit']:'');
+        $this->price            = (isset($arg['price'])?$arg['price']:'');
+        $this->item_id          = (isset($arg['item_id'])?$arg['item_id']:'');
+        $this->name             = (isset($arg['name'])?$arg['name']:'');
+        $this->category         = (isset($arg['category'])?$arg['category']:'');
+        $this->type             = (isset($arg['type'])?$arg['type']:'');
+        $this->imageUrl         = (isset($arg['image_url'])?$arg['image_url']:'');
+        $this->max              = (isset($arg['maximum'])?$arg['maximum']:'');
+        $this->min              = (isset($arg['minimum'])?$arg['minimum']:'');
+        $this->quantityOnHand   = (isset($arg['quantity_on_hand'])?$arg['quantityOnHand']:'');
     }
 
     //Getters
@@ -75,6 +77,10 @@ class Item{
         }else{
             return toMoney();
         }
+    }
+
+    public function get_quantity_on_hand(){
+        return $this->quantityOnHand;
     }
 
     public function get_all(){
@@ -129,6 +135,11 @@ class Item{
         $this->min = $min;
     }
 
+    public function set_quantity_on_hand($qty){
+        $this->quantityOnHand = $qty;
+    }
+    
+
     //Public class functions
 
     public function preparedUpdateQueryString($paramArray){
@@ -166,6 +177,10 @@ class Item{
             return "UPDATE `item` SET `description`='$this->description', `price`='$this->price',
             `name`='$this->name', `type`='$this->type', `maximum`='$this->max', `minimum`='$this->min' WHERE `item_id`='$this->item_id'";
         }
+    }
+
+    public function prepareQuntityOnHandQueryString(){
+        return "SELECT count(`product_id`)as 'quantity_on_hand' FROM `product` WHERE `sold`='false' AND `item_id`='$this->item_id'";
     }
 
 }

@@ -58,7 +58,9 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
 
             //return result
             if($result['state']){
-                return new Item($result['data'][0]);
+                $item = new Item($result['data'][0]);
+                $item->set_quantity_on_hand($this->getQuantityOnHand($item->prepareQuntityOnHandQueryString()));
+                return $item;
             }
 
         }
@@ -83,7 +85,9 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         //else return empty array
         if($result['state']){
             foreach($result['data'] as $Item){
-                $list[$i] = new Item($Item);
+                 $item = new Item($Item);
+                 $item->set_quantity_on_hand($this->getQuantityOnHand($item->prepareQuntityOnHandQueryString()));
+                 $list[$i] = $item;
                 $i++;
             }
         }
@@ -266,6 +270,23 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         }
     }
 
+
+    /**
+     * Creating new Item Models
+     */
+    public function createItemModel($arg = array()){
+        $query = "INSERT INTO `product` (`model_id`, `item_id`, `purchase_date`, `supplier`, `purchase_price`)
+        VALUES('".$arg['model_id']."','".$arg['item_id']."', '".$arg['purchase_date']."', '".$arg['supplier']."', '".$arg['purchase_price']."')";
+
+        if(!empty($arg)){
+            $res = $this->insert($query);
+            print_ra($res);
+            return $res;
+        }else{
+            return false;
+        }
+
+    }
     /**
      * 
      */
@@ -275,6 +296,14 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         $result  = $this->select($query);
 
         return $result;
+    }
+
+    private function getQuantityOnHand($query){
+        $res = $this->select($query);
+        if($res['state'])
+            return $res['data'][0]['quantity_on_hand'];
+        else
+            return 0;
     }
     
     

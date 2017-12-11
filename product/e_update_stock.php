@@ -2,11 +2,11 @@
     <h3><?php echo $detailItem->get_name(); ?></h3>
 </div>
 <form action="functions/item_controller.php?v=update&opt=update_stock" method="POST" class="update_stock_form">
-
+    <input type="text" name="item_id" value="<?php echo $detailItem->get_item_id();?>" hidden>
     <div class="add_date row">
         <label for="unit">Purchase Date</label>
         <input required="required" class="input" id="add_date" type="date"  
-        name="purchase_price" placeholder="Enter your Price" 
+        name="purchase_date" placeholder="Enter your Price" 
         value=""/>
     </div>
     
@@ -49,7 +49,7 @@
         <input required class="input f-left" id="us_input_unit" type="number" 
         name="unit" placeholder="Enter your Unit" 
         value=""/>
-        <div class="add_unit_capacity">Available Capacity <span id="us_cap_amt">10</span> </div>
+        <div class="add_unit_capacity">Available Capacity <span id="us_cap_amt"><?php echo ($detailItem->get_maximum()-$detailItem->get_quantity_on_hand()); ?></span> </div>
     </div>
 
     <div class="row">
