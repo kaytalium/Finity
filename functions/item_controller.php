@@ -137,6 +137,19 @@ switch($requester){
                 }
                 header('Location: ../product.php?c='.$cleanUpData['item_id'].'&v=itemreq');
             break;
+
+            case 'reduce_stock':
+                $cleanData = cleanUnknownKeysFromUser(unserialize(UPDATE_STOCK_ATTRIBUTES));
+                $im = new \Finity\Product\ItemManager;
+                $e = explode('-', reset($cleanData));
+                
+                foreach ($cleanData as $id) {
+                    $res = $im->sellProduct($id);
+                    echo '<br>';
+                    echo ($res?'Product sold successfully':'There was problem update product');
+                }
+                header('Location: ../product.php?c='.$e[1].'&v=itemreq');
+            break;
         }
         
     }

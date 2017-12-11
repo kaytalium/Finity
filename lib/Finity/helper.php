@@ -29,6 +29,14 @@ function cleanPostDataFromUser($arg = array()){
    return $arg; 
 }
 
+function cleanUnknownKeysFromUser(){
+    $arg = array();
+    foreach($_POST as $key=>$field){
+        $arg[$key] = filter_input(INPUT_POST, $key, FILTER_SANITIZE_SPECIAL_CHARS);
+    }
+    return $arg;
+}
+
 function checkCleanDataFromUser($arg = array()){
     $error = array("?"=>true,"errors"=>array());
     foreach($arg as $key=>$val){

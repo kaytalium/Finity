@@ -306,5 +306,20 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
             return 0;
     }
     
+    public function getModelList($item_id){
+        $query = "SELECT `model_id`, `price` FROM `product` `p`, `item` `i` WHERE `p`.`item_id`='$item_id' AND `p`.`item_id`=`i`.`item_id` AND `p`.`sold`=false";
+        $res = $this->select($query);
+
+        if($res['state'])
+            return $res['data'];
+        else
+            return array();
+    }
+
+    public function sellProduct($model_id){
+        $query = "UPDATE `product` SET `sold`=true WHERE `model_id`='$model_id'";
+        $res = $this->update($query);
+        return $res['state'];
+    }
     
 }

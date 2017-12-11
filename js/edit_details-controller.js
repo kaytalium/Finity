@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+    /**
+     * Controller for the Product Detail
+     */
+
      //Edit category plus, edit, and close icon 
      cat_plus    = $('#edit_plus')
      cat_pencil  = $('#edit_pencil')
@@ -155,6 +159,73 @@ $(document).ready(function(){
     })
 
 
+
+    /**
+     * Controller for the Reduce Stock  
+     */
+    rs_item_table           = $(".item_table")
+    rs_sold_container       = $("#rs_sold_container")
+    rs_avail_container      = $("#rs_avail_container")
+
+    rs_check                = $(".rs_check")
+    rs_qty_sold             = $("#rs_qty_sold")
+    rs_amt_sold             = $("#rs_amt_sold")
+    rs_total_qty            = $("#rs_total_qty")
+    rs_avail_qty            = $("#rs_avail_qty")
+    rs_avail_amt            = $("#rs_avail_amt")
+    rs_ok_btn               = $("#rs_ok_btn")
+
+
+    rs_avail_container.hide()
+    rs_sold_container.hide()
+
+    qty_sold = 0;
+    total_avail = rs_total_qty.html()
+    check_holder = {};
+    
+    selling_price = 0;
+    counter = 0;
+    rs_check.click(function(){
+        counter = 0;
+        $(this).parent('td').siblings('td').each(function(id, td){
+            el = Number($(td).html().replace(/[^0-9\.-]+/g,""))
+            selling_price = el
+        })
+        check_holder[$(this).val()] = $(this).prop('checked')
+        $.each(check_holder, function(k, v){
+            if(v){
+                counter += 1
+            }
+        })
+        //console.log("Counter: "+counter);
+        //console.log(check_holder)
+        if(counter>0){
+            rs_sold_container.delay(200).fadeIn(600, function(){
+                rs_avail_container.fadeIn(600)
+            })
+        }else{
+            rs_avail_container.fadeOut(600)
+            rs_sold_container.fadeOut(600)
+        }
+
+        qty_sold = counter * selling_price
+        
+
+        rs_qty_sold.html(counter)
+        rs_amt_sold.formatMoney(qty_sold)
+
+        diff = total_avail - counter
+        rs_avail_qty.html(diff)
+        rs_avail_amt.formatMoney(diff * selling_price)
+    })
+
+    rs_ok_btn.click(function(e){
+        e.preventDefault()
+        if(counter>0){
+            $('#rs_form').submit();
+        }
+    })
+
 })
 
 Date.prototype.toDateInputValue = (function() {
@@ -162,3 +233,10 @@ Date.prototype.toDateInputValue = (function() {
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
     return local.toJSON().slice(0,10);
 });
+
+jQuery.fn.extend({
+formatMoney : function(v){
+    this.html('$' + parseFloat(v, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
+}
+
+})
