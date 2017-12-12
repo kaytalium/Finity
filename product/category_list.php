@@ -1,6 +1,14 @@
 <ul class="cat-list">
     <?php
-        $catItems = $prolist->getCategories();
+        
+        $catlist = $prolist->getCategories();
+        $catItems = array();
+        $i = 0;
+        foreach($catlist as $key=>$val){
+            $catItems[$i]['category'] = $val['category'];
+            $i++;
+        }
+
         asort($catItems);
         $len = count($catItems)-1;
         function isActive($cat, $userSelectCat){
@@ -13,8 +21,8 @@
             $selectedCat = $catItems[$len];
         }
         foreach($catItems as $key=>$cat){
-            $css = isActive($cat, $selectedCat);
-            echo '<li><a href="'.$_SERVER["PHP_SELF"].'?q='.$cat.'&v=catreq" class="'.$css.'">'.$cat.'</a></li>';
+            $css = isActive($cat['category'], $selectedCat);
+            echo '<li><a href="'.$_SERVER["PHP_SELF"].'?q='.$cat['category'].'&v=catreq" class="'.$css.'">'.$cat['category'].'</a></li>';
         }
     ?>
 </ul>
