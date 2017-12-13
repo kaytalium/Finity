@@ -45,7 +45,7 @@ $(document).ready(function(){
         cat_plus.show()
         cat_pencil.show()
         item_cat.show()
-        edit_input.attr('name','category')
+        edit_input.attr('name','category_id')
         edit_input.hide()
         edit_input.val('empty')
     })
@@ -67,9 +67,9 @@ $(document).ready(function(){
         $('#'+$(this).html().toLowerCase().replace(" ","_")).delay(600).fadeIn(300)
     })
     
-    /**
-     * Controller for the Update Stock  
-     */
+    /*************************************************************************************
+     *                          CONTROLLER FOR THE UPDATE STOCK
+     *************************************************************************************/
 
      //Add Supplier plus, edit, and close icon 
      add_plus    = $('#add_plus')
@@ -88,21 +88,24 @@ $(document).ready(function(){
     add_plus.click(function(){
         add_pencil.hide()
         add_close.show()
+        supplier_input.attr('name',"new_supplier")
         supplier_input.show()
         supplier_sel.hide()
         $(this).hide()
     })
 
     add_pencil.click(function(){
-        $sel_val = supplier_sel.val();
-        console.log('Selected Len: '+$sel_val.length)
-        if($sel_val.length > 1){
+        
+        $val = supplier_sel.find("option:selected").text()
+        console.log('Selected Len: '+$val)
+        if($val != '--Supplier--'){
             add_plus.hide();
             add_close.show()
             $(this).hide()
             supplier_sel.hide()
+            supplier_input.attr('name',"edit_supplier")
             supplier_input.show(function(){
-                $(this).val(supplier_sel.val())
+                $(this).val($val)
             })
         }else{
             alert("No Supplier was selected")
@@ -115,6 +118,7 @@ $(document).ready(function(){
         add_plus.show()
         add_pencil.show()
         supplier_sel.show()
+        supplier_input.attr('name',"supplier_id")
         supplier_input.hide()
         supplier_input.val('')
     })
@@ -160,9 +164,9 @@ $(document).ready(function(){
 
 
 
-    /**
-     * Controller for the Reduce Stock  
-     */
+    /*************************************************************************************
+     *                          CONTROLLER FOR THE REDUCE STOCK
+     *************************************************************************************/
     rs_item_table           = $(".item_table")
     rs_sold_container       = $("#rs_sold_container")
     rs_avail_container      = $("#rs_avail_container")

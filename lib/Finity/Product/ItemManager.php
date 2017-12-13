@@ -18,7 +18,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
      * $newItem = $im->createNewItem(new Item(array("name"=>"Basketball")))
      */
     public function createNewItem(Item $item) : Item{
-        $id = $this->insert($item->preparedInsertQueryString(), true);
+        $id = $this->insert($item->preparedInsertQueryString());
         $data = $this->select($this->prepare(array("item_id"=>$id)));
         
         return new Item($data['data'][0]);
@@ -103,14 +103,14 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         $i=0;
 
         //Get the category query from the 
-        $query = "SELECT `category` FROM `item_category`";
+        $query = "SELECT `category`,`category_id` FROM `item_category`";
 
         $result = $this->select($query);
         
         //Check to see if result, if true the prepare an array for return; else return enpty array
         if($result['state']){
             foreach($result['data'] as $category){
-                $list_category[$i] = $category[0];
+                $list_category[$i] = $category;
                 $i++;
             }
         }
@@ -248,9 +248,16 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
     /**
      * 
      */
+    public function createNewCategory($new_cat){
+        return $this->insert("INSERT INTO `item_category` (`category`) VALUES ('$new_cat')");
+    }
+
+    /**
+     * 
+     */
     public function editCategory($arg = array()){
         if(!empty($arg)){
-            $query = "UPDATE `item_category` SET `category`='".$arg['edit_category']."' WHERE `category`='".$arg['category']."'";
+            $query = "UPDATE `item_category` SET `category`='".$arg['edit_category']."' WHERE `category_id`='".$arg['category_id']."'";
             $res = $this->update($query);
 
             return $res['state'];
@@ -275,11 +282,16 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
      * Creating new Item Models
      */
     public function createItemModel($arg = array()){
-        $query = "INSERT INTO `product` (`model_id`, `item_id`, `purchase_date`, `supplier`, `purchase_price`)
-        VALUES('".$arg['model_id']."','".$arg['item_id']."', '".$arg['purchase_date']."', '".$arg['supplier']."', '".$arg['purchase_price']."')";
+        //query to input produce
+        $query = "INSERT INTO `product` (`model_id`, `item_id`, `purchase_date`, `purchase_price`)
+        VALUES('".$arg['model_id']."','".$arg['item_id']."', '".$arg['purchase_date']."', '".$arg['purchase_price']."')";
 
+        //query to link product to supplier
+        $supplier_query = "INSERT INTO `item_supplier` (`item_id`,`supplier_id`,`model_id`) VALUES('".$arg['item_id']."', '".$arg['supplier_id']."', '".$arg['model_id']."')";
+        echo $supplier_query;
         if(!empty($arg)){
             $res = $this->insert($query);
+            $sres = $this->insert($supplier_query);
             print_ra($res);
             return $res;
         }else{
@@ -287,6 +299,22 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         }
 
     }
+
+
+    public function updateSupplier($supplier_id, $new_name){
+        $res  =$this->update("UPDATE `supplier` SET `supplier`='$new_name' WHERE `supplier_id`='$supplier_id'");
+       
+        return $res['state'];
+    }
+
+    public function insertNewSupplier($supplier_name){
+        $res = $this->insert("INSERT INTO `supplier` (`supplier`) VALUES('$supplier_name')");
+
+        return $res;
+    }
+
+
+
     /**
      * 
      */
@@ -320,6 +348,15 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         $query = "UPDATE `product` SET `sold`=true WHERE `model_id`='$model_id'";
         $res = $this->update($query);
         return $res['state'];
+    }
+
+    /**
+     * 
+     */
+    public function getSupplierList(){
+        $res = $this->select("SELECT * FROM `supplier`");
+
+        return $res['data'];
     }
     
 }

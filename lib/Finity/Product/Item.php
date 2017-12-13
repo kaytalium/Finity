@@ -10,6 +10,7 @@ class Item{
     private $price = null;
     private $name = null;//[Basketball, Apple]
     private $category = null;//[Sports, fruits]
+    private $category_id=null;
     private $type = null;//[Spalding, Jamaican ],
     private $imageUrl = null;
     private $max = null;
@@ -23,6 +24,7 @@ class Item{
         $this->item_id          = (isset($arg['item_id'])?$arg['item_id']:'');
         $this->name             = (isset($arg['name'])?$arg['name']:'');
         $this->category         = (isset($arg['category'])?$arg['category']:'');
+        $this->category_id      = (isset($arg['category_id'])?$arg['category_id']:'');
         $this->type             = (isset($arg['type'])?$arg['type']:'');
         $this->imageUrl         = (isset($arg['image_url'])?$arg['image_url']:'');
         $this->max              = (isset($arg['maximum'])?$arg['maximum']:'');
@@ -59,6 +61,10 @@ class Item{
         return $this->category;
     }
 
+    public function get_category_id(){
+        return $this->category_id;
+    }
+
     public function get_type(){
         return $this->type;
     }
@@ -91,6 +97,7 @@ class Item{
             'format_price'  => toMoney($this->price),
             'name'          => $this->name,
             'category'      => $this->category,
+            'category_id'   => $this->category_id,
             'type'          => $this->type,
             'image_url'     => $this->imageUrl,
             'maximum'       => $this->max,
@@ -123,6 +130,10 @@ class Item{
         $this->category= $cat;
     }
 
+    public function set_category_id($cat_id){
+        $this->category_id = $cat_id;
+    }
+
     public function set_type($type){
         $this->type = $type;
     }
@@ -148,14 +159,24 @@ class Item{
     }
 
     public function preparedInsertQueryString(){
-        return "INSERT INTO `item`  (`description`,`unit`,`price`,`name`,`category`,`type`, `maximum`, `minimum`) 
-        VALUES('$this->description','$this->unit','$this->price','$this->name','$this->category','$this->type','$this->max','$this->min')";
+        return "INSERT INTO `item`  (`description`,`price`,`name`,`category_id`,`type`, `maximum`, `minimum`) 
+        VALUES('$this->description','$this->price','$this->name','$this->category_id','$this->type','$this->max','$this->min')";
     }
 
     public function preparedDeleteQueryString(){
         return "DELETE FROM `item` WHERE `item_id`='$this->item_id'";
     }
 
+    public function prepareQuntityOnHandQueryString(){
+        return "SELECT count(`product_id`)as 'quantity_on_hand' FROM `product` WHERE `sold`='false' AND `item_id`='$this->item_id'";
+    }
+
+    public function get_available_capacity(){
+        if($this->max>0 && $this->quantityOnHand>0)
+            return $this->max-$this->quantityOnHand;
+        else
+            return $this->max;
+    }
     //Private class functions
 
     private function updateQueryString($paramArray){
@@ -179,8 +200,6 @@ class Item{
         }
     }
 
-    public function prepareQuntityOnHandQueryString(){
-        return "SELECT count(`product_id`)as 'quantity_on_hand' FROM `product` WHERE `sold`='false' AND `item_id`='$this->item_id'";
-    }
+    
 
 }

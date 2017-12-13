@@ -8,17 +8,19 @@
             <i class="fa fa-pencil fa edit_pencil" id="edit_pencil" aria-hidden="true" mytitle="Edit Category"></i>
             <i class="fa fa-close fa edit_close hide" id="edit_close" aria-hidden="true" mytitle="Close"></i>
             </label>
-            <input required="required" type="text" placeholder="Enter new category" name="category" class="input hide" id="it-input-cat" value="empty"/>
-            <select required="required" name="category" id="it-cat">
-                <option value="" hidden>--Category--</option>
+            <input required="required" type="text" placeholder="Enter new category" name="category_id"
+                 class="input hide" id="it-input-cat" value="empty"/>
+            <select required="required" name="category_id" id="it-cat">
+                <option value="0" hidden selected>--Category--</option>
                 <?php
                     $clist = $prolist->getCategories();
+                    
                     foreach($clist as $cat){
-                        if($cat === $detailItem->get_category())
+                        if($cat['category'] === $detailItem->get_category())
                             $selected = "selected";
                         else
                             $selected = "";
-                        echo '<option value="'.$cat.'" '.$selected.'>'.$cat.'</option>';
+                        echo '<option value="'.$cat['category_id'].'" '.$selected.'>'.$cat['category'].'</option>';
                     }
                 
                 ?>
@@ -42,7 +44,7 @@
         <div class="edit_price">
             <label for="price">Price</label>
             <input required class="input" id="it-price" type="number" 
-            step="0.01" min="0" name="price" placeholder="Enter the Price"
+            step="0.01" min="0" max="1000000" name="price" placeholder="Enter the Price"
             value="<?php echo $detailItem->get_price(); ?>"/>
         </div>
 
@@ -54,14 +56,14 @@
 
         <div class="edit_min">
             <label for="price">Minimum Stock</label>
-            <input required class="input" id="it-min" type="number" min="0" 
+            <input required class="input" id="it-min" type="number" min="1" max="24000"
             name="minimum" placeholder="Enter Minimum Capacity"
             value="<?php echo $detailItem->get_minimum(); ?>"/>
         </div>
 
         <div class="edit_max">
             <label for="type">Maximum Stock</label>
-            <input required id="it-max" class="input" type="number" min="0" 
+            <input required id="it-max" class="input" type="number" min="1" max="24000" 
             name="maximum" placeholder="Enter Maximum Capacity"
             value="<?php echo $detailItem->get_maximum(); ?>"/>
         </div>

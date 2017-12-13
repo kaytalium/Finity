@@ -1,8 +1,8 @@
 <?php 
-    $item_c = $detailItem->get_quantity_on_hand();
+    $item_c = ($detailItem->get_quantity_on_hand()?$detailItem->get_quantity_on_hand():0);
     $sel = 0;
     $diff = $item_c - $sel;
-    $price = $detailItem->get_price();
+    $price = ($detailItem->get_price()?$detailItem->get_price():0);
 
 ?>
 <div class="row">

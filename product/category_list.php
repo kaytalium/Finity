@@ -18,7 +18,7 @@
                 return '';
         }
         if(empty($selectedCat)){
-            $selectedCat = $catItems[$len];
+            $selectedCat = $catItems[0]['category'];
         }
         foreach($catItems as $key=>$cat){
             $css = isActive($cat['category'], $selectedCat);

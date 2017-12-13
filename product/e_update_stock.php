@@ -17,21 +17,14 @@
             <i class="fa fa-pencil fa add_pencil" id="add_pencil" aria-hidden="true" mytitle="Edit Supplier"></i>
             <i class="fa fa-close fa add_close hide" id="add_close" aria-hidden="true" mytitle="Close"></i>
         </label>
-        <input required="required" type="text" placeholder="Enter Supplier" name="supplier" class="input hide" id="us_input_supplier">
-        <select required="required" name="supplier" id="us_sel_supplier" class="us_sel_supplier">
-                <option value="" hidden>--Supplier--</option>
-                <option value="Dell">Dell</option>
-                <option value="Hewlett Packard">Hewlett Packard</option>
+        <input required="required" type="text" placeholder="Enter Supplier" name="" class="input hide" id="us_input_supplier">
+        <select required="required" name="supplier_id" id="us_sel_supplier" class="us_sel_supplier">
+                <option value="" hidden selected>--Supplier--</option>
                 <?php
-                    // $clist = $prolist->getCategories();
-                    // foreach($clist as $cat){
-                    //     if($cat === $detailItem->get_category())
-                    //         $selected = "selected";
-                    //     else
-                    //         $selected = "";
-                    //     echo '<option value="'.$cat.'" '.$selected.'>'.$cat.'</option>';
-                    // }
-                
+                    $clist = $prolist->getSupplierList();
+                    foreach($clist as $obj){
+                        echo '<option value="'.$obj['supplier_id'].'">'.$obj['supplier'].'</option>';
+                    }
                 ?>
         </select>
         
@@ -49,7 +42,7 @@
         <input required class="input f-left" id="us_input_unit" type="number" 
         name="unit" placeholder="Enter your Unit" 
         value=""/>
-        <div class="add_unit_capacity">Available Capacity <span id="us_cap_amt"><?php echo ($detailItem->get_maximum()-$detailItem->get_quantity_on_hand()); ?></span> </div>
+        <div class="add_unit_capacity">Available Capacity <span id="us_cap_amt"><?php echo $detailItem->get_available_capacity(); ?></span> </div>
     </div>
 
     <div class="row">

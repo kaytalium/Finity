@@ -43,8 +43,8 @@ $s  = (isset($_GET['s'])?$_GET['s']:'');
             <div class="mini_menu">
                 <ul id="mini_menu_ul">
                     <li class="active">Product Detail</li>
-                    <li>Reduce Stock</li>
-                    <li>Update Stock</li>
+                    <?php echo ($detailItem->get_quantity_on_hand()?'<li>Reduce Stock</li>':'')?>
+                    <?php echo ($itemid>0?'<li>Update Stock</li>':''); ?>
                 </ul>
             </div>
 

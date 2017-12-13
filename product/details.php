@@ -59,7 +59,7 @@
                 </div> 
             
                 <div class="display_quantity">
-                    <p>Quantity: <?php echo $detailItem->get_unit(); ?></p>
+                    <p>Quantity: <?php echo $detailItem->get_quantity_on_hand(); ?></p>
                 </div> 
             
                 <div class="display_type">
