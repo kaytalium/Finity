@@ -13,7 +13,7 @@
 }
 
 .m_report_container, .adhoc_report_container{
-    padding: 15px;
+    /* padding: 15px; */
     /* background: red; */
     height: 100%;
     overflow: hidden;
@@ -23,37 +23,57 @@
 
 .addhoc_controller{
     width: 350px;
+    height: 100%;
     float: left;
     /* border-right: 1px solid red; */
     /* background: blue; */
+    padding: 15px;
+}
+.addhoc_controller > table {
+    height: 60%;
+    width: 100%;
+    /* background: red; */
+}
+.addhoc_controller > table > tr > td{
+    background: palevioletred;
+}
+.addhoc_controller > table > tr > td:first-child{
+    width: 30%;
+    background: red;
 }
 
-.addhoc_controller > table > tr > td{
-    width: 50%;
+.addhoc_controller > table > tr > td:nth-child(2){
+    width: 70%;
+    background: blue;
 }
 
 .adhoc_table{
     /* overflow-y: scroll; */
     border-left:1px solid rgb(189, 198, 207);
     height: 101%;
-    width: 70%;
+    width: 65%;
     float: left;
-    margin-top: -100px;
+    margin-top: -70px;
+    overflow-y: scroll;
 }
 
 .adhoc_table > table{
     /* background: blue;  */
     width: 100%;
     padding-bottom: 200px;
+    
     /* border:1px solid rgb(111, 112, 111); */
 }
 
 .adhoc_table > table > tr > td{
-    border:1px solid rgb(111, 112, 111);
+    /* border-left:1px solid rgb(111, 112, 111); */
+    text-align: center;
 }
 
 .adhoc_table > table > tr > th{
     height: 30px;
+    color: #fff;
+    background: rgb(60, 60, 200);
 }
 
 .adhoc_table > table > tr > td:first-child{
@@ -100,12 +120,13 @@ input[type="text"], .num{
  * 
  ***************************************************************************/
 .m_report_container{
-     width: 2000px;
+     /* width: 2000px; */
+     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 .left{
     float: left;
     width: 10%;
-    height: 30%;
+    height: 30%; 
     padding: 0;
     margin: 0;
 }
@@ -131,17 +152,17 @@ cursor: pointer;
     padding-bottom: 15px;
 }
 /*styling report*/
-.report_container{
+.m_report_container .report_container{
     text-align: left;
 }
-h3{
+.m_report_container h3{
     text-align: center;
 }
- h4{
+.m_report_container h4{
     text-align: left;
 }
 /*styling the table*/
-table{
+.m_report_container table{
     width: 100%;
     table-layout: fixed;
 }
@@ -153,7 +174,7 @@ table{
      margin-top:0px;
      border: 1px solid rgba(255,255,255,0.3);
 }
-th{
+.m_report_container th{
     padding: 20px 15px;
     text-align: left;
     font-weight: 500;
@@ -161,7 +182,7 @@ th{
     color: blak;
     text-transform: uppercase;
   }
-  td{
+.m_report_container td{
     padding: 15px;
     text-align: left;
     vertical-align:middle;
@@ -169,10 +190,4 @@ th{
     font-size: 15px;
     color: black;
     border-bottom: solid 1px rgba(255,255,255,0.1);
-  }
-  body{
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-  }
-  
- 
-  
+  }  

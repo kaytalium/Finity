@@ -9,3 +9,7 @@ jQuery.fn.extend({
         this.html('$' + parseFloat(v, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString())
     }
 })
+
+toMoneyFormat = (function(n){
+    return '$' + parseFloat(n, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString()
+})

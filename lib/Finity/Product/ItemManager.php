@@ -143,9 +143,9 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
 
     private function prepareAdhocReport($paramArray){
         if(!empty($paramArray)){
-            $q = 'SELECT * FROM item Where ';
+            $q = 'SELECT * FROM `searchable` Where ';
             $arg = array_filter($paramArray,function($k){
-                return $k == "unit" || $k =="price" || $k =="name" || $k == "category";
+                return $k == "quantity_on_hand" || $k =="price" || $k =="name" || $k == "category";
             }, ARRAY_FILTER_USE_KEY);
 
             $count = count($arg);
@@ -163,7 +163,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
                         $q .= "`".$key."`".$paramArray['price_logic']."'".$value."'";
                     break;
 
-                    case "unit":
+                    case "quantity_on_hand":
                         $q .= "`".$key."`".$paramArray['unit_logic']."'".$value."'";
                     break;
                 }

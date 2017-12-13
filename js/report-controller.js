@@ -81,8 +81,8 @@ function generate_report(tbl,userData){
                             '<td>'+el.category+'</td>',
                             '<td>'+el.name+'</td>',
                             '<td>'+el.type+'</td>',
-                            '<td>'+el.unit+'</td>',
-                            '<td>'+el.price+'</td>',
+                            '<td>'+el.quantity_on_hand+'</td>',
+                            '<td>'+toMoneyFormat(el.price)+'</td>',
                         '</tr>'
                         ].join(''));
                         
@@ -120,8 +120,9 @@ function setCheck(){
     
     if($ck_qty.prop('checked')){
         data.state = true
-        data.x.unit = $ck_qty_input.val()
+        data.x.quantity_on_hand = $ck_qty_input.val()
         data.x.unit_logic = $qty_logic.val()
     }
     return data; 
 }
+

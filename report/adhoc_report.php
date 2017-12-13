@@ -10,7 +10,7 @@
        <table>
            <tr>
                <td><input type="checkbox" name="" class="checkbox" id="ck_name">
-        <label>Name</label></td>
+                    <label>Name</label></td>
                <td>
                    <div id="name_input_box">
                         <input type="text" name="" id="ck_name_input">
@@ -20,7 +20,7 @@
            </tr>
            <tr>
                <td><input type="checkbox" name="" class="checkbox" id="ck_qty">
-        <label>Quantity on hand</label></td>
+                    <label>Quantity on hand</label></td>
                <td>
                    <div id="qty_sel_input_box">
                         <select name="qty_logical_con" id="qty_logic" class="logics">
