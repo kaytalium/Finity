@@ -20,7 +20,7 @@
 
     <title>Report</title>
     <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/details-controller.js"></script>
+    <script src="js/finity.js"></script>
     <script src="js/report-controller.js"></script>
 </head>
 <?php
