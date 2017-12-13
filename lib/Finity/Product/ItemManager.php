@@ -203,7 +203,7 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
                 
         }
         
-        $construct = " SELECT * FROM `item` WHERE $construct ";
+        $construct = " SELECT * FROM `searchable` WHERE $construct ";
 
         //echo $construct;
         $res = $this->select($construct);

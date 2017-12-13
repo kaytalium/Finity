@@ -23,6 +23,18 @@ if($searchWord){
         {
             echo search_item($item);
         }
+    }else{
+        ?>
+        <div class="result_info">
+        <span>
+        <?php echo '0 item found'; ?>
+        </span>
+
+        <span class="search_word">
+            <?php echo '<br>"'.$searchWord.'"'; ?>
+        </span>
+   </div>
+   <?php
     }
         ?>
         </div> 

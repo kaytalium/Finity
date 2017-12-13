@@ -29,7 +29,7 @@ class Item{
         $this->imageUrl         = (isset($arg['image_url'])?$arg['image_url']:'');
         $this->max              = (isset($arg['maximum'])?$arg['maximum']:'');
         $this->min              = (isset($arg['minimum'])?$arg['minimum']:'');
-        $this->quantityOnHand   = (isset($arg['quantity_on_hand'])?$arg['quantityOnHand']:'');
+        $this->quantityOnHand   = (isset($arg['quantity_on_hand'])?$arg['quantity_on_hand']:'');
     }
 
     //Getters

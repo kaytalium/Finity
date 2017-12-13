@@ -48,7 +48,7 @@
             <div class="category">'.$item->get_category().'</div> 
             <div class="name"><a href="product.php?c='.$item->get_item_id().'&v=itemreq&s=true">'.$item->get_name().'</a></div> 
             <div class="price">' .$item->get_formatted_price().'</div>
-            <div class="quantity">In Stock: '.$item->get_unit().'</div>
+            <div class="quantity">In Stock: '.$item->get_quantity_on_hand().'</div>
             <a href="'.$_SERVER["PHP_SELF"].'"></a>
         </div>
         </div>';

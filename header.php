@@ -1,7 +1,8 @@
 <?php 
 $img_url = (isset($_SESSION['image_url'])?$_SESSION['image_url']:"users/profile/default.png");
 if(isset($_GET['searchbox'])){
-    $searchWord = strtolower((isset($_GET["searchbox"])?$_GET["searchbox"]:''));
+    $searchWord = filter_input(INPUT_GET,'searchbox',FILTER_SANITIZE_SPECIAL_CHARS);
+    $searchWord = strtolower((isset($searchWord)?$searchWord:""));
     $_SESSION['searchWord'] = $searchWord;
 }
 
