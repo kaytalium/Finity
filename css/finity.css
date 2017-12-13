@@ -55,9 +55,9 @@ body, html{
 
 
 .sub-menu{
-     display: none; 
+    display: none; 
     position: absolute;
-    z-index: 10;
+    z-index: 1;
     background: #fff;
     color: #fff;
     list-style: none;
@@ -65,7 +65,9 @@ body, html{
     padding: 0;
     border: 1px solid #eaeaea;
     border-radius: 5px;
-    margin-top: 5px; 
+    margin-top: 0px; 
+    box-shadow: 2px 2px 2px #232F3D;
+    
 }
 
 .sub-menu > li{
@@ -87,6 +89,6 @@ body, html{
     color: #d1990f;
 }
 
-a:hover .sub-menu{
+.r_anchor:hover .sub-menu{
     display: block;
 }
