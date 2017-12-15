@@ -1,28 +1,9 @@
-phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1:3306
--- Generation Time: Dec 01, 2017 at 02:01 AM
--- Server version: 5.7.19
--- PHP Version: 7.1.9
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
---
--- Database: `inventory`
---
-
--- --------------------------------------------------------
 -- phpMyAdmin SQL Dump
 -- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Dec 05, 2017 at 09:58 PM
+-- Generation Time: Dec 15, 2017 at 04:30 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
@@ -38,49 +19,227 @@ USE `inventory`;
 -- --------------------------------------------------------
 
 --
+-- Stand-in structure for view `inventory_report`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `inventory_report`;
+CREATE TABLE `inventory_report` (
+`category_id` int(11)
+,`name` varchar(255)
+,`supplier` varchar(255)
+,`purchase_price` float
+,`selling_price` float
+,`purchase_date` date
+,`quantity_on_hand` bigint(21)
+,`amount_order` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `item`
 --
 
 DROP TABLE IF EXISTS `item`;
-CREATE TABLE IF NOT EXISTS `item` (
-  `item_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `item` (
+  `item_id` int(11) NOT NULL,
+  `category_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
-  `unit` int(11) DEFAULT NULL,
+  `minimum` int(11) DEFAULT NULL,
+  `maximum` int(11) NOT NULL,
   `price` float DEFAULT NULL,
-  `image_url` varchar(255) NOT NULL,
-  PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+  `image_url` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`item_id`, `name`, `description`, `category`, `type`, `unit`, `price`, `image_url`) VALUES
-(1, 'Basketball', 'The NBA Street Phantom Basketball Soft Grip Technology comes with ultra durable soft grip cover and wide channel design, this ball will provide great grip and improved recognition. ', 'Sport', 'Rubber', 34, 15678.9, 'basketball.jpg'),
-(2, 'Addidas Football', 'Adidas 16 MLS GLI Ball [WHITE/SHOPIN/BLACK] \r\n', 'Sport', 'Ball', 28, 3533.42, 'soccer2.png'),
-(3, 'Wilson', 'V-matrix technology for a large sweet spot for increased power\r\nStop shock sleeves for reduced racket vibration and greater control \r\nAirlite alloy for lightweight strength \r\n', 'Sport', 'Racket', 10, 4500, 'tennis.png'),
-(4, 'Cricket Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play.', 'Sport', 'Bat', 15, 8408.74, 'cricket.jpg'),
-(5, 'Hockey Stick', 'Quick strike Saber taper \r\nTrue 1 Phantom feel \r\nMinimus carbon \r\nErgo shaft shape \r\nPro grip for locking your hands in place \r\n', 'Sport', 'Stick', 20, 7558.74, 'hockey.jpg'),
-(6, 'Baseball Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play ', 'Sport', 'Bat', 10, 5164.74, 'baseball.jpg'),
-(7, 'Rugby Ball', 'Synthetic latex bladder \r\nSize 5 \r\nArrives deflated \r\nOfficially licensed ball \r\nTraining/Recreational/Souvenir ', 'Sport', 'Ball', 9, 1888.74, 'rugby.jpg'),
-(8, 'Samsung Galaxy Tablet', '9.7-inch XGA Touchscreen Display with a 1024 x 768 resolution \r\n1.2GHz Quad Core Qualcomm APQ 8016 Processor; 1.5GB RAM Memory, 16GB Flash Memory(expandable up to 128GB with micoSD slot) ', 'Electronics', 'Tablet', 8, 23814, 'samsungtab.jpg'),
-(9, 'FitBit', 'See simplified heart rate zones for quickly checking exercise intensity during workouts with PurePulse(TM) continuous, wrist-based heart rate monitoring\r\nUse multi-sport tracking to track runs, cardio, cross-training, biking and more.', 'Electronics', 'Watch', 10, 25067.7, 'fitbit.jpg'),
-(10, 'Sony Headphones', 'Hear music at its best with Hi-Res Audio compatibility, Connect and stream music easily with Bluetooth, Focus on the music with Digital Noise Cancelling.  \r\nListen smarter with Noise Cancelling that adapts to your surroundings.\r\n', 'Electronics', 'Headphones', 5, 39160.8, 'headphone.jpg'),
-(11, 'JBL Bluetooth Speakers', 'Bluetooth - Wirelessly connect up to 3 smartphones or tablets to the speaker and take turns playing powerful stereo sound. \r\nBuilt-in rechargeable Li-ion battery supports up to 20 hours of playtime and charges smartphones and tablets via USB.', 'Electronics', 'Speakers', 15, 14742, 'speakers.jpg'),
-(12, 'Canon Mirrorless Camera', '24.2 Megapixel CMOS (APS-C) Sensor. \r\nBuilt-in Wi-Fi*, NFC** and Bluetooth***. \r\nIntuitive Touchscreen, 3.0-inch Tilt-type LCD. ', 'Electronics', 'Camera', 5, 62874, 'canon.jpg'),
-(13, 'Sony Mirrorless Lens', 'Lens not Zoomable \r\nExceptionally portable and versatile for everyday use \r\nMinimum working distance of only 9.75cm with 1:1 magnification \r\n', 'Electronics', 'Camera Lens', 2, 31878, 'lens.jpg'),
-(14, 'X-box One Controller', 'Feel the action with Impulse Triggers. Impulse Triggers deliver fingertip vibration feedback so you can feel every jolt and crash in high definition. \r\nResponsive thumbsticks and an enhanced D-pad provide greater precision. ', 'Electronics', 'Game Controller', 5, 8566.74, 'xbox.jpg'),
-(15, 'Sony Playstation', 'Your Favorite Franchises Live Here: Dig into a huge catalog of exclusive games, including generation defining titles like The Last of Us and entries in popular franchises like LittleBigPlanet, God of War, Gran Turismo, and UNCHARTED.', 'Electronics', 'Game Console', 3, 45018.7, 'playstation.jpg'),
-(16, 'HP Pavilion Monitor', 'Monitor: 21.5-inch diagonal Full HD (1920x1080) IPS; Enjoy vibrant images with 178-degree wide-viewing angles. \r\nResolution and aspect ratio: Full HD and 16:9; 2 million pixels for crystal-clear visuals and vibrant image quality', 'Computer', 'Monitor', 4, 12598.7, 'monitor1.jpg'),
-(17, 'Dell 2-in-1 Laptop', '8th Generation Intel Core i5-8250U Processor (Quad Core, 6MB Cache, up to 3.4 GHz) \r\n8GB 2400MHz DDR4 up to [32GB], (additional memory sold separately) [8GB1D] \r\n1TB 5400RPM Hard Drive Storage, No Optical Drive ', 'Computer', 'Laptop', 3, 81898.7, 'dellcomputer.jpg'),
-(18, 'TP-Link', 'FASTER WIFI - Stream 4K Ultra HD video and game online without lag over a clear 5GHz band while using the 2.4GHz band for everyday tasks \r\nWIFI FOR ALL YOUR DEVICES - Simultaneous dual band networks, 2.4GHz (600Mbps) and 5GHz (1300Mbps).', 'Computer', 'Router', 6, 13453, 'router.jpg'),
-(19, 'Espon', 'Cartridge-free printing — comes with up to 2 years of ink in the box (1). \r\nIncludes enough ink to print up to 4,000 pages black/6,500 color (2) — equivalent to about 20 ink cartridge sets (3). \r\n', 'Computer', 'Printer', 3, 28978.7, 'printer.jpg'),
-(20, 'HP Sprocket ', 'A PHOTO PRINTER FOR ON-THE-GO FUN – Print and share 2x3-inch snapshots or stickers from your iOS or Android devices with a simple tap \r\nPERFECTLY PORTABLE –this lightweight, portable photo printer easily fits into a pocket or backpack ', 'Computer', 'Portable Printer', 8, 16373.7, 'sprocket.jpg'),
-(21, 'Epson Projector', 'Up to 3x Higher Color Brightness, and reliable performance - 3LCD, 3-chip technology \r\nColor Brightness: 2200 lumens, White Brightness: 2200 lumens ', 'Computer', 'Projector', 4, 75598.7, 'projector.jpg'),
-(22, 'Acer All in One', '7th Generation Intel Core i5-7400T Processor (Up to 3.0GHz) \r\n23.8\" Full HD Widescreen IPS LED Back-lit Touch Screen Display (1920 x 1080) \r\n12GB DDR4 Memory, 1TB 5400RPM Hard Drive. Processor Core : Quad-core ', 'Computer', 'All in One Computer', 6, 84418.7, 'allinone.jpg');
+INSERT INTO `item` (`item_id`, `category_id`, `name`, `description`, `type`, `minimum`, `maximum`, `price`, `image_url`) VALUES
+(1, 4, 'Basketball', 'The NBA Street Phantom Basketball Soft Grip Technology comes with ultra durable soft grip cover and wide channel design, this ball will provide great grip and improved recognition. ', 'Rubber', 34, 102, 15678.9, 'basketball.jpg'),
+(2, 3, 'Addidas Football', 'Adidas 16 MLS GLI Ball [WHITE/SHOPIN/BLACK] \r\n', 'Ball', 28, 84, 3533.42, 'soccer2.png'),
+(3, 3, 'Wilson', 'V-matrix technology for a large sweet spot for increased power\r\nStop shock sleeves for reduced racket vibration and greater control \r\nAirlite alloy for lightweight strength \r\n', 'Racket', 10, 30, 4500, 'tennis.png'),
+(4, 3, 'Cricket Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play.', 'Bat', 15, 45, 8408.74, 'cricket.jpg'),
+(5, 3, 'Hockey Stick', 'Quick strike Saber taper \r\nTrue 1 Phantom feel \r\nMinimus carbon \r\nErgo shaft shape \r\nPro grip for locking your hands in place \r\n', 'Stick', 20, 60, 7558.74, 'hockey.jpg'),
+(6, 3, 'Baseball Bat', 'Handcrafted in wood Excellent handle, reinforced with firmly wound string, and rubber sleeve Perfect bat for any home or club play ', 'Bat', 10, 30, 5164.74, 'baseball.jpg'),
+(7, 3, 'Rugby Ball', 'Synthetic latex bladder \r\nSize 5 \r\nArrives deflated \r\nOfficially licensed ball \r\nTraining/Recreational/Souvenir ', 'Ball', 9, 27, 1888.74, 'rugby.jpg'),
+(8, 2, 'Samsung Galaxy Tablet', '9.7-inch XGA Touchscreen Display with a 1024 x 768 resolution &#13;&#10;1.2GHz Quad Core Qualcomm APQ 8016 Processor; 1.5GB RAM Memory, 16GB Flash Memory(expandable up to 128GB with micoSD slot) ', 'Tablet', 50, 200, 25814, 'samsungtab.jpg'),
+(9, 2, 'FitBit', 'See simplified heart rate zones for quickly checking exercise intensity during workouts with PurePulse(TM) continuous, wrist-based heart rate monitoring\r\nUse multi-sport tracking to track runs, cardio, cross-training, biking and more.', 'Watch', 100, 600, 25067.7, 'fitbit.jpg'),
+(10, 2, 'Sony Headphones', 'Hear music at its best with Hi-Res Audio compatibility, Connect and stream music easily with Bluetooth, Focus on the music with Digital Noise Cancelling.  \r\nListen smarter with Noise Cancelling that adapts to your surroundings.\r\n', 'Headphones', 45, 150, 39160.8, 'headphone.jpg'),
+(11, 2, 'JBL Bluetooth Speakers', 'Bluetooth - Wirelessly connect up to 3 smartphones or tablets to the speaker and take turns playing powerful stereo sound. \r\nBuilt-in rechargeable Li-ion battery supports up to 20 hours of playtime and charges smartphones and tablets via USB.', 'Speakers', 25, 75, 14742, 'speakers.jpg'),
+(12, 2, 'Canon Mirrorless Camera', '24.2 Megapixel CMOS (APS-C) Sensor. &#13;&#10;Built-in Wi-Fi*, NFC** and Bluetooth***. &#13;&#10;Intuitive Touchscreen, 3.0-inch Tilt-type LCD. ', 'Camera', 5, 0, 64874, 'canon.jpg'),
+(13, 2, 'Sony Mirrorless Lens', 'Lens not Zoomable \r\nExceptionally portable and versatile for everyday use \r\nMinimum working distance of only 9.75cm with 1:1 magnification \r\n', 'Camera Lens', 2, 0, 31878, 'lens.jpg'),
+(14, 2, 'X-box One Controller', 'Feel the action with Impulse Triggers. Impulse Triggers deliver fingertip vibration feedback so you can feel every jolt and crash in high definition. \r\nResponsive thumbsticks and an enhanced D-pad provide greater precision. ', 'Game Controller', 5, 0, 8566.74, 'xbox.jpg'),
+(15, 2, 'Sony Playstation', 'Your Favorite Franchises Live Here: Dig into a huge catalog of exclusive games, including generation defining titles like The Last of Us and entries in popular franchises like LittleBigPlanet, God of War, Gran Turismo, and UNCHARTED.', 'Game Console', 3, 0, 45018.7, 'playstation.jpg'),
+(16, 5, 'HP Pavilion Monitor', 'Monitor: 21.5-inch diagonal Full HD (1920x1080) IPS; Enjoy vibrant images with 178-degree.', 'Monitor', 30, 90, 12598.7, 'monitor1.jpg'),
+(17, 1, 'Dell 2-in-1 Laptop', '8th Generation Intel Core i5-8250U Processor (Quad Core, 6MB Cache, up to 3.4 GHz). 8GB 2400MHz DDR4 up to [32GB], (additional memory sold separately) [8GB1D] 1TB 5400RPM Hard Drive.', 'Laptop', 16, 30, 81898.7, 'dellcomputer.jpg'),
+(18, 1, 'TP-Link', '                            FASTER WIFI - Stream 4K Ultra HD video and game online without lag over a clear 5GHz band while using the 2.4GHz band for everyday tasks &#13;&#10;WIFI FOR ALL YOUR DEVICES - Simultaneous dual band networks, 2.4GHz (600Mbps) an', 'Router', 6, 20, 13453, 'router1.jpg'),
+(19, 1, 'Espon', 'Cartridge-free printing — comes with up to 2 years of ink in the box (1). &#13;&#10;Includes enough ink to print up to 4,000 pages black/6,500 color (2) — equivalent to about 20 ink cartridge sets (3). &#13;&#10;', 'Printer', 3, 16, 28978.7, 'printer.jpg'),
+(20, 1, 'HP Sprocket ', 'A PHOTO PRINTER FOR ON-THE-GO FUN – Print and share 2x3-inch snapshots or stickers from your iOS or Android devices with a simple tap \r\nPERFECTLY PORTABLE –this lightweight, portable photo printer easily fits into a pocket or backpack ', 'Portable Printer', 8, 0, 16373.7, 'sprocket.jpg'),
+(21, 1, 'Epson Projector', 'Up to 3x Higher Color Brightness, and reliable performance - 3LCD, 3-chip technology \r\nColor Brightness: 2200 lumens, White Brightness: 2200 lumens ', 'Projector', 4, 0, 75598.7, 'projector.jpg'),
+(22, 1, 'Acer All in One', '7th Generation Intel Core i5-7400T Processor (Up to 3.0GHz) \r\n23.8\" Full HD Widescreen IPS LED Back-lit Touch Screen Display (1920 x 1080) \r\n12GB DDR4 Memory, 1TB 5400RPM Hard Drive. Processor Core : Quad-core ', 'All in One Computer', 12, 36, 84418.7, 'allinone.jpg'),
+(23, 1, 'Dell Laptop', 'Awesome machine from dell', 'Laptop', 10, 50, 12348.8, 'image_holder.png'),
+(24, 1, 'Apple Ipod', 'I have no clue what to write here...', 'Tablet', 25, 100, 60000, 'image_holder.png'),
+(25, 3, 'Some Ball', 'Some Description', 'Some type', 100, 900, 12099, 'image_holder.png'),
+(26, 1, 'Samsung Monitor', 'earsdfd', 'Monitor', 14, 54, 5654, 'image_holder.png'),
+(27, 1, 'Samsung Monitor', 'earsdfd', 'Monitor', 14, 54, 14000, 'image_holder.png'),
+(28, 2, 'Samsung Monitor', 'hd', 'Monitor', 14, 54, 12500, 'image_holder.png'),
+(29, 2, 'Samsung Monitor', 'earsdfd', 'Monitor', 14, 54, 13787, 'image_holder.png'),
+(30, 2, 'Samsung Monitor', 'earsdfd', 'Monitor', 14, 54, 10000, 'image_holder.png'),
+(31, 0, 'Sm', 'asdasd', 'Phone', 3, 5, 34342, 'image_holder.png'),
+(32, 16, 'Samsung Note 8', '10 inch screen', 'Phone', 4, 20, 843510, 'image_holder.png'),
+(33, 2, 'Speaker Box Boom', 'nice and lovely speaker', 'Type musical device', 23, 234, 10000, 'image_holder.png');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item_category`
+--
+
+DROP TABLE IF EXISTS `item_category`;
+CREATE TABLE `item_category` (
+  `category_id` int(11) NOT NULL,
+  `category` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `item_category`
+--
+
+INSERT INTO `item_category` (`category_id`, `category`) VALUES
+(1, 'Computer'),
+(2, 'Electronics X'),
+(3, 'Sport'),
+(4, 'Extreme Sports'),
+(5, 'Super Computer'),
+(16, 'Phablet');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item_supplier`
+--
+
+DROP TABLE IF EXISTS `item_supplier`;
+CREATE TABLE `item_supplier` (
+  `supplier_id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `model_id` varchar(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `item_supplier`
+--
+
+INSERT INTO `item_supplier` (`supplier_id`, `item_id`, `model_id`) VALUES
+(1, 16, '0'),
+(1, 16, '0'),
+(1, 16, 'd65572-16'),
+(1, 16, 'da1c47-16'),
+(1, 16, '95e6c1-16'),
+(1, 16, '7ad57e-16'),
+(1, 16, '80b7d1-16'),
+(1, 16, 'f74df6-16'),
+(1, 16, '788018-16'),
+(1, 16, '3bbe1c-16'),
+(1, 16, '880d9c-16'),
+(1, 16, '2383ba-16'),
+(1, 16, '495d91-16'),
+(1, 16, '69291f-16'),
+(1, 16, '0b1599-16'),
+(1, 16, 'ff8fc3-16'),
+(1, 16, 'c3f6a6-16'),
+(1, 16, '0d9a27-16'),
+(1, 16, '7c62f3-16'),
+(1, 16, '8b3873-16'),
+(1, 16, '4b3361-16'),
+(1, 16, 'f864ed-16'),
+(1, 16, 'a811ba-16'),
+(1, 16, '564a9c-16'),
+(1, 16, '47ba75-16'),
+(1, 16, 'fea5b8-16'),
+(1, 16, 'd55223-16'),
+(1, 16, '278e62-16'),
+(1, 16, '8bbf17-16'),
+(1, 16, '49b6bf-16'),
+(1, 16, '452be3-16'),
+(1, 16, '3cebfe-16'),
+(3, 16, '84299a-16'),
+(3, 16, '8c5300-16'),
+(4, 16, 'ea6284-16'),
+(4, 16, '7e9fda-16'),
+(1, 17, 'a4b93c-17'),
+(1, 17, '1e1c9e-17'),
+(1, 17, 'd12808-17'),
+(1, 17, 'ba2574-17'),
+(1, 17, '591461-17'),
+(1, 17, 'f210ed-17'),
+(1, 17, '58b0d8-17'),
+(1, 17, 'e15ff7-17'),
+(1, 17, '7de255-17'),
+(1, 17, 'fbad7e-17'),
+(5, 33, '230e8c-33'),
+(5, 33, 'a9e99d-33'),
+(5, 33, '7424db-33'),
+(5, 33, 'f895d5-33'),
+(5, 33, 'd0ced8-33'),
+(5, 33, 'fc4464-33'),
+(5, 33, '9cffa4-33'),
+(5, 33, 'a573a1-33'),
+(5, 33, '12ba1c-33'),
+(5, 33, '107b96-33'),
+(5, 33, '53f342-33'),
+(5, 33, 'cd8b44-33'),
+(5, 33, '1f1a02-33'),
+(5, 33, '41e93d-33'),
+(5, 33, '176d61-33'),
+(5, 33, 'fb1831-33'),
+(5, 33, '1db0d5-33'),
+(5, 33, 'c1a142-33'),
+(5, 33, '72ece5-33'),
+(5, 33, 'd094f2-33'),
+(5, 33, 'bf8943-33'),
+(5, 33, '8d36b0-33'),
+(5, 33, 'd810cd-33'),
+(5, 33, 'f5589c-33'),
+(5, 33, '9b1d4e-33'),
+(5, 33, '090f9a-33'),
+(5, 33, '4997ae-33'),
+(5, 33, '6317eb-33'),
+(5, 33, 'd65614-33'),
+(5, 33, '08110a-33'),
+(5, 33, '9dcbf4-33'),
+(5, 33, '84889b-33'),
+(5, 33, 'cd2b87-33'),
+(5, 33, '04a8e8-33'),
+(5, 33, '1686d8-33'),
+(5, 33, 'd4f348-33'),
+(5, 33, '299f85-33'),
+(5, 33, 'b3a23c-33'),
+(5, 33, 'e64450-33'),
+(5, 33, '355a81-33'),
+(5, 33, 'c83f24-33'),
+(5, 33, '5c9ced-33'),
+(5, 33, '9a9736-33'),
+(5, 33, '181d9a-33'),
+(5, 33, '4ebb87-33'),
+(5, 33, '10940d-33'),
+(5, 33, 'cbd175-33'),
+(5, 33, 'ac57f9-33'),
+(5, 33, '83d6d1-33'),
+(5, 33, '51513f-33'),
+(3, 18, '040752-18'),
+(3, 18, '3a2d5c-18'),
+(3, 18, 'bfe97c-18'),
+(3, 18, '9af680-18'),
+(3, 18, '715c70-18'),
+(6, 19, 'ada4a7-19'),
+(6, 19, '04fbe8-19'),
+(6, 19, '3174e1-19'),
+(6, 19, '840d98-19'),
+(6, 19, 'eb3d50-19');
 
 -- --------------------------------------------------------
 
@@ -89,46 +248,233 @@ INSERT INTO `item` (`item_id`, `name`, `description`, `category`, `type`, `unit`
 --
 
 DROP TABLE IF EXISTS `person`;
-CREATE TABLE IF NOT EXISTS `person` (
-  `person_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `person` (
+  `person_id` int(10) NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `lastname` varchar(255) NOT NULL,
   `image_url` varchar(255) NOT NULL,
-  `dob` date NOT NULL,
-  PRIMARY KEY (`person_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+  `dob` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `person`
 --
 
 INSERT INTO `person` (`person_id`, `firstname`, `lastname`, `image_url`, `dob`) VALUES
-(1, 'Ovel', 'Heslop', 'user/profile/default.jpg', '2017-12-22'),
-(2, 'Jim', 'Brown', '', '2004-02-06'),
-(3, 'Jim', 'Brown', '', '2004-02-06'),
-(4, 'Jim', 'Brown', '', '2004-02-06'),
-(5, 'Jim', 'Brown', '', '2004-02-06'),
-(6, 'Jim', 'Brown', '', '2004-02-06'),
-(7, 'Jim', 'Brown', '', '2004-02-06'),
-(8, 'Jim', 'Brown', '', '2004-02-06'),
-(9, 'Jim', 'Brown', '', '2004-02-06'),
-(10, 'Jim', 'Brown', '', '1997-09-30'),
-(11, 'Jim', 'Brown', '', '1997-09-30'),
-(12, 'Jim', 'Brown', '', '1997-09-30'),
-(13, 'Jim', 'Brown', '', '1997-09-30'),
-(14, 'Jim', 'Brown', '', '1997-09-30'),
-(15, 'Jim', 'Brown', '', '1997-09-30'),
-(16, 'Jim', 'Brown', '', '1997-09-30'),
-(17, 'Jim', 'Brown', '', '1997-09-30'),
-(18, 'Jim', 'Brown', '', '1997-09-30'),
-(19, 'Jim', 'Brown', 'user/profile/default.jpg', '1997-09-30'),
-(20, 'Ovel', 'Heslop', '', '1996-01-13'),
-(21, 'Kelly', 'Logan', '', '1989-09-09'),
+(20, 'Ovel', 'Heslop', 'users/profile/alicia.jpg', '1996-06-20'),
 (22, 'James', 'Tallow', '', '1976-05-12'),
 (23, 'Tricha', 'Thomas', '', '1990-09-30'),
 (24, 'Remy', 'Matthews', '', '1993-06-12'),
-(25, 'Vishous', 'Matthews', '', '1973-03-10'),
-(26, 'Mary', 'Phury', '', '1970-02-23');
+(25, 'Vishouse', 'Matthews', 'users/profile/default.png', '1973-03-10'),
+(29, 'Susan', 'Green', 'users/profile/default.png', '0000-00-00'),
+(30, 'Jay', 'Smith', 'users/profile/default.png', '2008-08-08');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product`
+--
+
+DROP TABLE IF EXISTS `product`;
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `model_id` varchar(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `purchase_date` date NOT NULL,
+  `purchase_price` float NOT NULL,
+  `sold` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `model_id`, `item_id`, `purchase_date`, `purchase_price`, `sold`) VALUES
+(1, '3a4507-16', 16, '2017-12-10', 9000, 1),
+(2, '6652c5-16', 16, '2017-12-10', 9000, 1),
+(3, '2fad73-16', 16, '2017-12-10', 9000, 1),
+(5, '01cf2d-16', 16, '2017-12-10', 9000, 1),
+(6, '2c6b6a-16', 16, '2017-12-10', 9000, 1),
+(7, '0190a6-16', 16, '2017-12-10', 9000, 1),
+(8, '96b3dc-16', 16, '2017-12-10', 9000, 0),
+(9, '0f246e-16', 16, '2017-12-10', 9000, 1),
+(10, '6941bd-16', 16, '2017-12-10', 9000, 1),
+(11, '17487e-16', 16, '2017-12-10', 9000, 1),
+(12, '398fbb-16', 16, '2017-12-10', 9000, 0),
+(13, '9e5ec7-16', 16, '2017-12-10', 9000, 0),
+(14, 'e3f481-16', 16, '2017-12-10', 9000, 1),
+(15, '040d83-16', 16, '2017-12-10', 9000, 0),
+(16, '71f43e-16', 16, '2017-12-10', 9000, 0),
+(17, '827085-16', 16, '2017-12-10', 9000, 0),
+(18, '3eeb71-16', 16, '2017-12-10', 9000, 0),
+(19, 'a550a9-16', 16, '2017-12-10', 9000, 0),
+(20, '2f9d5b-16', 16, '2017-12-10', 8500, 0),
+(21, 'c182c9-16', 16, '2017-12-12', 7685, 0),
+(22, 'c9cec4-16', 16, '2017-12-12', 7685, 0),
+(23, '2e3c24-16', 16, '2017-12-12', 7685, 0),
+(24, '63f5d9-16', 16, '2017-12-12', 7685, 0),
+(25, '9c0e5e-16', 16, '2017-12-12', 7685, 0),
+(26, '3d2b77-16', 16, '2017-12-12', 7685, 0),
+(27, 'ce1bb5-16', 16, '2017-12-12', 7685, 0),
+(28, 'e1e987-16', 16, '2017-12-12', 7685, 0),
+(29, 'd65572-16', 16, '2017-12-12', 7685, 0),
+(30, 'da1c47-16', 16, '2017-12-12', 7685, 0),
+(31, '95e6c1-16', 16, '2017-12-12', 7685, 0),
+(32, '7ad57e-16', 16, '2017-12-12', 7685, 0),
+(33, '80b7d1-16', 16, '2017-12-12', 7685, 0),
+(34, 'f74df6-16', 16, '2017-12-12', 7685, 0),
+(35, '788018-16', 16, '2017-12-12', 7685, 0),
+(36, '3bbe1c-16', 16, '2017-12-12', 7685, 0),
+(37, '880d9c-16', 16, '2017-12-12', 7685, 0),
+(38, '2383ba-16', 16, '2017-12-12', 7685, 0),
+(39, '495d91-16', 16, '2017-12-12', 7685, 0),
+(40, '69291f-16', 16, '2017-12-12', 7685, 0),
+(41, '0b1599-16', 16, '2017-12-12', 7685, 0),
+(42, 'ff8fc3-16', 16, '2017-12-12', 7685, 0),
+(43, 'c3f6a6-16', 16, '2017-11-01', 8000, 0),
+(44, '0d9a27-16', 16, '2017-11-01', 8000, 0),
+(45, '7c62f3-16', 16, '2017-11-01', 8000, 0),
+(46, '8b3873-16', 16, '2017-11-01', 8000, 0),
+(47, '4b3361-16', 16, '2017-11-01', 8000, 0),
+(48, 'f864ed-16', 16, '2017-11-01', 8000, 0),
+(49, 'a811ba-16', 16, '2017-11-01', 8000, 0),
+(50, '564a9c-16', 16, '2017-11-01', 8000, 0),
+(51, '47ba75-16', 16, '2017-11-01', 8000, 0),
+(52, 'fea5b8-16', 16, '2017-11-01', 8000, 0),
+(53, 'd55223-16', 16, '2017-11-01', 8000, 0),
+(54, '278e62-16', 16, '2017-11-01', 8000, 0),
+(55, '8bbf17-16', 16, '2017-11-01', 8000, 0),
+(56, '49b6bf-16', 16, '2017-11-01', 8000, 0),
+(57, '452be3-16', 16, '2017-11-01', 8000, 0),
+(58, '3cebfe-16', 16, '2017-11-01', 8000, 0),
+(59, '84299a-16', 16, '2017-12-12', 5000, 0),
+(60, '8c5300-16', 16, '2017-12-12', 5000, 0),
+(61, 'ea6284-16', 16, '2017-12-12', 5000, 0),
+(62, '7e9fda-16', 16, '2017-12-12', 5000, 0),
+(63, 'a4b93c-17', 17, '2017-12-12', 50000, 0),
+(64, '1e1c9e-17', 17, '2017-12-12', 50000, 0),
+(65, 'd12808-17', 17, '2017-12-12', 50000, 0),
+(66, 'ba2574-17', 17, '2017-12-12', 50000, 0),
+(67, '591461-17', 17, '2017-12-12', 50000, 0),
+(68, 'f210ed-17', 17, '2017-12-12', 50000, 0),
+(69, '58b0d8-17', 17, '2017-12-12', 50000, 0),
+(70, 'e15ff7-17', 17, '2017-12-12', 50000, 0),
+(71, '7de255-17', 17, '2017-12-12', 50000, 0),
+(72, 'fbad7e-17', 17, '2017-12-12', 50000, 0),
+(73, '230e8c-33', 33, '2017-10-06', 70000, 0),
+(74, 'a9e99d-33', 33, '2017-10-06', 70000, 0),
+(75, '7424db-33', 33, '2017-10-06', 70000, 0),
+(76, 'f895d5-33', 33, '2017-10-06', 70000, 0),
+(77, 'd0ced8-33', 33, '2017-10-06', 70000, 0),
+(78, 'fc4464-33', 33, '2017-10-06', 70000, 0),
+(79, '9cffa4-33', 33, '2017-10-06', 70000, 0),
+(80, 'a573a1-33', 33, '2017-10-06', 70000, 0),
+(81, '12ba1c-33', 33, '2017-10-06', 70000, 0),
+(82, '107b96-33', 33, '2017-10-06', 70000, 0),
+(83, '53f342-33', 33, '2017-10-06', 70000, 0),
+(84, 'cd8b44-33', 33, '2017-10-06', 70000, 0),
+(85, '1f1a02-33', 33, '2017-10-06', 70000, 0),
+(86, '41e93d-33', 33, '2017-10-06', 70000, 0),
+(87, '176d61-33', 33, '2017-10-06', 70000, 0),
+(88, 'fb1831-33', 33, '2017-10-06', 70000, 0),
+(89, '1db0d5-33', 33, '2017-10-06', 70000, 0),
+(90, 'c1a142-33', 33, '2017-10-06', 70000, 0),
+(91, '72ece5-33', 33, '2017-10-06', 70000, 0),
+(92, 'd094f2-33', 33, '2017-10-06', 70000, 0),
+(93, 'bf8943-33', 33, '2017-10-06', 70000, 0),
+(94, '8d36b0-33', 33, '2017-10-06', 70000, 0),
+(95, 'd810cd-33', 33, '2017-10-06', 70000, 0),
+(96, 'f5589c-33', 33, '2017-10-06', 70000, 0),
+(97, '9b1d4e-33', 33, '2017-10-06', 70000, 0),
+(98, '090f9a-33', 33, '2017-10-06', 70000, 0),
+(99, '4997ae-33', 33, '2017-10-06', 70000, 0),
+(100, '6317eb-33', 33, '2017-10-06', 70000, 0),
+(101, 'd65614-33', 33, '2017-10-06', 70000, 0),
+(102, '08110a-33', 33, '2017-10-06', 70000, 0),
+(103, '9dcbf4-33', 33, '2017-10-06', 70000, 0),
+(104, '84889b-33', 33, '2017-10-06', 70000, 0),
+(105, 'cd2b87-33', 33, '2017-10-06', 70000, 0),
+(106, '04a8e8-33', 33, '2017-10-06', 70000, 0),
+(107, '1686d8-33', 33, '2017-10-06', 70000, 0),
+(108, 'd4f348-33', 33, '2017-10-06', 70000, 0),
+(109, '299f85-33', 33, '2017-10-06', 70000, 0),
+(110, 'b3a23c-33', 33, '2017-10-06', 70000, 0),
+(111, 'e64450-33', 33, '2017-10-06', 70000, 0),
+(112, '355a81-33', 33, '2017-10-06', 70000, 0),
+(113, 'c83f24-33', 33, '2017-10-06', 70000, 0),
+(114, '5c9ced-33', 33, '2017-10-06', 70000, 0),
+(115, '9a9736-33', 33, '2017-10-06', 70000, 0),
+(116, '181d9a-33', 33, '2017-10-06', 70000, 0),
+(117, '4ebb87-33', 33, '2017-10-06', 70000, 0),
+(118, '10940d-33', 33, '2017-10-06', 70000, 0),
+(119, 'cbd175-33', 33, '2017-10-06', 70000, 0),
+(120, 'ac57f9-33', 33, '2017-10-06', 70000, 0),
+(121, '83d6d1-33', 33, '2017-10-06', 70000, 0),
+(122, '51513f-33', 33, '2017-10-06', 70000, 0),
+(123, '040752-18', 18, '2017-11-01', 6000, 0),
+(124, '3a2d5c-18', 18, '2017-11-01', 6000, 0),
+(125, 'bfe97c-18', 18, '2017-11-01', 6000, 0),
+(126, '9af680-18', 18, '2017-11-01', 6000, 0),
+(127, '715c70-18', 18, '2017-11-01', 6000, 0),
+(128, 'ada4a7-19', 19, '2017-12-14', 12000, 0),
+(129, '04fbe8-19', 19, '2017-12-14', 12000, 0),
+(130, '3174e1-19', 19, '2017-12-14', 12000, 0),
+(131, '840d98-19', 19, '2017-12-14', 12000, 0),
+(132, 'eb3d50-19', 19, '2017-12-14', 12000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `quantity_report`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `quantity_report`;
+CREATE TABLE `quantity_report` (
+`category` varchar(255)
+,`minimum` decimal(14,4)
+,`maximum` decimal(14,4)
+,`quantity_on_hand` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `searchable`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `searchable`;
+CREATE TABLE `searchable` (
+`item_id` int(11)
+,`image_url` varchar(255)
+,`name` varchar(255)
+,`price` float
+,`type` varchar(255)
+,`category` varchar(255)
+,`quantity_on_hand` bigint(21)
+);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `supplier`
+--
+
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE `supplier` (
+  `supplier_id` int(11) NOT NULL,
+  `supplier` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `supplier`
+--
+
+INSERT INTO `supplier` (`supplier_id`, `supplier`) VALUES
+(1, 'Dell Ltd'),
+(2, 'Hewlett Packard'),
+(3, 'Best Buy'),
+(5, 'Pavillion Jewelers'),
+(6, 'Epson');
 
 -- --------------------------------------------------------
 
@@ -137,31 +483,28 @@ INSERT INTO `person` (`person_id`, `firstname`, `lastname`, `image_url`, `dob`) 
 --
 
 DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(10) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `user` (
+  `user_id` int(10) NOT NULL,
   `person_id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
   `secret` varchar(255) NOT NULL,
   `user_type_id` int(10) NOT NULL,
   `harsh` varchar(255) NOT NULL,
-  `status` int(10) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+  `status` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `person_id`, `username`, `secret`, `user_type_id`, `harsh`, `status`) VALUES
-(4, 19, 'jim.brown@gmail.com', '89N9Hh3PrAzTs', 675, '895dfad617fdb0e4ff0130f7', 1),
-(5, 20, 'heslopok@gmail.com', 'fb.6ERWyD5OnA', 222, 'fb63a74da462a1fa1a5ddea9', 1),
-(6, 21, 'kelly_logan@gmail.com', 'd1QpYgd///qOA', 675, 'd1238512d824927349d66ea1', 1),
+(5, 20, 'heslopok@gmail.com', 'ccLDIPMfCZOlE', 222, 'cc70675c7b18fbcc217f60a6', 1),
 (7, 22, 'tallow_23@hotmail.com', '662hOtOrnxRrA', 675, '66f8132ed3770e68e54fd23b', 1),
-(8, 23, 'tri_thomas@yahoo.com', 'aaX2Rx58AkxVU', 675, 'aab61e3273dffe23ae4943ac', 1),
-(9, 24, 'remy_mat@gmail.com', 'ffIEstvoXnLMk', 675, 'fffbcdcbfad9f5f1ed3fdd0c', 1),
-(10, 25, 'vishous_john@yahoo.com', '95Xs8ZghLtdy2', 675, '951a5d555ad6a0b5eac88005', 1),
-(11, 26, 'phury_25@hotmail.com', '74MV.7OMiiRPE', 675, '74f04a108d892aea364b4290', 1);
+(8, 23, 'tri_thomas@yahoo.com', 'aaX2Rx58AkxVU', 675, 'aab61e3273dffe23ae4943ac', 0),
+(9, 24, 'remy_mat@gmail.com', 'ffIEstvoXnLMk', 675, 'fffbcdcbfad9f5f1ed3fdd0c', 0),
+(10, 25, 'vishous_john@yahoo.com', '95Xs8ZghLtdy2', 675, '951a5d555ad6a0b5eac88005', 0),
+(14, 29, 'susan.green@gmail.com', '8aFuDFli8VD0.', 222, '8a43eb4a2381b14d9a54444e', 1),
+(15, 30, 'jay.smith@ecc.edu.jm', '76umD9fPv0k2g', 675, '7672741dfe5be98f3d3e1cf9', 0);
 
 -- --------------------------------------------------------
 
@@ -170,7 +513,7 @@ INSERT INTO `user` (`user_id`, `person_id`, `username`, `secret`, `user_type_id`
 --
 
 DROP TABLE IF EXISTS `user_type`;
-CREATE TABLE IF NOT EXISTS `user_type` (
+CREATE TABLE `user_type` (
   `user_type_id` int(10) NOT NULL,
   `type` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -182,3 +525,107 @@ CREATE TABLE IF NOT EXISTS `user_type` (
 INSERT INTO `user_type` (`user_type_id`, `type`) VALUES
 (222, 'admin'),
 (675, 'normal');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `inventory_report`
+--
+DROP TABLE IF EXISTS `inventory_report`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `inventory_report`  AS  select distinct `i`.`category_id` AS `category_id`,`i`.`name` AS `name`,`s`.`supplier` AS `supplier`,`p`.`purchase_price` AS `purchase_price`,`i`.`price` AS `selling_price`,`p`.`purchase_date` AS `purchase_date`,(select count(`pp`.`sold`) from `product` `pp` where ((`pp`.`sold` = 0) and (`pp`.`item_id` = `i`.`item_id`) and (`pp`.`purchase_date` = `p`.`purchase_date`))) AS `quantity_on_hand`,(select count(`pp`.`sold`) from `product` `pp` where ((`pp`.`item_id` = `i`.`item_id`) and (`pp`.`purchase_date` = `p`.`purchase_date`))) AS `amount_order` from (((`item` `i` join `item_supplier` `is`) join `supplier` `s`) join `product` `p`) where ((`s`.`supplier_id` = `is`.`supplier_id`) and (`i`.`item_id` = `is`.`item_id`) and (`p`.`item_id` = `i`.`item_id`)) order by `i`.`name` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `quantity_report`
+--
+DROP TABLE IF EXISTS `quantity_report`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `quantity_report`  AS  select `ic`.`category` AS `category`,(select avg(`a`.`minimum`) from `item` `a` where (`a`.`category_id` = `ic`.`category_id`)) AS `minimum`,(select avg(`a`.`maximum`) from `item` `a` where (`a`.`category_id` = `ic`.`category_id`)) AS `maximum`,(select count(`p`.`sold`) from (`product` `p` join `item` `i`) where ((`p`.`item_id` = `i`.`item_id`) and (`i`.`category_id` = `ic`.`category_id`) and (`p`.`sold` = 0))) AS `quantity_on_hand` from `item_category` `ic` group by `ic`.`category` ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `searchable`
+--
+DROP TABLE IF EXISTS `searchable`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `searchable`  AS  select `i`.`item_id` AS `item_id`,`i`.`image_url` AS `image_url`,`i`.`name` AS `name`,`i`.`price` AS `price`,`i`.`type` AS `type`,`ic`.`category` AS `category`,(select count(`p`.`product_id`) from `product` `p` where ((`p`.`sold` = 0) and (`i`.`item_id` = `p`.`item_id`))) AS `quantity_on_hand` from (`item` `i` join `item_category` `ic`) where (`i`.`category_id` = `ic`.`category_id`) ;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `item`
+--
+ALTER TABLE `item`
+  ADD PRIMARY KEY (`item_id`);
+
+--
+-- Indexes for table `item_category`
+--
+ALTER TABLE `item_category`
+  ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `person`
+--
+ALTER TABLE `person`
+  ADD PRIMARY KEY (`person_id`);
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`),
+  ADD UNIQUE KEY `model_id` (`model_id`);
+
+--
+-- Indexes for table `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`supplier_id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `item`
+--
+ALTER TABLE `item`
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+--
+-- AUTO_INCREMENT for table `item_category`
+--
+ALTER TABLE `item_category`
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+--
+-- AUTO_INCREMENT for table `person`
+--
+ALTER TABLE `person`
+  MODIFY `person_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+--
+-- AUTO_INCREMENT for table `supplier`
+--
+ALTER TABLE `supplier`
+  MODIFY `supplier_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
