@@ -39,7 +39,7 @@
         $cleanData = cleanPostDataFromUser(unserialize(SIGNUPVAR));
 
         $isDataGood = checkCleanDataFromUser($cleanData);
-print_ra($isDataGood);
+
         if($isDataGood['?']){
             //setup array to create a user
             $usrd = array(
@@ -76,25 +76,6 @@ print_ra($isDataGood);
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /**
      * Check the user input and handle the errors if any or login user and 
      * redirect to approriate view
@@ -126,6 +107,7 @@ print_ra($isDataGood);
                 $_SESSION['dob']        = $user->get_dob();
                 $_SESSION['person_id']  = $user->get_person_id();
                 $_SESSION['image_url']  = $user->get_image_url();
+                setcookie('isloggedIn',$user->get_username());
                 
                 
                 //now we send the user to thier rightful view
