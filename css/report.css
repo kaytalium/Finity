@@ -155,10 +155,10 @@ input[type="text"], .num{
     display: list-item;
     list-style: none;
 background-color:  #25b7c4;
-color: #cfcccc;
+color: #f3f0f0;
 
 border-radius: 6px;
-font-size: 12px;
+font-size: 16px;
 height: 50px;
 width: 120px;
 padding: 5px;
@@ -171,6 +171,7 @@ text-decoration: none;
 
 .r_btn:hover{
     color: white;
+    background-color:  #25b9c4bb;
 }
 .space{
     padding-bottom: 15px;
@@ -178,6 +179,10 @@ text-decoration: none;
 /*styling report*/
 .m_report_container .report_container{
     text-align: left;
+}
+
+.m_report_container h1{
+    padding: 0 0 0 30px;
 }
 .m_report_container h3{
     text-align: center;
