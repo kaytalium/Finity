@@ -33,7 +33,7 @@ $s  = (isset($_GET['s'])?$_GET['s']:'');
     <div class="left">
         <div class="imgebox">
             <img  src= "image/<?php echo $detailItem->get_image_url(); ?>" alt="<?php echo $detailItem->get_name();?>">
-            <span class="">Change Image</span>
+            
         </div>
     </div>
 
