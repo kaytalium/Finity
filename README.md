@@ -59,9 +59,9 @@ Functionality/Database Design
 <br/>
 
 - [x] 3NF Database design with relationships properly  modelled 
-- [ ] Appropriate management report                             
-- [ ] Functional user interface for adhoc queries               
-- [ ] Evidence of emerging trend implemented                    
+- [x] Appropriate management report                             
+- [x] Functional user interface for adhoc queries               
+- [x] Evidence of emerging trend implemented                    
 - [x] Sessions and Cookies used appropriately
 
 Max marks for Project is 39                                     
