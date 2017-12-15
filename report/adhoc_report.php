@@ -8,7 +8,7 @@
 <div class="adhoc_report_container">
     <h1 class="report_title">Adhoc Report</h1>
    <div class="addhoc_controller">
-       <table>
+       <table >
            <tr>
                <td><input type="checkbox" name="" class="checkbox" id="ck_name">
                     <label>Name</label></td>
@@ -77,7 +77,8 @@
 
    <div class="adhoc_table">
         <table id="adhoc_tbl">
-            <tr>
+        <thead>
+            <tr class="adhoc_tbl_header">
                 <th>Item Id</th>
                 <th>Category</th>
                 <th>Name</th>
@@ -85,7 +86,11 @@
                 <th>Unit</th>
                 <th>Price</th>
             </tr>
-           
+        </thead>
+        <tbody id="adhoc_tbl_result">
+        </tbody>
+               
+    
         </table>
    </div>
    

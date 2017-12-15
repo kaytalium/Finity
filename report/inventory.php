@@ -6,7 +6,7 @@
     </div>
     <div class="inf0">
         <table class="inventory_tbl">
-                    
+            <thead>     
             <tr class="tbl-header">  
                 <th>Category</th>
                 <th>Supplier</th>
@@ -14,7 +14,8 @@
                 <th>Selling Price</th>
                 <th>Quantity On Hand</th>
                 <th>Amount Ordered</th>
-            </tr>  
+            </tr>
+            </thead>  
             <tbody class="t-body">
             <?php
                 if(!empty($category_lsit)){

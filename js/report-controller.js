@@ -19,13 +19,11 @@ $(document).ready(function(){
 
 
 
-    markup = "<tr><th>Item Id</th><th>Category</th><th>Name</th><th>Type</th><th>Unit</th><th>Price</th></tr>"
     $rgenbtn.click(function(){
         data = setCheck()
-        //console.log(data)
+        
         if(data.state){
-            $adhoc_tbl.html(markup)
-            generate_report($adhoc_tbl,data.x)
+            generate_report($('#adhoc_tbl_result'),data.x)
         }
         
         
@@ -63,7 +61,54 @@ $(document).ready(function(){
         $("#cat_select_box").fadeOut(600)
     })
 
+    //Table scroll 
+    $quantity_tbl = $('#quantity_tbl')
+    $inventory_tbl = $('.inventory_tbl')
+    
+    $parent_holder = $('.right')
+
+    console.log(typeof($quantity_tbl.offset()))
+
+    if(typeof($quantity_tbl.offset()) !=='undefined'){
+        topof_quantity_tbl = Math.ceil($quantity_tbl.offset().top) - Math.ceil($('.right').offset().top) + 10
+        scrollAndFreezeTableHead($parent_holder,$quantity_tbl,topof_quantity_tbl)
+
+    }
+    
+
+    if(typeof($inventory_tbl.offset()) !=='undefined'){
+        topof_inventory_tbl = Math.ceil($inventory_tbl.offset().top) - Math.ceil($('.right').offset().top) + 10
+        scrollAndFreezeTableHead($parent_holder,$inventory_tbl,topof_inventory_tbl)            
+    }
+
+    if(typeof($adhoc_tbl.offset()) !=='undefined'){
+          $adhoc_tbl.floatThead({
+            position: 'fixed'
+            });
+    }
+
+   
+
 })
+
+function scrollAndFreezeTableHead(scrollContainer,tbl,topofTable){
+    scrollContainer.scroll(function (event) {
+        // what the y position of the scroll is
+        var y = $(this).scrollTop();
+        
+        // whether that's below the form
+        if (y >= topofTable) {
+          // if so, ad the fixed class
+          
+          tbl.floatThead({
+            position: 'fixed'
+            });
+        } else {
+          // otherwise remove it
+          tbl.trigger('reflow');
+        }
+      });
+}
 
 
 function generate_report(tbl,userData){
@@ -75,26 +120,24 @@ function generate_report(tbl,userData){
             $db_data = JSON.parse(d)
             if($db_data.state){
                 $db_data.data.forEach(el => {
-                    tbl.append([
-                        '<tr>',
-                            '<td>'+el.item_id+'</td>',
-                            '<td>'+el.category+'</td>',
-                            '<td>'+el.name+'</td>',
-                            '<td>'+el.type+'</td>',
-                            '<td>'+el.quantity_on_hand+'</td>',
-                            '<td>'+toMoneyFormat(el.price)+'</td>',
-                        '</tr>'
-                        ].join(''));
+                    r = 
+                        '<tr>'+
+                            '<td>'+el.item_id+'</td>'+
+                            '<td>'+el.category+'</td>'+
+                            '<td>'+el.name+'</td>'+
+                            '<td>'+el.type+'</td>'+
+                            '<td>'+el.quantity_on_hand+'</td>'+
+                            '<td>'+toMoneyFormat(el.price)+'</td>'+
+                        '</tr>';
+                        tbl.append(r)
                         
-                
-            
-            console.log(el.item_id)
                 });
             }
-            console.log($db_data);
         },
         error: function(error){console.log(error)}
     })
+
+    
        
 }
 

@@ -6,14 +6,15 @@
             </div>
                  
             <div class="tbl-display">
-                <table>
-                    
+                <table id='quantity_tbl'>
+                    <thead>
                     <tr class="tbl-header">  
                         <th>Category</th>
                         <th>Avg. Minimum</th>    
                         <th>Avg. Maximum</th>
                         <th>Quantity On Hand</th>
                     </tr>  
+                    </thead>
                     <tbody class="t-body">
                         <?php
                         foreach ($quantity_report as $row) { 
