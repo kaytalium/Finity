@@ -24,10 +24,13 @@
     <script src="js/report-controller.js"></script>
 </head>
 <?php
+    date_default_timezone_set('jamaica');
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
         $isMreport = false;
         $isAdhoc = false;
         $isProfile = false;
+
+        $my_report = (isset($_GET['r'])?$_GET['r']:'quantity');
 
         $requestor = (isset($_GET['v'])?$_GET['v']:'');
         switch($requestor){

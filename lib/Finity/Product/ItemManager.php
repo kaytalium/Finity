@@ -326,6 +326,32 @@ class ItemManager extends \Finity\Authenticate\DatabaseConnection  implements \F
         return $result;
     }
 
+    public function getReport($report,$id=-1){
+        switch($report){
+
+            case "quantity":
+                $r = $this->select("SELECT * FROM `quantity_report`");
+                if($r['state']){
+                    return $r['data'];
+                }else{
+                    return array();
+                }
+            break;
+
+            case "inventory":
+            $r = $this->select("SELECT * FROM `inventory_report` WHERE `category_id`=$id");
+            if($r['state'])
+                return $r['data'];
+            else
+                return array();
+
+            
+
+            default:
+            return;
+        }
+    }
+
     private function getQuantityOnHand($query){
         $res = $this->select($query);
         if($res['state'])

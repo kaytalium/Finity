@@ -1,7 +1,8 @@
 <?php
     $im = new \Finity\Product\ItemManager;
-    $getAllItems = $im->getItems();
+    //$getAllItems = $im->getItems();
 
+    $category_list = $im->getCategories();
     //print_ra(count($getAllItems));
 ?>
 <div class="adhoc_report_container">
@@ -52,8 +53,16 @@
                <td>
                    <div id="cat_select_box">
                         <select name="" id="ck_cat_select" class="category_sel">
-                            <option value="Sport">Sport</option>
-                            <option value="Computer">Computer</option>
+                            <option value="0" hidden selected>--Category--</option>
+                            <?php 
+                                if(!empty($category_list)){
+                                    foreach($category_list as $cat){
+                                        echo '<option value="'.$cat['category'].'">'.$cat['category'].'</option>';
+                                    }
+                                }
+                            ?>
+                            
+                            
                         </select>
                     </div>
                 </td>
