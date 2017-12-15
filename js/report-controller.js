@@ -119,6 +119,7 @@ function generate_report(tbl,userData){
         success: function(d){
             $db_data = JSON.parse(d)
             if($db_data.state){
+                tbl.html('');
                 $db_data.data.forEach(el => {
                     r = 
                         '<tr>'+
