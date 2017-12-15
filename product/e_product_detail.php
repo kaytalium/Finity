@@ -71,6 +71,12 @@
 
     <div class="row">
         <input type="submit" name="button" class="btn" value="Save"/>
-        <a class="btn bg-red" href="<?php echo $_SERVER['PHP_SELF'].'?c='.$itemid.'&v=itemreq'; ?>">Cancel</a>
+        <?php 
+        if($showEdit){
+            echo '<a class="btn bg-red" href="'.$_SERVER["PHP_SELF"].'?v=catreq">Cancel</a>';
+        }else{
+            echo '<a class="btn bg-red" href="'.$_SERVER["PHP_SELF"].'?c='.$itemid.'&v=itemreq">Cancel</a>';
+        }
+       ?>
     </div>
 </form>

@@ -12,7 +12,7 @@ class Item{
     private $category = null;//[Sports, fruits]
     private $category_id=null;
     private $type = null;//[Spalding, Jamaican ],
-    private $imageUrl = null;
+    private $imageUrl = 'image_holder.png';
     private $max = null;
     private $min = -1;
     private $quantityOnHand= null;
@@ -26,7 +26,7 @@ class Item{
         $this->category         = (isset($arg['category'])?$arg['category']:'');
         $this->category_id      = (isset($arg['category_id'])?$arg['category_id']:'');
         $this->type             = (isset($arg['type'])?$arg['type']:'');
-        $this->imageUrl         = (isset($arg['image_url'])?$arg['image_url']:'');
+        $this->imageUrl         = (isset($arg['image_url'])?$arg['image_url']:$this->imageUrl);
         $this->max              = (isset($arg['maximum'])?$arg['maximum']:'');
         $this->min              = (isset($arg['minimum'])?$arg['minimum']:'');
         $this->quantityOnHand   = (isset($arg['quantity_on_hand'])?$arg['quantity_on_hand']:'');
@@ -159,8 +159,8 @@ class Item{
     }
 
     public function preparedInsertQueryString(){
-        return "INSERT INTO `item`  (`description`,`price`,`name`,`category_id`,`type`, `maximum`, `minimum`) 
-        VALUES('$this->description','$this->price','$this->name','$this->category_id','$this->type','$this->max','$this->min')";
+        return "INSERT INTO `item`  (`description`,`price`,`name`,`category_id`,`type`, `maximum`, `minimum`, `image_url`) 
+        VALUES('$this->description','$this->price','$this->name','$this->category_id','$this->type','$this->max','$this->min', '$this->imageUrl')";
     }
 
     public function preparedDeleteQueryString(){
