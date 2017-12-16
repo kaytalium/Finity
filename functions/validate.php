@@ -12,6 +12,9 @@
     //get the requestor page
     $requestor = (isset($_GET['t'])?$_GET['t']:'');
 
+    //setting time zone
+    date_default_timezone_set('Jamaica');
+
     if(empty($requestor))
         header('Location: ../index.php');
 
@@ -107,7 +110,11 @@
                 $_SESSION['dob']        = $user->get_dob();
                 $_SESSION['person_id']  = $user->get_person_id();
                 $_SESSION['image_url']  = $user->get_image_url();
-                setcookie('isloggedIn',$user->get_username());
+
+                //setting cookie to main folder
+                setcookie('user', $user->get_username(),time()+(86400*30),'/');
+                setcookie('isLoggedIn', 'yes',time()+(86400*30),'/');
+                setcookie('tz',date_default_timezone_get(),time()+(86400*30),'/');
                 
                 
                 //now we send the user to thier rightful view
@@ -122,7 +129,7 @@
                 }
                     
                 
-                if($user->get_user_type_id()==222)
+                if($user->get_user_type_id()==222){}
                     header('Location: ../admin.php');
 
             }
