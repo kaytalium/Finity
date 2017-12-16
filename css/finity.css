@@ -52,6 +52,15 @@ body, html{
     cursor: pointer;
 }
 
+.bg-green{
+    background: green;
+    color: #c0c0c0;
+}
+
+.bg-red{
+    background: rgb(180, 66, 66);
+    color: #FFF;
+}
 
 
 .sub-menu{
