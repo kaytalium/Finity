@@ -3,8 +3,8 @@
     include '../lib/Finity/Autoloader.php';
     $pm = new \Finity\Profile\ProfileManager();
 
-    print_ra($_REQUEST);
-
+    //print_ra($_REQUEST);
+    
     $requestor = (isset($_GET['v'])?$_GET['v']:'');
 
     if($requestor=='suspend'){
@@ -30,21 +30,21 @@
             $user = $Oauth->encrypt_password();    
         }
        
-        print_ra($user->get_profile());
+        //print_ra($user->get_profile());
         $pm->updateUser($user);
         header('Location: ../admin.php?');
     }
 
     if($requestor==='create'){
         $user = new \Finity\Profile\User($_POST);
-        print_ra($user->get_profile());
+        //print_ra($user->get_profile());
         $pm->createProfile($user);
         header('Location: ../admin.php');
     }
 
     if($requestor==='edit_current_user'){
         $user = new \Finity\Profile\User($_POST);
-        print_ra($user->get_profile());
+        //print_ra($user->get_profile());
         $pm->updateUser($user);
         $_SESSION['fname']  = $user->get_firstname(); 
         $_SESSION['lname']  = $user->get_lastname(); 
