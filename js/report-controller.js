@@ -86,29 +86,7 @@ $(document).ready(function(){
             position: 'fixed'
             });
     }
-
-   
-
 })
-
-function scrollAndFreezeTableHead(scrollContainer,tbl,topofTable){
-    scrollContainer.scroll(function (event) {
-        // what the y position of the scroll is
-        var y = $(this).scrollTop();
-        
-        // whether that's below the form
-        if (y >= topofTable) {
-          // if so, ad the fixed class
-          
-          tbl.floatThead({
-            position: 'fixed'
-            });
-        } else {
-          // otherwise remove it
-          tbl.trigger('reflow');
-        }
-      });
-}
 
 
 function generate_report(tbl,userData){

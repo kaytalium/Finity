@@ -20,6 +20,7 @@
 
     <title>Admin</title>
     <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.floatThead.min.js"></script>
     <script src="js/finity.js"></script>
     <script src="js/details-controller.js"></script>
     <script src="js/admin-controller.js"></script>

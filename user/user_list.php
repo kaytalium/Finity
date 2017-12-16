@@ -11,16 +11,19 @@
     <div class="tablehead">
         <h1>Users</h1>
     </div>
-    <table class="userlist-table">
-        <tr>
-            <th></th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>User Type</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th colspan="4">Action</th>
-        </tr>
+    <table class="userlist-table" id="userlist-table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>User Type</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th colspan="4">Action</th>
+            </tr>
+        </thead>
+        <tbody>
         <?php
 
             if(isset($list_of_users) && is_array($list_of_users)){
@@ -57,7 +60,7 @@
             }
 
         ?>
-        
+       </tbody> 
     </table>
     <div class="msgbox hide">
     <form class="msgbox_form" action="" method="POST">

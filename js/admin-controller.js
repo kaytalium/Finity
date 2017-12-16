@@ -1,9 +1,10 @@
 $(document).ready(function(){
-    dlt_icon    = $('.fa-trash')
-    user_person = $('#user_person')
-    msgbox      = $('.msgbox')
-    msgbox_form = $('.msgbox_form')
-    btn_msg_cancel = $('#btn_msg_cancel')
+    dlt_icon        = $('.fa-trash')
+    user_person     = $('#user_person')
+    msgbox          = $('.msgbox')
+    msgbox_form     = $('.msgbox_form')
+    btn_msg_cancel  = $('#btn_msg_cancel')
+    userlist_tbl  = $('#userlist-table')
 
     dlt_icon.click(function(e){
         e.preventDefault()
@@ -25,6 +26,11 @@ $(document).ready(function(){
         e.preventDefault();
         msgbox.fadeOut();
     })
+
+    if(typeof(userlist_tbl.offset()) !=='undefined'){
+        topof_userlist_tbl = Math.ceil(userlist_tbl.offset().top) - Math.ceil($('.mainList').offset().top) - 1
+        scrollAndFreezeTableHead($('.mainList'),userlist_tbl,topof_userlist_tbl)            
+    }
 
 
 })
