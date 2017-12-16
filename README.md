@@ -1,5 +1,8 @@
 # Finity Inventory (FI)
 
+[![license](https://img.shields.io/github/license/kaytalium/Finity.svg)](LICENSE)
+[![GitHub tag](https://img.shields.io/github/tag/kaytalium/Finity.svg)]()
+
 The purpose of this application is to demonstrate our knowledge of PHP to create an inventory management system. 
 
 The development approach can be seen [Here](docs/approach.md)
